@@ -4,14 +4,18 @@
 layout: page
 title: Blog
 ---
-<!-- <section class="list">
+<section class="list">
 	{% if site.posts.size == 0 %}
 		<p class="text-center">Nothing published yet!</p>
 	{% elsif site.paginate %}
 		{% for post in paginator.posts %}
 			{% if post.category == 'blog' %}
 				{% if post.hidden != true %}
-					{% include blog-post.html %}
+					{% if post.is_external == true %}
+						{% include medium-blog-post.html %}
+					{% else %}
+						{% include blog-post.html %}
+					{% endif %}
 				{% endif %}
 			{% endif %}
 		{% endfor %}
@@ -21,9 +25,13 @@ title: Blog
 		{% for post in site.posts %}
 			{% if post.category == 'blog' %}
 				{% if post.hidden != true %}
-					{% include blog-post.html %}
+					{% if post.is_external == true %}
+						{% include medium-blog-post.html %}
+					{% else %}
+						{% include blog-post.html %}
+					{% endif %}
 				{% endif %}
 			{% endif %}
 		{% endfor %}
 	{% endif %}
-</section> -->
+</section>
