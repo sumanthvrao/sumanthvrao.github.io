@@ -15,8 +15,8 @@ layout: page
 <ul class="skill-list">
 	<li>Google Summer of Code (GSoC) participant, 2019.</li>
 	<li>Active contributor to Zulip-Terminal project with over 100 commits merged.</li>
-	<li>Worked on improving the aesthetics and functionality of Zulip's terminal client application</li>
-	<li>Gained a range of interpersonal and team experience online and through Zulip and GitHub</li>
+	<li>Worked on improving the aesthetics and functionality of Zulip's terminal client application.</li>
+	<li>Gained a range of interpersonal and team experience online and through Zulip and GitHub.</li>
 </ul>
 ---
 
@@ -37,10 +37,9 @@ layout: page
   <li>bash/vim</li>
 </ul>
 
-<h2>Projects</h2>
-
+<!-- <h2>Projects</h2>
 <ul>
 	<li><a href="https://github.com/">Lorem Lorem</a></li>
 	<li><a href="https://github.com/">Ipsum Dolor</a></li>
 	<li><a href="https://github.com/">Dolor Lorem</a></li>
-</ul>
+</ul> -->
