@@ -6,7 +6,10 @@ layout: page
 
 <h3>Hi!</h3>
 
-<p>I am currently a final year computer science student pursuing my bachelor of science degree. I am an experienced open source developer with a demonstrated history of working on FOSS projects.</p>
+<p>I am currently in my senior year pursuing a bachelor's degree in computer science engineering from PES University, Bangalore. I have had a demonstrated history of working on Open Source projects having contributed to the Zulip team-chat project.</p>
+
+<p> My interests lie in the field of Cloud computing and Machine Learning. I have been a teaching assistant for the Data Analytics course at PES University. </p>
+
 ---
 <h2>Experience</h2>
 <h4> The Zulip Open Source Project </h4>

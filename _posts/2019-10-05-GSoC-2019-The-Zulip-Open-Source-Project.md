@@ -1,5 +1,5 @@
 ---
-title: "GSoC 2019 — The Zulip Open Source Project [Medium] "
+title: "GSoC 2019 — The Zulip Open Source Project"
 layout: post
 date: 2019-10-05 20:44
 hidden: false
