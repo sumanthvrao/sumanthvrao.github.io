@@ -523,7 +523,6 @@ body.offcanvas #colorlib-main, body.offcanvas .colorlib-nav-toggle {
 .colorlib-heading {
   font-size: 25px;
   font-family: Georgia, serif;
-  margin-bottom: 4em;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 5px;
@@ -537,6 +536,26 @@ body.offcanvas #colorlib-main, body.offcanvas .colorlib-nav-toggle {
 
 @media screen and (max-width: 768px) {
   .colorlib-heading {
+    margin-bottom: 3em;
+  }
+}
+
+.colorlib-subheading {
+  font-size: 15px;
+  font-family: Georgia, serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  line-height: 1.8;
+  position: relative;
+}
+
+.colorlib-subheading span {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .colorlib-subheading {
     margin-bottom: 3em;
   }
 }
@@ -567,6 +586,10 @@ body.offcanvas #colorlib-main, body.offcanvas .colorlib-nav-toggle {
   text-transform: uppercase;
   letter-spacing: 5px;
   font-weight: 500;
+}
+
+.cv a {
+  margin-top: 2%;
 }
 
 .hire {

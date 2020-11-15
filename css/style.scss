@@ -549,7 +549,21 @@ body {
 .colorlib-heading {
 	font-size: 25px;
 	font-family: Georgia, serif;
-	margin-bottom: 4em;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	line-height: 1.8;
+	position: relative;
+	span {
+		display: block;
+	}
+	@media screen and (max-width: $screen-sm ) {
+		margin-bottom: 3em;
+	}
+}
+.colorlib-subheading{
+	font-size: 15px;
+	font-family: Georgia, serif;
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 5px;
@@ -588,6 +602,11 @@ body {
 		text-transform: uppercase;
 		letter-spacing: 5px;
 		font-weight: 500;
+	}
+}
+.cv {
+	a{
+		margin-top: 2%;
 	}
 }
 .hire{

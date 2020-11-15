@@ -56,18 +56,20 @@
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
 		<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
 			<div class="text-center">
-				<div class="author-img" style="background-image: url(images/about.jpg);"></div>
+				<div class="author-img" style="background-image: url(images/recent.png);"></div>
 				<h1 id="colorlib-logo"><a href="index.html">Sumanth V Rao</a></h1>
-				<span class="position">Software Developer</span>
+				<!-- <span class="position">Software Developer</span> -->
 			</div>
 			<nav id="colorlib-main-menu" role="navigation" class="navbar">
 				<div id="navbar" class="collapse">
 					<ul>
 						<li class="active"><a href="#" data-nav-section="home">Home</a></li>
-						<li><a href="#" data-nav-section="experience">Experience</a></li>
+						<!-- <li><a href="#" data-nav-section="experience">Experience</a></li>
 						<li><a href="#" data-nav-section="education">Education</a></li>
 						<li><a href="#" data-nav-section="projects">Projects</a></li>
-						<li><a href="#" data-nav-section="skills">Skills</a></li>
+						<li><a href="#" data-nav-section="skills">Skills</a></li> -->
+						<li><a href="#" data-nav-section="research">Research</a></li>
+						<li><a href="#" data-nav-section="contributions">Contributions</a></li>
 						<li><a href="#" data-nav-section="blog">Blog</a></li>
 					</ul>
 				</div>
@@ -75,9 +77,9 @@
 
 			<div class="colorlib-footer">
 				<ul>
-					<li><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/sumanthvrao" style="font-size: 20px;"><i class="icon-linkedin2"></i></a></li>
-					<li><a target="_blank" rel="noopener noreferrer" href="https://github.com/sumanthvrao" style="font-size: 20px;"><i class="icon-github"></i></a></li>
-					<li><a target="_blank" rel="noopener noreferrer" href="mailto:sumanthvrao@gmail.com" style="font-size: 23px;"><i class="icon-mail5"></i></a></li>
+					<li><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/sumanthvrao" style="font-size: 22px;"><i class="icon-linkedin2"></i></a></li>
+					<li><a target="_blank" rel="noopener noreferrer" href="https://github.com/sumanthvrao" style="font-size: 22px;"><i class="icon-github"></i></a></li>
+					<li><a target="_blank" rel="noopener noreferrer" href="mailto:sumanthvrao@gmail.com" style="font-size: 27px;"><i class="icon-mail5"></i></a></li>
 				</ul>
 			</div>
 
@@ -87,23 +89,31 @@
 			<section id="colorlib-hero" class="js-fullheight" data-section="home">
 				<div class="flexslider js-fullheight">
 					<ul class="slides">
-					<li style="background-image: url(images/cover.jpg);">
+					<!-- <li style="background-image: url(images/cover.jpg);"> -->
+					<li>
 				   		<div class="overlay"></div>
 				   		<div class="container-fluid">
 				   			<div class="row">
 					   			<div class="js-fullheight slider-text">
 					   				<div class="slider-text-inner js-fullheight">
 					   					<div class="desc">
-						   					<h1>Hi! <br>I'm Sumanth</h1>
-											<h2>Software Developer | Open Source contributor</a>
+											   <h1>Hi! <br>I'm Sumanth</h1>
+											<!-- <h2>Software Developer | Open Source contributor
 											   <span class="loc icon"><i class="icon-location"></i></span>Bangalore, India
-											</h2>
+											</h2> -->
 										</div>
 										<div class="col-md-12">
 											<div class="about-desc" style="text-align: justify;">
-												<p>I am a Software Developer currently working at Citrix. I hold a Bachelor's degree in Computer Science Engineering from PES University, Bangalore. I have a demonstrated history as an open source developer working on FOSS projects including being a part of the Google Summer of Code program (both as a student and a mentor).</p>
+												<p>I am a Software Developer currently working at Citrix. I hold a Bachelor's degree in Computer Science from PES University, Bangalore. My interest areas lie at the intersection of Systems and Security. I have a demonstrated history as an open source developer working on FOSS projects, including being a part of the Google Summer of Code program (as a student and a mentor).</p>
 												<!-- TODO: Research interests -->
 											</div>
+										</div>
+										<div class="cv">
+											<p>
+												<a class="btn btn-primary btn-learn" target="_blank" href="Sumanth_V_Rao_CV.pdf">Download CV
+												   <i class="icon-download4"></i>
+												</a>
+										   </p>
 										</div>
 					   				</div>
 								   </div>
@@ -116,9 +126,93 @@
 			</section>
 
 			<!--------------------------------------------------------------------
+			##### Research
+			--------------------------------------------------------------------->
+			<section class="colorlib-experience" data-section="research">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-lg-10 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<a name="research"><h1 class="colorlib-heading animate-box">Research</h1></a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+				         <div class="timeline-centered">
+					         <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+					            <div class="timeline-entry-inner">
+					               <div class="timeline-icon color-none"></div>
+					               <div class="timeline-label">
+									  <h2><a href="#">Futuristic Smart Home Automation System (SHAS)</a> <span>Center for Information Security, Forensics and Cyber Resilience, PES University</span></h2>
+									  <p> The Smart Home IoT market today, suffers from challenges like privacy, cost and vendor lock-in. While the usage of IoT in industrial applications and its subsequent advantages, has proven effective and gained the trust of customers, the Smart Home market has remained more or less untapped. The goal of this project is to develop a SHAS architecture which addresses all the shortcoming of a traditional SHAS. The project developes a future-ready Smart Home solution, that lowers the entry barrier for customers to adopt Smart Home technologies easily. The following issues are some of the problems the project targets:</p>
+									  <li>Present day voice assistant like <i>Google Home</i> and <i>Amazon Alexa</i> aren't interoperable. They each have their own ecosystem and set of "smart" devices with which they are compatible, inadvertently leading customers into a case of "vendor lock-in", in the future.</li>
+									  <li>Privacy issues with a smart home assistant always listening in on conversation has been a major source of concern for customers adopting this technology.</li>
+									  <li>Converting a home into a smart home requires significant initial investments in terms of buying appliances and compatible edge devices.</li>
+					               </div>
+					            </div>
+					         </article>
+
+					         <article class="timeline-entry begin animate-box" data-animate-effect="fadeInBottom">
+					            <div class="timeline-entry-inner">
+					               <div class="timeline-icon color-none">
+					               </div>
+					            </div>
+					         </article>
+					      </div>
+					   </div>
+				   </div>
+				</div>
+			</section>
+
+			<!--------------------------------------------------------------------
+			##### OSS Contributions
+			--------------------------------------------------------------------->
+			<section data-section="contributions">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<a name="contributions"><h1 class="colorlib-heading animate-box">Contributions</h1></a>
+						</div>
+					</div>
+					<p>All my contributions are open sourced and most of them are available at the below links. Further, some highlights are mentioned below
+						<li><a href="https://github.com/zulip/zulip-terminal/commits?author=sumanthvrao">https://github.com/zulip/zulip-terminal/commits?author=sumanthvrao</a> <br/></li>
+						<li><a href="https://github.com/zulip/zulip/commits?author=sumanthvrao">https://github.com/zulip/zulip/commits?author=sumanthvrao</a></li>
+					</p>
+					<div>
+						<h2 class="colorlib-subheading animate-box">Highlights</h2>
+						<li><a href="https://github.com/zulip/zulip">zulip/zulip</a> : Option for communities to view code in playground -
+							<a href="https://github.com/zulip/zulip/pull/16308">#16308</a>, <a href="https://github.com/zulip/zulip/pull/16496"> #16496</a>
+						</li>
+						<li><a href="https://github.com/zulip/zulip">zulip/zulip</a> : Copy-to-clipboard button in code blocks -
+							<a href="https://github.com/zulip/zulip/pull/16179">#16179</a>
+						</li>
+						<li>
+							<a href="https://github.com/zulip/zulip">zulip/zulip</a> : Tool to update API field of zuliprc -
+							<a href="https://github.com/zulip/zulip/pull/12735">#12735</a>
+						</li>
+						<li>
+							<a href="https://github.com/zulip/zulip-terminal">zulip/zulip-terminal</a> : Dockerfile for ZT images from upstream/pypi -
+							<a href="https://github.com/zulip/zulip-terminal/pull/571">#571</a>
+						</li>
+						<li>
+							<a href="https://github.com/zulip/zulip-terminal">zulip/zulip-terminal</a> : Support for displaying topic list for streams -
+							<a href="https://github.com/zulip/zulip-terminal/pull/382">#382</a>
+						</li>
+						<li>
+							<a href="https://github.com/zulip/zulip-terminal">zulip/zulip-terminal</a> : Fixing non-deterministic race conditions -
+							<a href="https://github.com/zulip/zulip-terminal/pull/389">#389</a>, <a href="https://github.com/zulip/zulip-terminal/pull/462">#462</a>
+						</li>
+						<li>
+							<a href="https://github.com/zulip/zulip-terminal">zulip/zulip-terminal</a> : Indent blockquotes to improve readability -
+							<a href="https://github.com/zulip/zulip-terminal/pull/380">#380</a>
+						</li>
+					</div>
+
+				</div>
+			</section>
+			<!--------------------------------------------------------------------
 			##### Experience
 			--------------------------------------------------------------------->
-			<section class="colorlib-experience" data-section="experience">
+			<!-- <section class="colorlib-experience" data-section="experience">
 				<div class="colorlib-narrow-content">
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
@@ -134,7 +228,6 @@
 					               <div class="timeline-label">
 									  <h2><a href="#">Citrix</a> <br/> <span>Software Engineer</span> ● <span>Aug 2020 - Ongoing</span></h2>
 									  <p> • Part of the Citrix Licensing team responsible for development and testing of Citrix proprietary License Server technology.</p>
-									  <!-- • Designed and implemented a service to create and provision VM's required for automation, on the fly. The solution involves Azure technologies like Service Bus, Cloud Functions, Azure Tables and File Shares.</p> -->
 					               </div>
 					            </div>
 					         </article>
@@ -181,16 +274,15 @@
 					   </div>
 				   </div>
 				</div>
-			</section>
+			</section> -->
 
 			<!--------------------------------------------------------------------
 			##### Education
 			--------------------------------------------------------------------->
-			<section class="colorlib-education" data-section="education">
+			<!-- <section class="colorlib-education" data-section="education">
 				<div class="colorlib-narrow-content">
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-							<!-- <span class="heading-meta">Education</span> -->
 							<h1 class="colorlib-heading animate-box">Education</h1>
 						</div>
 					</div>
@@ -205,13 +297,6 @@
 											<span>Aug 2016 - Jul 2016</span>
 										</a>
 									</div>
-									<!-- TODO: Add TA? Courses? Achievements -->
-									<!-- <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-										<div class="panel-body">
-											<p>CGPA: 9.57</p>
-											<p></p>
-										</div>
-									</div> -->
 								</div>
 
 								<div class="panel panel-default">
@@ -238,12 +323,12 @@
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> -->
 
 			<!--------------------------------------------------------------------
 			##### Projects
 			--------------------------------------------------------------------->
-			<section class="colorlib-projects" data-section="projects">
+			<!-- <section class="colorlib-projects" data-section="projects">
 				<div class="colorlib-narrow-content">
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
@@ -261,7 +346,6 @@
 										<a target="_blank" rel="noopener noreferrer" href="https://sumanthvrao.github.io/yoga-pose-classification-system/">Yoga Pose Classification and Fake Pose Generation System <span>Aug 2019 - Nov 2019</span>
 											<span class="icon"><i class="icon-link2"></i></span>
 										</a>
-										<!-- Yoga Pose Classification and Fake Pose Generation System, -->
 									</h2>
 									<p> Built a deep learning model for fake pose generation of yoga poses. We explore this task by first building a model for yoga pose classification, which is followed by a model for fake pose generation.</p>
 								</div>
@@ -276,7 +360,6 @@
 										<a target="_blank" rel="noopener noreferrer" href="https://sumanthvrao.github.io/Fake-News-Classifier/">Fake News Detection System <span>Jan 2019</span>
 											<span class="icon"><i class="icon-link2"></i></span>
 										</a>
-										<!-- Fake News Detection System, -->
 									</h2>
 									  <p> Built a module to determine the authenticity of news articles by considering the scores from a binary classification model (LSTM Network and Ensemble Learning) and a fact-checking model (web indexed).</p>
 					               </div>
@@ -349,12 +432,12 @@
 					   </div>
 				   </div>
 				</div>
-			</section>
+			</section> -->
 
 			<!--------------------------------------------------------------------
 			##### Skills
 			--------------------------------------------------------------------->
-			<section class="colorlib-skills" data-section="skills">
+			<!-- <section class="colorlib-skills" data-section="skills">
 				<div class="colorlib-narrow-content">
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
@@ -374,13 +457,16 @@
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> -->
 
+			<!--------------------------------------------------------------------
+			##### Blog
+			--------------------------------------------------------------------->
 			<section class="colorlib-blog" data-section="blog">
 				<div class="colorlib-narrow-content">
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-							<h2 class="colorlib-heading">Blog</h2>
+							<a name="blog"><h2 class="colorlib-heading">Blog</h2></a>
 						</div>
 					</div>
 					<div class="row">
