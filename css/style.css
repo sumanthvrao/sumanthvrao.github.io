@@ -513,6 +513,17 @@ body.offcanvas #colorlib-main, body.offcanvas .colorlib-nav-toggle {
   }
 }
 
+.colorlib-experience li,
+.colorlib-skills li,
+.colorlib-education li,
+.colorlib-blog li,
+.colorlib-projects li,
+.colorlib-about li,
+.colorlib-services li,
+.colorlib-contact li {
+  padding-top: 0.3em;
+}
+
 .author-img {
   background-size: cover;
   background-position: center center;
