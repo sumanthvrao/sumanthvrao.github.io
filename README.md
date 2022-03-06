@@ -1,1 +1,1 @@
-TEMPALTE: https://colorlib.com/wp/template/jackson/
+TEMPLATE: https://colorlib.com/wp/template/jackson/
