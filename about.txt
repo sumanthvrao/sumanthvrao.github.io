@@ -1,6 +1,6 @@
 This favicon was generated using the following font:
 
-- Font Title: Leckerli One
-- Font Author: Copyright (c) 2011 Gesine Todt (www.gesine-todt.de), with Reserved Font Names "Leckerli"
-- Font Source: http://fonts.gstatic.com/s/leckerlione/v16/V8mCoQH8VCsNttEnxnGQ-1itLZxcBtItFw.ttf
+- Font Title: Red Hat Text
+- Font Author: Copyright 2021 The Red Hat Project Authors (https://github.com/RedHatOfficial/RedHatFont)
+- Font Source: http://fonts.gstatic.com/s/redhattext/v13/RrQCbohi_ic6B3yVSzGBrMx6ZI_cy1A6Ok2ML193VrbacYVFtIY.ttf
 - Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
