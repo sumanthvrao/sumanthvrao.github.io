@@ -6,6 +6,7 @@
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-45GX6K04VS"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/grid-gallery.css"/>
+	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag() { dataLayer.push(arguments); }
@@ -94,6 +95,87 @@
 			height: 2rem;
 			color: rgb(0, 0, 5);
 		}
+
+		/* Custom styles for hover and overlay */
+
+
+    header, footer {
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Gallery Section */
+    .gallery-section {
+      background-color: white;
+      padding: 20px 0;
+    }
+
+    .gallery-title {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      border-radius: 5px;
+    }
+
+    .gallery-img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Overlay Styles */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .overlay .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2em;
+      color: white;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
 
 		/* unvisited link */
 	</style>
@@ -243,7 +325,7 @@
 			Jun 2022 - Sep 2022
 		</p>
 		<p>
-			<strong>Citrix, Bangalore</strong> <i>Software Engineer</i> in the Citrix Licensing team. Designed a Docker-based 
+			<strong>Citrix, Bangalore</strong> <i>Software Engineer</i> in the Citrix Licensing team. Designed a Docker-based
 			automation framework deployed via a hybrid cloud model (Azure Cloud and Citrix's Xen Hypervisors). Aug 2020 - Aug 2021
 		</p>
 		<hr />
@@ -313,7 +395,7 @@
 		project worked on during that period.
 		I later mentored for the 2020 [<a target="_blank" rel="noopener noreferrer"
 			href="https://summerofcode.withgoogle.com/archive/2020/projects/6307196188491776/">1</a>, <a target="_blank" rel="noopener noreferrer"
-			href="https://summerofcode.withgoogle.com/archive/2020/projects/4790628438769664/">2</a>], 
+			href="https://summerofcode.withgoogle.com/archive/2020/projects/4790628438769664/">2</a>],
 		<a target="_blank" rel="noopener noreferrer"
 			href="https://summerofcode.withgoogle.com/projects/#4667597951336448">2021 and 2024</a> summer programs.
 		<p>All my contributions are open sourced and most of them are available below.
@@ -346,35 +428,63 @@
 				href="/gallery">some of my clicks</a> or follow <a
 				href="https://www.instagram.com/say__cheeesee">@say__cheeesee</a> on instagram!
 		</p>
-		<br>
 
-		<h2 id='gallery'>Gallery</h2>
-		<div class="gg-container">
-			<div class="gg-box">
-			  <img src="photos/hospital_2024.jpeg">
-			  <img src="photos/eoy_2023.jpeg">
-			  <img src="photos/imc_2023.jpeg">
-			  <img src="photos/ragnar_2023.jpeg">
-			  <!-- <img src="photos/funny_2023.jpeg"> -->
-			  <img src="photos/grad_2023.jpeg">
-
-
+		<section class="gallery-section">
+			<h2 class="gallery-title">Gallery</h2>
+			<div class="gallery-grid">
+			  <!-- Add your images here -->
+			  <img src="photos/band_2024.JPG" alt="Photo 1" class="gallery-img" onclick="openOverlay(this)">
+			  <img src="photos/hospital_2024.jpeg" alt="Photo 2" class="gallery-img" onclick="openOverlay(this)">
+			  <img src="photos/imc_2023.jpeg" alt="Photo 3" class="gallery-img" onclick="openOverlay(this)">
+			  <img src="photos/ragnar_2023.jpeg" alt="Photo 4" class="gallery-img" onclick="openOverlay(this)">
+			  <img src="photos/grad_2023.jpeg" alt="Photo 5" class="gallery-img"
+			  onclick="openOverlay(this)">
+			  <!-- <img src="photos/funny_2023.jpeg" alt="Photo 6" class="gallery-img" onclick="openOverlay(this)"> -->
 			</div>
-		  </div>
+		</section>
+	
+		<!-- Overlay -->
+		<div id="overlay" class="overlay">
+		<button class="close-btn" onclick="closeOverlay()">×</button>
+		<img id="overlay-img" src="" alt="Expanded Image">
+		</div>
 
-		<!-- <h2>Blog</h2> -->
-		<!-- Insert scrollable up button here for top of the page; and move it to the right -->
-		<!-- <a href="#" class="back-to-top scrollToTop">Scroll To Top</a> -->
+	<!-- <h2>Blog</h2> -->
+	<!-- Insert scrollable up button here for top of the page; and move it to the right -->
+	<!-- <a href="#" class="back-to-top scrollToTop">Scroll To Top</a> -->
 
-		<button class="back-to-top scrollToTop">
-			<svg xmlns="http://www.w3.org/2000/svg" class="back-to-top-icon" fill="none" viewBox="0 0 24 24"
-				stroke="currentColor">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 11l5-6m0 0l5 6m-5-5v15" />
-			</svg>
-		</button>
+	<button class="back-to-top scrollToTop">
+		<svg xmlns="http://www.w3.org/2000/svg" class="back-to-top-icon" fill="none" viewBox="0 0 24 24"
+			stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 11l5-6m0 0l5 6m-5-5v15" />
+		</svg>
+	</button>
 
-	</div>
 	<script type="text/javascript" src="js/grid-gallery.js"></script>
+	<script>
+		// Open overlay
+		function openOverlay(img) {
+			const overlay = document.getElementById('overlay');
+			const overlayImg = document.getElementById('overlay-img');
+			overlayImg.src = img.src;
+			overlay.style.display = 'flex';
+			document.addEventListener('keydown', handleKeydown); // Listen for escape key
+		}
+
+		// Close overlay
+		function closeOverlay() {
+			const overlay = document.getElementById('overlay');
+			overlay.style.display = 'none';
+			document.removeEventListener('keydown', handleKeydown); // Remove event listener
+		}
+
+		// Handle keydown events
+		function handleKeydown(event) {
+			if (event.key === 'Escape') {
+				closeOverlay();
+			}
+		}
+		</script>
 </body>
 
 </html>
