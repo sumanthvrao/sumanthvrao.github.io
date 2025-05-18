@@ -30,12 +30,12 @@
       font-family: "Avenir LT Pro 35 Light", sans-serif;
       line-height: 1.6; /* Slightly more than original 1.5 for readability */
     }
-    a {
-      color: #1D4ED8; /* Tailwind's blue-600, a common web blue */
+    .link-style {
+      color: #3B82F6; /* Tailwind's blue-500 */
     }
-    a:hover {
+    .link-style:hover {
       text-decoration: underline;
-      color: #1D4ED8; /* Tailwind's blue-700, a darker blue for hover */
+      color: #1D4ED8;
     }
     /* For consistent bolding if Avenir Light doesn't have many weights */
     strong, .font-semibold {
@@ -60,10 +60,8 @@
         <h1 class="text-4xl font-light">Sumanth Rao</h1>
         <p class="text-gray-700 mt-2">
           PhD student @<br>
-          <a href="https://cse.ucsd.edu/">Computer Science and
-          Engineering</a><br>
-          <a href="https://www.ucsd.edu/">University of California, San
-          Diego</a>
+          Computer Science and Engineering<br>
+          University of California, San Diego
         </p>
         <p class="text-sm text-gray-600 mt-3">
           <span class="font-semibold">Email</span>: svrao AT ucsd DOT edu<br>
@@ -71,31 +69,27 @@
           Dr. #0404, La Jolla, CA 92093-0404
         </p>
         <div class="mt-4 space-x-4 text-3xl">
-          <a href="mailto:svrao@ucsd.edu" title="Email"><i class="fa
-          fa-envelope"></i></a>
-          <a href="https://twitter.com/sumanthvrao" target="_blank"
-          rel="noopener noreferrer" title="Twitter"><i class="fa
-          fa-twitter"></i></a>
+          <!-- <a href="mailto:svrao@ucsd.edu" title="Email"><i class="fa
+          fa-envelope"></i></a> -->
+          <a href="https://twitter.com/sumanthvrao" target="_blank" mb-6
+          title="Twitter"><i class="fa fa-twitter"></i></a>
           <a href="https://scholar.google.com/citations?user=BuM8tBgAAAAJ&hl=en"
-          target="_blank" rel="noopener noreferrer" title="Google Scholar"><i
-          class="fa fa-graduation-cap"></i></a>
-          <a href="https://www.linkedin.com/in/sumanthvrao" target="_blank"
-          rel="noopener noreferrer" title="LinkedIn"><i class="fa
-          fa-linkedin"></i></a>
+          target="_blank" mb-6 title="Google Scholar"><i class="fa
+          fa-graduation-cap"></i></a>
+          <a href="https://www.linkedin.com/in/sumanthvrao" target="_blank" mb-6
+          title="LinkedIn"><i class="fa fa-linkedin"></i></a>
           <a href="https://github.com/sumanthvrao" target="_blank" rel="noopener
           noreferrer" title="GitHub"><i class="fa fa-github"></i></a>
-          <a href="keys/pubpgp.txt" target="_blank" class="text-sm align-super
-          font-semibold">PGP</a>
+          <!-- <a href="keys/pubpgp.txt" target="_blank" class="text-sm
+          align-super font-semibold text-center">PGP</a> -->
         </div>
       </div>
     </header>
 
     <!-- Nav -->
-    <nav class="my-6 py-3 bg-gray-50 rounded-md shadow-sm text-center text-sm
-    sm:text-base">
+    <nav class="my-6 py-3 rounded-md sm text-center text-sm sm:text-base">
       <a class="px-2 sm:px-3 py-1 hover:bg-gray-200 rounded" href="pdf/cv.pdf"
-      target="_blank" rel="noopener noreferrer">CV</a> <span
-      class="text-gray-300">|</span>
+      target="_blank" mb-6>CV</a> <span class="text-gray-300">|</span>
       <a class="px-2 sm:px-3 py-1 hover:bg-gray-200 rounded"
       href="#research">Research</a> <span class="text-gray-300">|</span>
       <a class="px-2 sm:px-3 py-1 hover:bg-gray-200 rounded"
@@ -117,20 +111,20 @@
       <h2 class="text-2xl font-semibold mb-3 border-b pb-2">About Me</h2>
       <p class="text-gray-700 space-y-3">
             I am a CS PhD student at UC San Diego advised by <a
-            href="https://cseweb.ucsd.edu/~savage/">Stefan Savage</a> and <a
-            href="https://cseweb.ucsd.edu/~voelker/">Geoff Voelker</a>. My
-            research focuses on improving security and privacy through empirical
-            means, encompassing areas like healthcare security, email security,
-            and more broadly internet measurement. I am a part of the <a
-            href="https://sysnet.ucsd.edu/">Sysnet</a> and <a
-            href="https://www.sysnet.ucsd.edu/cryptosec/">CryptoSec</a> research
-            groups, and a member of the <a
+            href="https://cseweb.ucsd.edu/~savage/" class="link-style">Stefan
+            Savage</a> and <a href="https://cseweb.ucsd.edu/~voelker/"
+            class="link-style">Geoff Voelker</a>. My research focuses on
+            improving security and privacy through empirical means. I am a part
+            of the <a href="https://sysnet.ucsd.edu/"
+            class="link-style">Sysnet</a> and <a
+            href="https://www.sysnet.ucsd.edu/cryptosec/"
+            class="link-style">CryptoSec</a> research groups here.
+            <!-- , and a member of the <a
             href="https://cyberhealth.ucsd.edu/">Center for Healthcare
             Cybersecurity</a>, and the <a href="https://cns.ucsd.edu/">Center
-            for Networked Systems</a>. In my spare time, I keep busy with <a
-            href='#hobbies'>several hobbies</a>. My hometown is Bengaluru,
-            India. If you're looking for my photography page, go <a
-            href="/gallery">here</a>.
+            for Networked Systems</a> -->
+            My hometown is Bengaluru, India. If you're looking for my
+            photography page, go <a href="/gallery">here</a>.
       </p>
     </section>
 
@@ -140,37 +134,39 @@
       <ul class="list-none space-y-5">
         <li class="mb-3">
           <strong class="text-lg font-semibold">"<a
-          href="https://dl.acm.org/doi/10.1145/3589334.3645499">Unfiltered:
-          Measuring Cloud-based Email Filtering Bypasses</a>"</strong>
+          href="https://dl.acm.org/doi/10.1145/3589334.3645499"
+          class="link-style">Unfiltered: Measuring Cloud-based Email Filtering
+          Bypasses</a>"</strong>
           <a href="https://youtu.be/irhftyMU9As?si=0KwXdsGxefo_r5T6"
-          class="text-sm">[talk]</a>
-          <a href="pdf/www-2024-poster.pdf" class="text-sm">[poster]</a> <br />
+          class="text-sm link-style">[talk]</a>
+          <a href="pdf/www-2024-poster.pdf" class="text-sm
+          link-style">[poster]</a> <br />
           <strong class="text-gray-900">Sumanth Rao</strong>, Enze Liu, Grant
           Ho, Geoffrey M. Voelker, Stefan Savage. <br />
-          <em><a href="https://www2024.thewebconf.org/">ACM Web Conference
-          (WWW)</a>, Singapore, May 2024.</em>
+          <em>ACM Web Conference (WWW), Singapore, May 2024.</em>
         </li>
         <li class="mb-3">
           <strong class="text-lg font-semibold">"<a
-          href="https://dl.acm.org/doi/10.1145/3618257.3624843">IRRegularities
-          in the Internet Routing Registry</a>"</strong><br /> Ben Du, Katherine
-          Izhikevich, <strong class="text-gray-900">Sumanth Rao</strong>, Gautam
-          Akiwate, Cecilia Testart, Alex C. Snoeren, and kc claffy. <br />
-          <em><a href="https://conferences.sigcomm.org/imc/2023/">ACM Internet
-          Measurement Conference (IMC)</a>, Montréal, Canada, October 2023.</em>
+          href="https://dl.acm.org/doi/10.1145/3618257.3624843"
+          class="link-style">IRRegularities in the Internet Routing
+          Registry</a>"</strong><br /> Ben Du, Katherine Izhikevich, <strong
+          class="text-gray-900">Sumanth Rao</strong>, Gautam Akiwate, Cecilia
+          Testart, Alex C. Snoeren, and kc claffy. <br />
+          <em>ACM Internet Measurement Conference (IMC), Montréal, Canada,
+          October 2023.</em>
         </li>
         <li class="mb-3">
           <strong class="text-lg font-semibold">"<a
-          href="https://petsymposium.org/popets/2023/popets-2023-0013.pdf">No
-          Privacy Among Spies: Assessing the Functionality and Insecurity of
-          Consumer Android Spyware Apps</a>"</strong>
-          <a href="assets/spyware-poster.pdf" class="text-sm">[poster]</a><br />
-          Enze Liu, <strong class="text-gray-900">Sumanth Rao</strong>, Sam
-          Havron, Grant Ho, Stefan Savage, Geoffrey M. Voelker, and Damon McCoy.
+          href="https://petsymposium.org/popets/2023/popets-2023-0013.pdf"
+          class="link-style">No Privacy Among Spies: Assessing the Functionality
+          and Insecurity of Consumer Android Spyware Apps</a>"</strong>
+          <a href="assets/spyware-poster.pdf" class="text-sm
+          link-style">[poster]</a><br /> Enze Liu, <strong
+          class="text-gray-900">Sumanth Rao</strong>, Sam Havron, Grant Ho,
+          Stefan Savage, Geoffrey M. Voelker, and Damon McCoy.
           <br />
-          <em><a href="https://petsymposium.org/2023/">Privacy Enhancing
-          Technologies Symposium (PETS)</a>, Lausanne, Switzerland, July
-          2023.</em>
+          <em>Privacy Enhancing Technologies Symposium (PETS), Lausanne,
+          Switzerland, July 2023.</em>
         </li>
       </ul>
     </section>
@@ -211,26 +207,28 @@
             <li>
                 "Cloud Email Filtering Bypass Attack Works 80% of the Time" -
                 <a
-                href="https://www.darkreading.com/cloud-security/cloud-email-filtering-bypass-attack">DarkReading</a>,
+                href="https://www.darkreading.com/cloud-security/cloud-email-filtering-bypass-attack"
+                class="link-style">DarkReading</a>,
                 <a
-                href="https://technews.acm.org/archives.cfm?fo=2024-04-apr/apr-01-2024.html">ACM
-                TechNews</a>,
-                <a href="https://tldrsec.com/p/tldr-sec-224">TL;DR Sec</a>.
+                href="https://technews.acm.org/archives.cfm?fo=2024-04-apr/apr-01-2024.html"
+                class="link-style">ACM TechNews</a>,
+                <a href="https://tldrsec.com/p/tldr-sec-224"
+                class="link-style">TL;DR Sec</a>.
             </li>
             <li>
                 "This is What Happens When Your Phone is Spying on You" -
-                <a href="https://today.ucsd.edu/story/spywarestudy2023">UC San
-                Diego News</a>,
+                <a href="https://today.ucsd.edu/story/spywarestudy2023"
+                class="link-style">UC San Diego News</a>,
                 <a
-                href="https://www.universityofcalifornia.edu/news/what-happens-when-your-phone-spying-you">UC
-                News</a>,
+                href="https://www.universityofcalifornia.edu/news/what-happens-when-your-phone-spying-you"
+                class="link-style">UC News</a>,
                 <a
-                href="https://cacm.acm.org/news/272766-spyware-lurks-in-android-smartphones/fulltext">CACM
-                News</a>,
-                <a href="https://news.ycombinator.com/item?id=35169914">Hacker
-                News</a>,
-                <a href="https://techxplore.com/news/2023-03-spying.html">Tech
-                Xplore</a>.
+                href="https://cacm.acm.org/news/272766-spyware-lurks-in-android-smartphones/fulltext"
+                class="link-style">CACM News</a>,
+                <a href="https://news.ycombinator.com/item?id=35169914"
+                class="link-style">Hacker News</a>,
+                <a href="https://techxplore.com/news/2023-03-spying.html"
+                class="link-style">Tech Xplore</a>.
             </li>
         </ul>
     </section>
@@ -260,15 +258,15 @@
       <h2 class="text-2xl font-semibold mb-4 border-b pb-2">Talks</h2>
       <ul class="list-disc list-inside space-y-2 text-gray-700 pl-2">
         <li>[May 2024] <a
-        href="https://youtu.be/irhftyMU9As?si=0KwXdsGxefo_r5T6">Web Conference
-        2024: Unfiltered: Measuring Cloud-based Email Filtering
-        Bypasses</a></li>
-        <li>[March 2024] <a
-        href="https://kvgo.com/ftc/PrivacyCon-March-6-2024">FTC's PrivacyCon
-        2024, Panel 6: Mobile Device Security</a></li>
-        <li>[Nov 2022] <a
-        href="https://www.youtube.com/watch?v=dPUAEZVBrJg">Having a great GSoC
-        as an Open Source Newbie!</a> (Google Open Source YouTube)</li>
+        href="https://youtu.be/irhftyMU9As?si=0KwXdsGxefo_r5T6"
+        class="link-style">Web Conference 2024: Unfiltered: Measuring
+        Cloud-based Email Filtering Bypasses</a></li>
+        <li>[March 2024] <a href="https://kvgo.com/ftc/PrivacyCon-March-6-2024"
+        class="link-style">FTC's PrivacyCon 2024, Panel 6: Mobile Device
+        Security</a></li>
+        <li>[Nov 2022] <a href="https://www.youtube.com/watch?v=dPUAEZVBrJg"
+        class="link-style">Having a great GSoC as an Open Source Newbie!</a>
+        (Google Open Source YouTube)</li>
       </ul>
     </section>
 
@@ -280,7 +278,8 @@
             <li>GPSA fall travel grant award for WWW 2024</li>
             <li>Conference travel grant recipient for PETS'23 and IMC'23</li>
             <li>Recipient of the <em>JN Tata Scholarship</em> from <a
-            href="https://www.jntataendowment.org/">The JN Tata Endowment</a>
+            href="https://www.jntataendowment.org/" class="link-style">The JN
+            Tata Endowment</a>
             (2021 - 2022)</li>
             <li>Recipient of <em>Prof. C N R Rao Merit Scholarship</em> at PES
             University (2016 - 2020)</li>
@@ -351,16 +350,21 @@
         <h2 class="text-2xl font-semibold mb-4 border-b pb-2">Open Source</h2>
         <p class="text-gray-700">
             I'm a big advocate for Open Source and have been involved in Google
-            Summer of Code (GSoC). I've mentored for GSoC ([<a
-            href="https://summerofcode.withgoogle.com/archive/2020/projects/6307196188491776/">2020a</a>,
+            Summer of Code (GSoC). I've mentored for GSoC (<a
+            href="https://summerofcode.withgoogle.com/archive/2020/projects/6307196188491776/"
+            class="link-style">2020 (1)</a>,
             <a
-            href="https://summerofcode.withgoogle.com/archive/2020/projects/4790628438769664/">2020b</a>],
+            href="https://summerofcode.withgoogle.com/archive/2020/projects/4790628438769664/"
+            class="link-style">2020 (2)</a>,
             <a
-            href="https://summerofcode.withgoogle.com/projects/#4667597951336448">2021</a>,
+            href="https://summerofcode.withgoogle.com/projects/#4667597951336448"
+            class="link-style">2021</a>,
             <a
-            href="https://summerofcode.withgoogle.com/archive/2024/projects/vzXauDJb">2024</a>).
-            I was a GSoC student in 2019 with <a href="https://zulip.com/">the
-            Zulip Open Source Project</a>.
+            href="https://summerofcode.withgoogle.com/archive/2024/projects/vzXauDJb"
+            class="link-style">2024</a>). I was a GSoC student in <a
+            href="https://summerofcode.withgoogle.com/archive/2019/projects/6423498090610688"
+            class="link-style">2019</a> with <a href="https://zulip.com/"
+            class="link-style">the Zulip Open Source Project</a>.
         </p>
     </section>
 
@@ -370,19 +374,22 @@
       <p class="text-gray-700">
         My two favorite hobbies are hiking and running! Some of my favourite
         Himalayan hikes/treks have been -
-        <a href="https://indiahikes.com/campsites-of-hampta-pass-trek/">Hampta
-        Pass</a>,
-        <a href="https://indiahikes.com/brahmatal-trek/">Brahmatal</a>, and
-        <a href="https://indiahikes.com/valley-of-flowers/">Valley Of
-        Flowers</a>. I've ventured on some beautiful hikes recently -
-        <a href="https://www.flickr.com/gp/94158332@N05/Tt36M7">Strawberry
-        Junction on Mt San Jacinto</a>,
-        <a href="https://www.flickr.com/gp/94158332@N05/10d494">Anza Borrego
-        Desert Hike</a>,
-        <a href="https://www.flickr.com/gp/94158332@N05/Nw8126w338">Fortuna Mtn
-        Trail</a>,
-        <a href="https://www.flickr.com/gp/94158332@N05/U5s8nPo25b">Black
-        Mountain Trail on Mt San Jacinto</a>, Cowles Mountain, Torrey Pines.
+        <a href="https://indiahikes.com/campsites-of-hampta-pass-trek/"
+        class="link-style">Hampta Pass</a>,
+        <a href="https://indiahikes.com/brahmatal-trek/"
+        class="link-style">Brahmatal</a>, and
+        <a href="https://indiahikes.com/valley-of-flowers/"
+        class="link-style">Valley Of Flowers</a>. I've ventured on some
+        beautiful hikes recently -
+        <a href="https://www.flickr.com/gp/94158332@N05/Tt36M7"
+        class="link-style">Strawberry Junction on Mt San Jacinto</a>,
+        <a href="https://www.flickr.com/gp/94158332@N05/10d494"
+        class="link-style">Anza Borrego Desert Hike</a>,
+        <a href="https://www.flickr.com/gp/94158332@N05/Nw8126w338"
+        class="link-style">Fortuna Mtn Trail</a>,
+        <a href="https://www.flickr.com/gp/94158332@N05/U5s8nPo25b"
+        class="link-style">Black Mountain Trail on Mt San Jacinto</a>, Cowles
+        Mountain, Torrey Pines.
       </p>
     </section>
 
