@@ -96,7 +96,7 @@
     </nav>
 
     <article class="prose-sm max-w-none"> <!-- Switched to prose-sm -->
-      <h1>(WIP) ZMap Scanning the Internet in Under 45 Minutes, but...</h1>
+      <h1>(WIP) Launching ZMap Scans in parallel</h1>
 
       <p class="text-xs text-gray-500 !mt-0 mb-4"> <!-- text-xs for metadata,
       reduced mb -->
@@ -119,14 +119,45 @@
         .
       </p>
 
-      * using 2 blacklists 
-      * using 2 Nics with Zmap 
-      * Rate, line rate, max, min, overloading 
+      <h2>Scanning Server Configuration</h2>
+
+      The scanning server is a XXXX, with YY RAM, and XX cores. Bandwidth?? It is particular
+      meant to be powerful to launch multiple types of scans, however to do
+      this, we have a problem. -- We wanted to overload 
+
+      Gateway?? - 
+
+      Using zmap's multiple blacklist option. 
+
+      * using 2 blacklists (-b)
+      * using 2 NICS with Zmap (2 IPs)
+      * Gateway to specify 
+
+      * Since zmap XXX port option. 
+
+      * rate, vs bandwidth. 
+
+      * Rate, line rate, max, min, overloading. 
       * EDR, outside
+
+      <h2>Server Location</h2>>
+      * UCSD campus, on its own vlan, ....
+
+      <
+      
       * Keep scanning outside
       * Data backup architecture.?
       * Highly visible. Don't store keys. 
       * Ethics --> Reverse DNS, IP with project, etc, etc??
+
+
+      <h2> Monitoring </h2>
+      * How did we handle monitoring size going to zero?
+      * Present scan size to go to zero???
+
+      <h2>Backups</h2>>
+
+      <h2>Caution</h2>
 
       <!-- <img src="../images/placeholder-zmap.png" alt="ZMap Architecture Diagram
       (Conceptual)" class="mx-auto">
