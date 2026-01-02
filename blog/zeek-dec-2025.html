@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
   <title>Deep Dive into ZMap: Internet-Wide Network Scanning - Sumanth
@@ -25,62 +26,95 @@
     @font-face {
       font-family: "Avenir LT Pro 35 Light";
       src: url("../fonts/e5f78b4fb90a80a32be156470cbfead1.woff2") format("woff2"),
-           url("../fonts/e5f78b4fb90a80a32be156470cbfead1.woff") format("woff"),
-           url("../fonts/e5f78b4fb90a80a32be156470cbfead1.ttf") format("truetype");
+        url("../fonts/e5f78b4fb90a80a32be156470cbfead1.woff") format("woff"),
+        url("../fonts/e5f78b4fb90a80a32be156470cbfead1.ttf") format("truetype");
     }
+
     body {
       font-family: "Avenir LT Pro 35 Light", sans-serif;
-      line-height: 1.5; /* Slightly tightened line height */
-      font-size: 0.875rem; /* Equivalent to Tailwind's text-sm */
+      line-height: 1.5;
+      /* Slightly tightened line height */
+      font-size: 0.875rem;
+      /* Equivalent to Tailwind's text-sm */
     }
+
     a {
       color: #2563EB;
     }
+
     a:hover {
       text-decoration: underline;
       color: #1D4ED8;
     }
-    strong, .font-semibold {
-        font-weight: 600;
+
+    strong,
+    .font-semibold {
+      font-weight: 600;
     }
+
     /* Headings outside prose will inherit body font size unless specified */
-    h1, h2, h3, h4, h5, h6 {
-        font-weight: 600;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 600;
     }
 
     /* Customizations for prose-sm */
-    .prose-sm h1 { /* Title of the blog post */
-        @apply mb-3 text-2xl sm:text-3xl font-bold text-gray-900;
+    .prose-sm h1 {
+      /* Title of the blog post */
+      @apply mb-3 text-2xl sm:text-3xl font-bold text-gray-900;
     }
-    .prose-sm h2 { /* Main section headings in the post */
-        @apply mt-6 mb-2 text-xl sm:text-2xl font-semibold text-gray-800 border-b border-gray-200 pb-1;
+
+    .prose-sm h2 {
+      /* Main section headings in the post */
+      @apply mt-6 mb-2 text-xl sm:text-2xl font-semibold text-gray-800 border-b border-gray-200 pb-1;
     }
-    .prose-sm h3 { /* Sub-section headings */
-        @apply mt-5 mb-1 text-lg sm:text-xl font-semibold text-gray-800;
+
+    .prose-sm h3 {
+      /* Sub-section headings */
+      @apply mt-5 mb-1 text-lg sm:text-xl font-semibold text-gray-800;
     }
+
     /* prose-sm already makes p, ul, ol, blockquote smaller. This ensures color
     consistency. */
-    .prose-sm p, .prose-sm ul, .prose-sm ol, .prose-sm blockquote {
-        @apply text-gray-700;
-    }
-    .prose-sm a {
-        @apply text-blue-600 hover:text-blue-700 font-medium;
-        text-decoration: none;
-    }
-    .prose-sm a:hover {
-        @apply underline;
-    }
-    .prose-sm pre { /* Code blocks */
-        @apply bg-gray-800 text-gray-100 rounded-md p-3 text-xs overflow-x-auto my-4; /* Reduced padding and margin */
-    }
-    .prose-sm code:not(pre code) { /* Inline code. :not(pre code) to avoid double styling */
-        @apply bg-gray-200 text-red-600 px-1 py-0.5 rounded text-xs;
-    }
+    .prose-sm p,
+    .prose-sm ul,
+    .prose-sm ol,
     .prose-sm blockquote {
-        @apply border-l-4 border-blue-500 pl-3 italic text-gray-600 my-4; /* Reduced padding and margin */
+      @apply text-gray-700;
     }
+
+    .prose-sm a {
+      @apply text-blue-600 hover:text-blue-700 font-medium;
+      text-decoration: none;
+    }
+
+    .prose-sm a:hover {
+      @apply underline;
+    }
+
+    .prose-sm pre {
+      /* Code blocks */
+      @apply bg-gray-800 text-gray-100 rounded-md p-3 text-xs overflow-x-auto my-4;
+      /* Reduced padding and margin */
+    }
+
+    .prose-sm code:not(pre code) {
+      /* Inline code. :not(pre code) to avoid double styling */
+      @apply bg-gray-200 text-red-600 px-1 py-0.5 rounded text-xs;
+    }
+
+    .prose-sm blockquote {
+      @apply border-l-4 border-blue-500 pl-3 italic text-gray-600 my-4;
+      /* Reduced padding and margin */
+    }
+
     .prose-sm img {
-        @apply rounded-lg shadow-md my-4; /* Reduced margin */
+      @apply rounded-lg shadow-md my-4;
+      /* Reduced margin */
     }
   </style>
 </head>
@@ -104,56 +138,99 @@
       </p>
 
       <p>
-        Zeek (formerly Bro) is a powerful passive network monitoring tool, that provides a lot of tools out of the box for network security monitoring. If you are a network tinkerer like me, and you want to monitor your own home network traffic, Zeek is a great tool to get started with. In this blog, I'll mention how I got this done with fairly cheap hardware and without the need for a managed switch.
+        Zeek (formerly Bro) is a powerful passive network monitoring tool, that
+        provides a lot of tools out of the box for network security monitoring.
+        If you are a network tinkerer like me, and you want to monitor your own
+        home network traffic, Zeek is a great tool to get start with. In this
+        blog, I'll show you how I set up Zeek to monitor my home network traffic.
       </p>
 
       <h2>Hardware Configuration</h2>
-      <ul>
-        <li> - 1x Raspberry Pi 5 Model B (~$100)</li>
-        <li> - 1x ASUS RT-AC66U router (~$70)</li>
-        <li> - 2x ethernet cables (~$10)</li>
-      </ul>
 
       <p>
-       I use a Raspberry Pi 5 (8GB RAM) to run the Zeek server and any other tool to monitor my network traffic (e.g., pi-hole). In lieu of a managed switch, I use a custom firmware (ASUS Merlin) on the ASUS router to forward traffic to the Raspberry Pi. Understandably, this only works if the volume of traffic is not too high -- ideal for a small home network.
+        I use a Raspberry Pi 5 (8GB RAM) to run the Zeek server and any other
+        tool to monitor my network traffic (e.g., pi-hole). 
+        A cheap managed switch that can do port mirroring (e.g., TP-link TL-SG108E
+        <a href="https://www.amazon.com/dp/B00K4DS5KU">https://www.amazon.com/dp/B00K4DS5KU</a>
+        is a great option to consider. However, in lieu of a managed
+        switch, I use the Asuswrt-Merlin firmware on the ASUS router to forward
+        traffic to the Raspberry Pi. Unlike raw ethernet frame
+        mirroring managed switches may offer, this is Layer 3 mirroring, and as such, this <i>software only</i>
+        approach works if the volume of traffic is not too high (ideal for a
+        small home network).
       </p>
 
-      <h3> Connections</h3>
-      <ol>
-        <li> Put your original router in bridge mode (this prevents a double NAT situation and allows the ASUS router to control NAT).</li>
-        <li> Follow a simple connection diagram as follows:</li>
-        <img src="../images/zeek-dec-2025-connections.png" alt="Connections" class="w-full">
-      </ol>
+      <ul>
+        <li> - 1x Raspberry Pi 5 Model B</li>
+        <li> - 1x ASUS RT-AC66U router</li>
+        <li> - 2x ethernet cables</li>
+      </ul>
 
-      <h2>Software Configuration</h2>
+      <h3> Connections</h3>
+      <ul>
+        <li> - Place your original router in bridge mode (this prevents a double NAT
+        situation and allows the ASUS router to control NAT).</li>
+        <li> - Follow a simple connection diagram as follows:
+        </li>
+      </ul>
+
+      <h2>ASUS Router Configuration</h2>
+      <ul>
+<li> - Install the Asuswrt-Merlin firmware on the ASUS router. I used
+https://www.asuswrt-merlin.net/download to find the correct firmware
+(RT-AC68U for my router). Alternatively, I believe you can also use
+OpenWrt or DD-WRT if you prefer.
+</li>
+<li> - Enable SSH connections to the ASUS router (screenshot below).
+<li> - Setup ip table rules to forward traffic to the Raspberry Pi.</li>
+<pre><code>
+  >> vi /jffs/scripts/firewall-start # edit the file
+  # /jffs/scripts/firewall-start
+  #!/bin/sh
+  iptables -t mangle -A PREROUTING  -i br0 -j TEE --gateway 192.168.50.131
+  iptables -t mangle -A POSTROUTING -o br0 -j TEE --gateway
+  192.168.50.131
+  >> chmod +x /jffs/scripts/firewall-start # make the file executable
+</code></pre>. Reboot the router to apply the changes.
+</li>
+<li> - Log into the raspberry pi and run the following command to start Zeek:
+<pre><code>
+sudo ip link set eth0 promisc on
+sudo tcpdump -i eth0 -n
+</code></pre>.
+You should immediately see the traffic that isn't addressed to the raspberry pi
+being forwarded to it.
+</li>
+      </ul>
 
       <h3> Zeek Configuration</h3>
-      Follow the <a href="https://docs.zeek.org/en/current/install.html">instructions</a> to install Zeek for your OS (I used the Debian version for arm64).
-      I edit the following files to configure Zeek:
+      Follow the <a
+      href="https://docs.zeek.org/en/current/install.html">instructions</a> to
+      install Zeek for your OS (I used the Debian version for arm64). I edit the
+      following files to configure Zeek:
       <pre><code>
-        # /opt/zeek/etc/networks.cfg
-        # Address ~ Label for the network
+        # /opt/zeek/etc/networks.cfg # Address ~ Label for the network
         192.168.0.0/16  Home network
 
-        # /opt/zeek/etc/node.cfg
-        [zeek]
-        type=standalone
-        host=localhost
+        # /opt/zeek/etc/node.cfg [zeek] type=standalone host=localhost
         interface=eth0
 
-        # /opt/zeek/etc/zeekctl.cfg
-        # Optional: Configure email notifications for alerts
-        # and I adjust the log rotation interval to 2 hours (default is 3600 seconds)
-        MailTo="email@domain.com"
-        LogRotationInterval = 7200 
+        # /opt/zeek/etc/zeekctl.cfg # Optional: Configure email notifications
+        for alerts # and I adjust the log rotation interval to 2 hours (default
+        is 3600 seconds) MailTo="email@domain.com" LogRotationInterval = 7200 
       </code></pre>
 
-    
+  <h3> Grafana Dashboard</h3>
+  <p>
+    I use Grafana to visualize the network traffic. I use the following
+    dashboard to visualize the network traffic: I use this script
+    (https://github.com/sumanthvrao/zeek-home-network/blob/main/zeek-to-sqlite.py)
+    to convert the Zeek logs to a SQLite database. Grafana offers some
+    out-of-the-box dashboards for Zeek. I added some queries to it, here's 
+    https://github.com/sumanthvrao/zeek-home-network/blob/main/graphana-queries.sql
+  </p>
+
     </article>
-
-    <hr class="my-4 border-gray-200" /> <!-- Reduced my -->
-
-  </div>
 
   <button id="scrollToTopBtn" class="scrollToTop fixed bottom-6 right-6
   bg-indigo-600 text-white p-2.5 rounded-full shadow-lg hover:bg-indigo-700
@@ -161,7 +238,8 @@
   transition-opacity duration-300" style="display: none;"> <!-- Slightly smaller
   scroll top button -->
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-    viewBox="0 0 24 24" stroke="currentColor"> <!-- Smaller icon -->
+    viewBox="0 0 24 24" stroke="currentColor">
+      <!-- Smaller icon -->
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
       d="M5 15l7-7 7 7" />
     </svg>
@@ -184,4 +262,5 @@
   </script>
 
 </body>
+
 </html>
