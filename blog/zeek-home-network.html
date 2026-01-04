@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -15,320 +15,90 @@
     gtag('config', 'G-45GX6K04VS');
   </script>
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@3.0.1/modern-normalize.min.css">
+  <link rel="stylesheet" href="zeek-home-network.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-  <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <style>
-    @font-face {
-      font-family: "Avenir LT Pro 35 Light";
-      src: url("../fonts/e5f78b4fb90a80a32be156470cbfead1.woff2") format("woff2"),
-        url("../fonts/e5f78b4fb90a80a32be156470cbfead1.woff") format("woff"),
-        url("../fonts/e5f78b4fb90a80a32be156470cbfead1.ttf") format("truetype");
-    }
-
-    body {
-      font-family: "Avenir LT Pro 35 Light", sans-serif;
-      line-height: 1.5;
-      /* Slightly tightened line height */
-      font-size: 0.875rem;
-      /* Equivalent to Tailwind's text-sm */
-    }
-
-    a {
-      color: #2563EB;
-    }
-
-    a:hover {
-      text-decoration: underline;
-      color: #1D4ED8;
-    }
-
-    strong,
-    .font-semibold {
-      font-weight: 600;
-    }
-
-    /* Headings outside prose will inherit body font size unless specified */
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-weight: 600;
-    }
-
-    /* Customizations for prose-sm */
-    .prose-sm h1 {
-      /* Title of the blog post */
-      @apply mb-3 text-2xl sm:text-3xl font-bold text-gray-900;
-    }
-
-    .prose-sm h2 {
-      /* Main section headings in the post */
-      @apply mt-6 mb-2 text-xl sm:text-2xl font-semibold text-gray-800 border-b border-gray-200 pb-1;
-    }
-
-    .prose-sm h3 {
-      /* Sub-section headings */
-      @apply mt-5 mb-1 text-lg sm:text-xl font-semibold text-gray-800;
-    }
-
-    /* prose-sm already makes p, ul, ol, blockquote smaller. This ensures color
-    consistency. */
-    .prose-sm p,
-    .prose-sm ul,
-    .prose-sm ol,
-    .prose-sm blockquote {
-      @apply text-gray-700;
-    }
-
-    .prose-sm a {
-      color: #2563EB;
-      font-weight: 500;
-      text-decoration: none;
-    }
-
-    .prose-sm a:hover {
-      color: #1D4ED8;
-      text-decoration: underline;
-    }
-
-    .prose-sm pre {
-      /* Code blocks */
-      background-color: #1f2937;
-      color: #f3f4f6;
-      border-radius: 0.375rem;
-      padding: 0.5rem;
-      font-size: 0.75rem;
-      overflow-x: auto;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .prose-sm code:not(pre code) {
-      /* Inline code. :not(pre code) to avoid double styling */
-      background-color: #e5e7eb;
-      color: #dc2626;
-      padding-left: 0.125rem;
-      padding-right: 0.125rem;
-      padding-top: 0.0625rem;
-      padding-bottom: 0.0625rem;
-      border-radius: 0.25rem;
-      font-size: 0.75rem;
-    }
-
-    .prose-sm blockquote {
-      @apply border-l-4 border-blue-500 pl-3 italic text-gray-600 my-4;
-      /* Reduced padding and margin */
-    }
-
-    .prose-sm img {
-      @apply rounded-lg shadow-md my-4;
-      /* Reduced margin */
-    }
-
-    .prose-sm img.diagram-float {
-      float: left;
-      width: 45%;
-      max-width: 400px;
-      height: auto;
-      margin-right: 1.5rem;
-      margin-bottom: 1rem;
-      margin-top: 0;
-      shape-outside: margin-box;
-    }
-
-    .prose-sm .clear-float {
-      clear: both;
-    }
-
-    @media (max-width: 640px) {
-      .prose-sm img.diagram-float {
-        float: none;
-        width: 100%;
-        max-width: 100%;
-        margin-right: 0;
-        margin-bottom: 1.5rem;
-      }
-    }
-
-    /* References section styling */
-    .prose-sm h2:has(+ ul.list-none) {
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .prose-sm ul.list-none {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .prose-sm ul.list-none li {
-      padding-left: 1rem;
-      position: relative;
-      margin-bottom: 0.5rem;
-    }
-
-    .prose-sm ul.list-none li::before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      color: #2563EB;
-    }
-
-    /* Lightbox styles */
-    .lightbox-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      z-index: 9999;
-      cursor: pointer;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lightbox-overlay.active {
-      display: flex;
-    }
-
-    .lightbox-image {
-      max-width: 95%;
-      max-height: 95%;
-      object-fit: contain;
-      border-radius: 0.5rem;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      color: white;
-      font-size: 2rem;
-      font-weight: bold;
-      cursor: pointer;
-      z-index: 10000;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-    }
-
-    .lightbox-close:hover {
-      background: rgba(0, 0, 0, 0.8);
-    }
-
-    .clickable-image {
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .clickable-image:hover {
-      transform: scale(1.02);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-    }
-  </style>
 </head>
 
-<body class="bg-white text-gray-800 text-sm"> <!-- Base font size set to text-sm
--->
+<body>
+  <nav>
+    <a href="../index.html#blog">← Back to Blog</a>
+    <span>|</span>
+    <a href="../index.html">Home</a>
+  </nav>
 
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6"> <!-- Reduced py -->
-    <nav class="mb-6"> <!-- Reduced mb -->
-      <a href="../index.html#blog" class="hover:underline">← Back to Blog</a>
-      <span class="mx-2 text-gray-400">|</span>
-      <a href="../index.html" class="hover:underline">Home</a>
-    </nav>
+  <article>
+    <h1>Zeek Home Network Monitoring</h1>
+    <p><time datetime="2025-12-29">Dec 29, 2025</time></p>
 
-    <article class="prose-sm max-w-none"> <!-- Switched to prose-sm -->
-      <h1>Zeek Home Network Monitoring</h1>
+    <p>
+      <a href="https://github.com/zeek/zeek">Zeek</a> (formerly Bro) is a
+      powerful passive network monitoring tool that can be used to derive insights from network traffic. If you are a network tinkerer like me, and you want to monitor your own home network traffic, Zeek is a great tool to get started with. In this blog, I'll walk through how I set up
+      Zeek to monitor my home network using a Raspberry Pi and an ASUS router I had lying around.
+    </p>
 
-      <p class="text-xs text-gray-500 !mt-0 mb-4"> <!-- text-xs for metadata,
-      reduced mb -->
-        <time datetime="2025-12-29">Dec 29, 2025</time>
-      </p>
+    <h2>Hardware Configuration</h2>
 
-      <p>
-        <a href="https://github.com/zeek/zeek">Zeek</a> (formerly Bro) is a
-        powerful passive network monitoring tool that can be used to derive insights from network traffic. If you are a network tinkerer like me, and you want to monitor your own home network traffic, Zeek is a great tool to get started with. In this blog, I'll walk through how I set up
-        Zeek to monitor my home network using a Raspberry Pi and an ASUS router I had lying around.
-      </p>
+    <p>
+      I use a Raspberry Pi 5 (8GB RAM) to run the Zeek server and any other
+      tool to monitor my network traffic (e.g., <a href="https://pi-hole.net/">pi-hole</a> can be used as a DNS sinkhole). A cheap managed
+      switch certainly that can do port mirroring (e.g., <a
+      href="https://www.amazon.com/dp/B00K4DS5KU">TP-link TL-SG108E</a>) certainly helps, but in lieu of a managed switch, I use
+      the Asuswrt-Merlin firmware on the ASUS router to forward traffic to the
+      Raspberry Pi. Unlike raw ethernet frame mirroring managed switches may
+      offer, this is Layer 3 mirroring, and as such, this <i>software only</i> approach works if the volume of traffic is not too high (ideal for a small home network). In particular:
+    </p>
 
-      <h2>Hardware Configuration</h2>
+    <ul>
+      <li> 1x Raspberry Pi 5 (8GB RAM)</li>
+      <li> 1x ASUS RT-AC66U router</li>
+      <li> Some ethernet cables or extra switches/wireless APs if you cant to monitor the entire home network</li>
+    </ul>
 
-      <p>
-        I use a Raspberry Pi 5 (8GB RAM) to run the Zeek server and any other
-        tool to monitor my network traffic (e.g., <a href="https://pi-hole.net/">pi-hole</a> can be used as a DNS sinkhole). A cheap managed
-        switch certainly that can do port mirroring (e.g., <a
-        href="https://www.amazon.com/dp/B00K4DS5KU">TP-link TL-SG108E</a>) certainly helps, but in lieu of a managed switch, I use
-        the Asuswrt-Merlin firmware on the ASUS router to forward traffic to the
-        Raspberry Pi. Unlike raw ethernet frame mirroring managed switches may
-        offer, this is Layer 3 mirroring, and as such, this <i>software only</i> approach works if the volume of traffic is not too high (ideal for a small home network). In particular:
-      </p>
+    <h3>Network Connections</h3>
+    <img src="zeek-con-diagram.svg" alt="Network connection diagram showing the Zeek monitoring setup" class="diagram-float">
+    <ul>
+      <li> Place your original router in bridge mode (this prevents a double
+      NAT situation and allows the ASUS router to control NAT).</li>
+      <li> Connect the ASUS router to your modem (in bridge mode) and the
+      Raspberry Pi to the ASUS router via ethernet.</li>
+      <li> Connect any extra switches or Wireless APs to the ASUS
+      router.</li>  
+      <li> Debug your network connections using tools like nmap (e.g., <code>nmap -sP 192.168.50.0/24</code> to see if the Raspberry Pi is reachable).</li>
+    </ul>
+    <div class="clear-float"></div>
 
-      <ul>
-        <li> - 1x Raspberry Pi 5 (8GB RAM)</li>
-        <li> - 1x ASUS RT-AC66U router</li>
-        <li> - Some ethernet cables or extra switches/wireless APs if you cant to monitor the entire home network</li>
-      </ul>
-
-      <h3>Network Connections</h3>
-      <img src="zeek-con-diagram.svg" alt="Network connection diagram showing the Zeek monitoring setup" class="diagram-float">
-      <ul>
-        <li> - Place your original router in bridge mode (this prevents a double
-        NAT situation and allows the ASUS router to control NAT).</li>
-        <li> - Connect the ASUS router to your modem (in bridge mode) and the
-        Raspberry Pi to the ASUS router via ethernet.</li>
-        <li> - Connect any extra switches or Wireless APs to the ASUS
-        router.</li>  
-        <li> - Debug your network connections using tools like nmap (e.g., <code>nmap -sP 192.168.50.0/24</code> to see if the Raspberry Pi is reachable).</li>
-      </ul>
-      <div class="clear-float"></div>
-
-      <h2>ASUS Router Configuration</h2>
-      <ul>
-<li> - Install the Asuswrt-Merlin firmware on the ASUS router (Adminstration → Firmware Upgrade → Upload firmware file). I used
-<a href="https://www.asuswrt-merlin.net/download">Asuswrt-Merlin downloads</a>
-to find the correct firmware (RT-AC68U for my router). Alternatively, I believe
-you can also use OpenWrt or DD-WRT if you prefer.
-</li>
-<li> - Enable SSH connections to the ASUS router (found in Administration → System).</li>
-<li> - Setup iptables rules to forward traffic to the Raspberry Pi IP address (192.168.50.X). Reboot the router to apply the changes.
-<pre><code>>> vi /jffs/scripts/firewall-start
+    <h2>ASUS Router Configuration</h2>
+    <ul>
+      <li> - Install the Asuswrt-Merlin firmware on the ASUS router (Adminstration → Firmware Upgrade → Upload firmware file). I used
+      <a href="https://www.asuswrt-merlin.net/download">Asuswrt-Merlin downloads</a>
+      to find the correct firmware (RT-AC68U for my router). Alternatively, I believe
+      you can also use OpenWrt or DD-WRT if you prefer.
+      </li>
+      <li> Enable SSH connections to the ASUS router (found in Administration → System).</li>
+      <li> Setup iptables rules to forward traffic to the Raspberry Pi IP address (192.168.50.X). Reboot the router to apply the changes.
+      <pre><code>>> vi /jffs/scripts/firewall-start
 #!/bin/sh
 iptables -t mangle -A PREROUTING  -i br0 -j TEE --gateway 192.168.50.X
 iptables -t mangle -A POSTROUTING -o br0 -j TEE --gateway 192.168.50.X
->> chmod +x /jffs/scripts/firewall-start
-</code></pre>
-</li>
-<li> - Verify that the traffic is being forwarded to the Raspberry Pi by running
-the following command. You should immediately see the traffic that isn't addressed to the
-raspberry pi being forwarded to it.
+>> chmod +x /jffs/scripts/firewall-start</code></pre>
+      </li>
+      <li> Verify that the traffic is being forwarded to the Raspberry Pi by running
+      the following command. You should immediately see the traffic that isn't addressed to the
+      raspberry pi being forwarded to it.
 
-<pre><code>sudo ip link set eth0 promisc on
-sudo tcpdump -i eth0 -n
-</code></pre>
-</li>
-      </ul>
+      <pre><code>sudo ip link set eth0 promisc on
+sudo tcpdump -i eth0 -n</code></pre>
+      </li>
+    </ul>
 
-      <h3>Zeek Configuration</h3>
-      <p>
-        Follow the <a href="https://docs.zeek.org/en/current/install.html">Zeek
-        installation instructions</a> to install Zeek for your OS (I used the
-        Debian version for arm64). After installation, I edited the following configuration files:
-      </p>
-      <pre><code># /opt/zeek/etc/networks.cfg # Address ~ Label for the network
+    <h3>Zeek Configuration</h3>
+    <p>
+      Follow the <a href="https://docs.zeek.org/en/current/install.html">Zeek
+      installation instructions</a> to install Zeek for your OS (I used the
+      Debian version for arm64). After installation, I edited the following configuration files:
+    </p>
+    <pre><code># /opt/zeek/etc/networks.cfg # Address ~ Label for the network
 192.168.0.0/16  Home network
 
 # /opt/zeek/etc/node.cfg [zeek] type=standalone host=localhost
@@ -337,69 +107,60 @@ interface=eth0
 # /opt/zeek/etc/zeekctl.cfg
 # Optional: Configure email notifications for alerts and increasing the log rotation interval.
 MailTo="email@domain.com"
-LogRotationInterval = 7200 </code></pre>
+LogRotationInterval = 7200</code></pre>
 
-  <h3>Grafana Dashboard</h3>
-  <p>
-    To visualize the network traffic, I use Grafana. I created <a
-    href="https://github.com/sumanthvrao/zeek-home-network/blob/main/zeek-to-sqlite.py">a script</a>
-    to convert Zeek logs to a SQLite database for easier querying. Grafana offers some
-    pre-built dashboards for Zeek (e.g., <a
-    href="https://github.com/hackertarget/pcap-did-what">pcap-did-what</a>),
-    which I customized to track the metrics I care about most.
-  </p>
-  <img src="grafana-dashboard-screenshot.png" alt="Grafana dashboard showing Zeek network monitoring metrics" class="w-full rounded-lg shadow-md my-4 clickable-image" id="grafana-screenshot">
+    <h3>Grafana Dashboard</h3>
+    <p>
+      To visualize the network traffic, I use Grafana. I created <a
+      href="https://github.com/sumanthvrao/zeek-home-network/blob/main/zeek-to-sqlite.py">a script</a>
+      to convert Zeek logs to a SQLite database for easier querying. Grafana offers some
+      pre-built dashboards for Zeek (e.g., <a
+      href="https://github.com/hackertarget/pcap-did-what">pcap-did-what</a>),
+      which I customized to track the metrics I care about most.
+    </p>
+    <img src="grafana-dashboard-screenshot.png" alt="Grafana dashboard showing Zeek network monitoring metrics" id="grafana-screenshot">
 
-  <h3>Event Notifications</h3>
-  <p>
-    There are a lot of things one can do with this setup now. Yacin Nadji (who
-    also uses Zeek for home network monitoring!) has a blogpost on adding
-    <a href="https://github.com/corelight/zeek-notice-telegram">Telegram
-    notifications</a> to Zeek. The full blogpost is available at:
-    <a href="https://corelight.com/blog/telegram-zeek-youre-my-main-notice">
-    Telegram Zeek: You're My Main Notice</a>, and also includes how you can
-    trigger custom actions when certain events occur.
-  </p>
+    <h3>Event Notifications</h3>
+    <p>
+      There are a lot of things one can do with this setup now. Yacin Nadji (who
+      also uses Zeek for home network monitoring!) has a blogpost on adding
+      <a href="https://github.com/corelight/zeek-notice-telegram">Telegram
+      notifications</a> to Zeek. The full blogpost is available at:
+      <a href="https://corelight.com/blog/telegram-zeek-youre-my-main-notice">
+      Telegram Zeek: You're My Main Notice</a>, and also includes how you can
+      trigger custom actions when certain events occur.
+    </p>
 
-  <h2>References</h2>
-  <ul class="list-none space-y-2">
-    <li><a href="https://docs.zeek.org/en/current/install.html">Zeek
-    Installation Guide</a> - Official Zeek documentation</li>
-    <li><a href="https://www.asuswrt-merlin.net/download">Asuswrt-Merlin
-    Downloads</a> - Custom firmware for ASUS routers</li>
-    <li><a href="https://www.amazon.com/dp/B00K4DS5KU">TP-link TL-SG108E</a> -
-    Managed switch with port mirroring</li>
-    <li><a
-    href="https://github.com/sumanthvrao/zeek-home-network/blob/main/zeek-to-sqlite.py">zeek-to-sqlite.py</a>
-    - Script to convert Zeek logs to SQLite</li>
-    <li><a
-    href="https://github.com/hackertarget/pcap-did-what">pcap-did-what</a> -
-    Grafana dashboard for Zeek</li>
-    <li><a
-    href="https://github.com/sumanthvrao/zeek-home-network/blob/main/graphana-queries.sql">graphana-queries.sql</a>
-    - Custom Grafana queries for Zeek</li>
-    <li><a
-    href="https://corelight.com/blog/telegram-zeek-youre-my-main-notice">
-    Telegram Zeek: You're My Main Notice</a> - Blogpost on adding Telegram
-    notifications to Zeek</li>
-  </ul>
+    <h2>References</h2>
+    <ul id="references">
+      <li><a href="https://docs.zeek.org/en/current/install.html">Zeek
+      Installation Guide</a> - Official Zeek documentation</li>
+      <li><a href="https://www.asuswrt-merlin.net/download">Asuswrt-Merlin
+      Downloads</a> - Custom firmware for ASUS routers</li>
+      <li><a href="https://www.amazon.com/dp/B00K4DS5KU">TP-link TL-SG108E</a> -
+      Managed switch with port mirroring</li>
+      <li><a
+      href="https://github.com/sumanthvrao/zeek-home-network/blob/main/zeek-to-sqlite.py">zeek-to-sqlite.py</a>
+      - Script to convert Zeek logs to SQLite</li>
+      <li><a
+      href="https://github.com/hackertarget/pcap-did-what">pcap-did-what</a> -
+      Grafana dashboard for Zeek</li>
+      <li><a
+      href="https://github.com/sumanthvrao/zeek-home-network/blob/main/graphana-queries.sql">graphana-queries.sql</a>
+      - Custom Grafana queries for Zeek</li>
+      <li><a
+      href="https://corelight.com/blog/telegram-zeek-youre-my-main-notice">
+      Telegram Zeek: You're My Main Notice</a> - Blogpost on adding Telegram
+      notifications to Zeek</li>
+    </ul>
+  </article>
 
-    </article>
-
-  <button id="scrollToTopBtn" class="scrollToTop fixed bottom-6 right-6
-  bg-indigo-600 text-white p-2.5 rounded-full shadow-lg hover:bg-indigo-700
-  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50
-  transition-opacity duration-300" style="display: none;"> <!-- Slightly smaller
-  scroll top button -->
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-    viewBox="0 0 24 24" stroke="currentColor">
-      <!-- Smaller icon -->
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-      d="M5 15l7-7 7 7" />
+  <button id="scrollToTopBtn">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
     </svg>
   </button>
 
-  <!-- Lightbox overlay -->
   <div class="lightbox-overlay" id="lightbox">
     <span class="lightbox-close">&times;</span>
     <img class="lightbox-image" id="lightbox-image" src="" alt="">
@@ -409,33 +170,31 @@ LogRotationInterval = 7200 </code></pre>
     $(document).ready(function () {
       $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
-          $('.scrollToTop').fadeIn();
+          $('#scrollToTopBtn').fadeIn();
         } else {
-          $('.scrollToTop').fadeOut();
+          $('#scrollToTopBtn').fadeOut();
         }
       });
-      $('.scrollToTop').click(function () {
-        $('html, body').animate({ scrollTop: 0 }, 600); // Slightly faster scroll
+      
+      $('#scrollToTopBtn').click(function () {
+        $('html, body').animate({ scrollTop: 0 }, 600);
         return false;
       });
 
-      // Lightbox functionality
       $('#grafana-screenshot').click(function() {
         const imgSrc = $(this).attr('src');
         $('#lightbox-image').attr('src', imgSrc);
         $('#lightbox').addClass('active');
-        $('body').css('overflow', 'hidden'); // Prevent background scrolling
+        $('body').css('overflow', 'hidden');
       });
 
-      // Close lightbox when clicking overlay or close button
       $('#lightbox, .lightbox-close').click(function(e) {
         if (e.target === this) {
           $('#lightbox').removeClass('active');
-          $('body').css('overflow', ''); // Restore scrolling
+          $('body').css('overflow', '');
         }
       });
 
-      // Close lightbox on ESC key
       $(document).keydown(function(e) {
         if (e.key === 'Escape' && $('#lightbox').hasClass('active')) {
           $('#lightbox').removeClass('active');
@@ -443,7 +202,6 @@ LogRotationInterval = 7200 </code></pre>
         }
       });
 
-      // Prevent closing when clicking on the image itself
       $('#lightbox-image').click(function(e) {
         e.stopPropagation();
       });
