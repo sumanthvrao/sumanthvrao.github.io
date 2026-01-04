@@ -178,6 +178,66 @@
       left: 0;
       color: #2563EB;
     }
+
+    /* Lightbox styles */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 9999;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-image {
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+      border-radius: 0.5rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10000;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .clickable-image {
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .clickable-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    }
   </style>
 </head>
 
@@ -238,7 +298,7 @@
 
       <h2>ASUS Router Configuration</h2>
       <ul>
-<li> - Install the Asuswrt-Merlin firmware on the ASUS router. I used
+<li> - Install the Asuswrt-Merlin firmware on the ASUS router (Adminstration → Firmware Upgrade → Upload firmware file). I used
 <a href="https://www.asuswrt-merlin.net/download">Asuswrt-Merlin downloads</a>
 to find the correct firmware (RT-AC68U for my router). Alternatively, I believe
 you can also use OpenWrt or DD-WRT if you prefer.
@@ -288,7 +348,7 @@ LogRotationInterval = 7200 </code></pre>
     href="https://github.com/hackertarget/pcap-did-what">pcap-did-what</a>),
     which I customized to track the metrics I care about most.
   </p>
-  <img src="grafana-dashboard-screenshot.png" alt="Grafana dashboard showing Zeek network monitoring metrics" class="w-full rounded-lg shadow-md my-4">
+  <img src="grafana-dashboard-screenshot.png" alt="Grafana dashboard showing Zeek network monitoring metrics" class="w-full rounded-lg shadow-md my-4 clickable-image" id="grafana-screenshot">
 
   <h3>Event Notifications</h3>
   <p>
@@ -339,6 +399,12 @@ LogRotationInterval = 7200 </code></pre>
     </svg>
   </button>
 
+  <!-- Lightbox overlay -->
+  <div class="lightbox-overlay" id="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-image" id="lightbox-image" src="" alt="">
+  </div>
+
   <script>
     $(document).ready(function () {
       $(window).scroll(function () {
@@ -351,6 +417,35 @@ LogRotationInterval = 7200 </code></pre>
       $('.scrollToTop').click(function () {
         $('html, body').animate({ scrollTop: 0 }, 600); // Slightly faster scroll
         return false;
+      });
+
+      // Lightbox functionality
+      $('#grafana-screenshot').click(function() {
+        const imgSrc = $(this).attr('src');
+        $('#lightbox-image').attr('src', imgSrc);
+        $('#lightbox').addClass('active');
+        $('body').css('overflow', 'hidden'); // Prevent background scrolling
+      });
+
+      // Close lightbox when clicking overlay or close button
+      $('#lightbox, .lightbox-close').click(function(e) {
+        if (e.target === this) {
+          $('#lightbox').removeClass('active');
+          $('body').css('overflow', ''); // Restore scrolling
+        }
+      });
+
+      // Close lightbox on ESC key
+      $(document).keydown(function(e) {
+        if (e.key === 'Escape' && $('#lightbox').hasClass('active')) {
+          $('#lightbox').removeClass('active');
+          $('body').css('overflow', '');
+        }
+      });
+
+      // Prevent closing when clicking on the image itself
+      $('#lightbox-image').click(function(e) {
+        e.stopPropagation();
       });
     });
   </script>
