@@ -96,7 +96,7 @@ sudo tcpdump -i eth0 -n</code></pre>
     <h3>Zeek Configuration</h3>
     <p>
       Follow the <a href="https://docs.zeek.org/en/current/install.html">Zeek
-      installation instructions</a> to install Zeek for your OS (I used the
+      installation instructions</a> to install Zeek for your Raspberry Pi (I used the
       Debian version for arm64). After installation, I edited the following configuration files:
     </p>
     <pre><code># /opt/zeek/etc/networks.cfg # Address ~ Label for the network
@@ -112,12 +112,15 @@ LogRotationInterval = 7200</code></pre>
 
     <h3>Grafana Dashboard</h3>
     <p>
-      To visualize the network traffic, I use Grafana. I created <a
-      href="https://github.com/sumanthvrao/zeek-home-network/blob/main/zeek-to-sqlite.py">a script</a>
-      to convert Zeek logs to a SQLite database for easier querying. Grafana offers some
-      pre-built dashboards for Zeek (e.g., <a
-      href="https://github.com/hackertarget/pcap-did-what">pcap-did-what</a>),
-      which I customized to track the metrics I care about most.
+      To visualize the network traffic, I use Grafana installed on the Raspberry
+      Pi. Firstly, <a
+      href="https://grafana.com/tutorials/install-grafana-on-raspberry-pi/">
+      follow this guide</a> to install Grafana on a Raspberry Pi. Next, you would want to bootstrap a simple way to
+      trasnfer the zeek logs to a database (SQLite) which Grafan can query. I
+      provid a vibe-coded script in <a
+      href="https://github.com/sumanthvrao/zeek-home-network/blob/main/zeek-to-sqlite.py">this
+      repo</a> that converts Zeek logs to a SQLite database for easier querying.
+      You would want to place this script into a cron job to run periodically (and I write the default output into <code>/var/lib/grafana/data/zeek_logs.db</code>). Lastly, Grafana offers some pre-built dashboards for Zeek (e.g., <a href="https://github.com/hackertarget/pcap-did-what">pcap-did-what</a>), which I customized to track the metrics I care about most. You can use the <a href="https://github.com/sumanthvrao/zeek-home-network/blob/main/graphana-queries.sql">graphana-queries.sql</a> file to get started.
     </p>
     <img src="grafana-dashboard-screenshot.png" alt="Grafana dashboard showing Zeek network monitoring metrics" id="grafana-screenshot">
 
@@ -132,7 +135,7 @@ LogRotationInterval = 7200</code></pre>
       trigger custom actions when certain events occur.
     </p>
 
-    <h3>What's Next? Chasing Down Packets</h3>
+    <h3>What's Next?</h3>
     <p>
       At this point, I'm still chasing down packets and trying to understand what's going on. For example, Apple's ecosystem heavily relies on DNS-based traffic for device discovery within network. Same goes for Spotify (maybe it's their cast feature?). Shockingly, my Unifi switch seems to <i>call home</i> to <a href="https://ui.com">ui.com</a> quite a lot! Send me a note if you think there's a research angle here!
     </p>
