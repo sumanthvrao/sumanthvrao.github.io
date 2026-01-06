@@ -18,33 +18,7 @@
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
   <link rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <style>
-    @font-face {
-      font-family: "Avenir LT Pro 35 Light";
-      src: url("fonts/e5f78b4fb90a80a32be156470cbfead1.woff2") format("woff2"),
-           url("fonts/e5f78b4fb90a80a32be156470cbfead1.woff") format("woff"),
-           url("fonts/e5f78b4fb90a80a32be156470cbfead1.ttf") format("truetype");
-    }
-    body {
-      font-family: "Avenir LT Pro 35 Light", sans-serif;
-      line-height: 1.6; /* Slightly more than original 1.5 for readability */
-    }
-    .link-style {
-      color: #3B82F6; /* Tailwind's blue-500 */
-    }
-    .link-style:hover {
-      text-decoration: underline;
-      color: #1D4ED8;
-    }
-    /* For consistent bolding if Avenir Light doesn't have many weights */
-    strong, .font-semibold {
-        font-weight: 600; /* Avenir often has a 'Medium' or 'Roman' around this weight */
-    }
-    h1, h2, h3 {
-        font-weight: 600; /* Ensure headings are suitably bold */
-    }
-  </style>
+  <link rel="stylesheet" href="css/custom.css">
 </head>
 
 <body class="bg-white text-gray-800 text-base">
@@ -142,7 +116,8 @@
           <br />
           Jeffrey L. Tully<sup>*</sup>, <strong class="text-gray-900">Sumanth Rao<sup>*</sup></strong>, Isabel Straw, Rodney A. Gabriel, Chris Longhurst, Stefan Savage, Geoffrey M. Voelker,  Christian J. Dameff.<br/>
           <em>JAMA Network Open, July 2025.</em>
-          <em>(* = Equal Contribution)</em>
+          <em>(* = Equal Contribution)</em><br/>
+          <span class="text-sm text-gray-600">News | <a href="https://www.wired.com/story/at-least-750-us-hospitals-faced-disruptions-during-last-years-crowdstrike-outage-study-finds/" class="link-style">Wired</a>, <a href="https://www.forbes.com/sites/davidchou/2025/07/21/a-year-after-the-outage-for-healthcare-cios/" class="link-style">Forbes</a></span>
         </li>
         <li class="mb-3">
           <strong class="text-lg font-semibold">"<a
@@ -155,7 +130,8 @@
           link-style">[poster]</a> <br />
           <strong class="text-gray-900">Sumanth Rao</strong>, Enze Liu, Grant
           Ho, Geoffrey M. Voelker, Stefan Savage. <br />
-          <em>ACM Web Conference (WWW), Singapore, May 2024.</em>
+          <em>ACM Web Conference (WWW), Singapore, May 2024.</em><br/>
+          <span class="text-sm text-gray-600">News | <a href="https://www.darkreading.com/cloud-security/cloud-email-filtering-bypass-attack" class="link-style">DarkReading</a>, <a href="https://technews.acm.org/archives.cfm?fo=2024-04-apr/apr-01-2024.html" class="link-style">ACM TechNews</a>, <a href="https://tldrsec.com/p/tldr-sec-224" class="link-style">TL;DR Sec</a></span>
         </li>
         <li class="mb-3">
           <strong class="text-lg font-semibold">"<a
@@ -178,7 +154,8 @@
           Stefan Savage, Geoffrey M. Voelker, and Damon McCoy.
           <br />
           <em>Privacy Enhancing Technologies Symposium (PETS), Lausanne,
-          Switzerland, July 2023.</em>
+          Switzerland, July 2023.</em><br/>
+          <span class="text-sm text-gray-600">News | <a href="https://today.ucsd.edu/story/spywarestudy2023" class="link-style">UC San Diego News</a>, <a href="https://www.universityofcalifornia.edu/news/what-happens-when-your-phone-spying-you" class="link-style">UC News</a>, <a href="https://cacm.acm.org/news/272766-spyware-lurks-in-android-smartphones/fulltext" class="link-style">CACM News</a>, <a href="https://news.ycombinator.com/item?id=35169914" class="link-style">Hacker News</a>, <a href="https://techxplore.com/news/2023-03-spying.html" class="link-style">Tech Xplore</a></span>
         </li>
       </ul>
     </section>
@@ -212,7 +189,7 @@
     </section>
 
     <!-- Research in the News -->
-    <section id="news" class="mb-2">
+    <!-- <section id="news" class="mb-2">
       <h2 class="text-2xl font-semibold mb-1 border-b pb-1">Research in the News</h2>
       <ul class="list-disc list-inside space-y-1 text-gray-700 pl-2">
         <li>
@@ -247,7 +224,7 @@
           <a href="https://techxplore.com/news/2023-03-spying.html" class="link-style">Tech Xplore</a>.
         </li>
       </ul>
-    </section>
+    </section> -->
 
     <!-- Industry Experience -->
     <section id="experience" class="mb-6">
