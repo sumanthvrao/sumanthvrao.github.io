@@ -99,17 +99,18 @@
       System).</li>
       <li> Setup iptables rules to forward traffic to the Raspberry Pi IP
       address (192.168.50.X). Reboot the router to apply the changes.
-      <pre><code>>> vi /jffs/scripts/firewall-start #!/bin/sh iptables -t mangle
-      -A PREROUTING  -i br0 -j TEE --gateway 192.168.50.X iptables -t mangle -A
-      POSTROUTING -o br0 -j TEE --gateway 192.168.50.X >> chmod +x
-      /jffs/scripts/firewall-start</code></pre>
+      <pre><code>>> vi /jffs/scripts/firewall-start
+   #!/bin/sh
+   iptables -t mangle -A PREROUTING  -i br0 -j TEE --gateway 192.168.50.X
+   iptables -t mangle -A POSTROUTING -o br0 -j TEE --gateway 192.168.50.X
+>> chmod +x /jffs/scripts/firewall-start</code></pre>
       </li>
       <li> Verify that the traffic is being forwarded to the Raspberry Pi by
       running the following command. You should immediately see the traffic that
       isn't addressed to the raspberry pi being forwarded to it.
 
-      <pre><code>sudo ip link set eth0 promisc on sudo tcpdump -i eth0
-      -n</code></pre>
+      <pre><code>sudo ip link set eth0 promisc on
+sudo tcpdump -i eth0 -n</code></pre>
       </li>
     </ul>
 
@@ -121,12 +122,15 @@
       following configuration files:
     </p>
     <pre><code># /opt/zeek/etc/networks.cfg # Address ~ Label for the network
-    192.168.0.0/16  Home network
+192.168.0.0/16  Home network
 
-# /opt/zeek/etc/node.cfg [zeek] type=standalone host=localhost interface=eth0
+# /opt/zeek/etc/node.cfg [zeek]
+type=standalone
+host=localhost
+interface=eth0
 
-# /opt/zeek/etc/zeekctl.cfg # Optional: Configure email notifications for alerts
-and increasing the log rotation interval. MailTo="email@domain.com"
+# /opt/zeek/etc/zeekctl.cfg
+MailTo="youremailhere@domain.com"
 LogRotationInterval = 7200</code></pre>
 
     <h3>Grafana Dashboard</h3>
