@@ -47,17 +47,17 @@
     <h2>Hardware Configuration</h2>
 
     <p>
-      I use a Raspberry Pi 5 (8GB RAM) to run the Zeek server and any other tool
-      to monitor my network traffic (e.g., <a
-      href="https://pi-hole.net/">pi-hole</a> can be used as a DNS sinkhole). A
-      cheap managed switch certainly that can do port mirroring (e.g., <a
+      I use a Raspberry Pi 5 (8GB RAM) to run Zeek and other tools to monitor my
+      network traffic (e.g., I use <a href="https://pi-hole.net/">pi-hole</a> as
+      a DNS sinkhole to block tracking requests). For the crux of the setup, I
+      use the Asuswrt-Merlin firmware on the ASUS router to forward traffic to
+      the Raspberry Pi via iptables. Indeed, a cheap managed switch that can
+      does traffic mirroring (e.g., <a
       href="https://www.amazon.com/dp/B00K4DS5KU">TP-link TL-SG108E</a>)
-      certainly helps, but in lieu of a managed switch, I use the Asuswrt-Merlin
-      firmware on the ASUS router to forward traffic to the Raspberry Pi via
-      iptables. Unlike raw ethernet frame mirroring managed switches may offer,
-      this is Layer 3 mirroring isn't a packet-level full mirror, but works if
-      the volume of traffic is not too high (ideal for a small home network).
-      Overall, this approach requires:
+      certainly helps! The only downside is that this is a Layer 3 mirroring,
+      which means it's not a packet-level full mirror (which managed switches
+      may offer), but works if the volume of traffic is not too high (ideal for
+      a small home network). Overall, this approach requires:
     </p>
 
     <ul>
@@ -72,14 +72,12 @@
     <img src="zeek-con-diagram.svg" alt="Network connection diagram showing the
     Zeek monitoring setup" class="diagram-float">
     <ul>
-      <li> Place your original router in bridge mode (this prevents a double NAT
+      <li> Remember to place your original router in bridge mode (this prevents a double NAT
       situation and allows the ASUS router to control NAT).</li>
       <li> Connect the ASUS router to your modem (in bridge mode) and the
       Raspberry Pi to the ASUS router via ethernet.</li>
       <li> The Raspberry Pi operates in <strong>listen-only mode</strong>—it
-      passively monitors network traffic and does not route or process packets.
-      All traffic forwarding is handled by the router, and the Pi simply
-      receives mirrored copies for analysis.</li>
+      passively monitors network traffic and does not route or process packets.</li>
       <!-- <li> Debug your network connections using tools like nmap (e.g.,
       <code>nmap -sP 192.168.50.0/24</code> to see if the Raspberry Pi is
       reachable).</li> -->
@@ -100,9 +98,9 @@
       <li> Setup iptables rules to forward traffic to the Raspberry Pi IP
       address (192.168.50.X). Reboot the router to apply the changes.
       <pre><code>>> vi /jffs/scripts/firewall-start
-   #!/bin/sh
-   iptables -t mangle -A PREROUTING  -i br0 -j TEE --gateway 192.168.50.X
-   iptables -t mangle -A POSTROUTING -o br0 -j TEE --gateway 192.168.50.X
+#!/bin/sh
+iptables -t mangle -A PREROUTING  -i br0 -j TEE --gateway 192.168.50.X
+iptables -t mangle -A POSTROUTING -o br0 -j TEE --gateway 192.168.50.X
 >> chmod +x /jffs/scripts/firewall-start</code></pre>
       </li>
       <li> Verify that the traffic is being forwarded to the Raspberry Pi by
@@ -121,7 +119,8 @@ sudo tcpdump -i eth0 -n</code></pre>
       used the Debian version for arm64). After installation, I edited the
       following configuration files:
     </p>
-    <pre><code># /opt/zeek/etc/networks.cfg # Address ~ Label for the network
+    <pre><code># /opt/zeek/etc/networks.cfg
+# Address ~ Label for the network
 192.168.0.0/16  Home network
 
 # /opt/zeek/etc/node.cfg [zeek]
@@ -130,7 +129,9 @@ host=localhost
 interface=eth0
 
 # /opt/zeek/etc/zeekctl.cfg
-MailTo="youremailhere@domain.com"
+# Optional: Configure email notifications for alerts
+# and increasing the log rotation interval.
+MailTo="email@domain.com"
 LogRotationInterval = 7200</code></pre>
 
     <h3>Grafana Dashboard</h3>
