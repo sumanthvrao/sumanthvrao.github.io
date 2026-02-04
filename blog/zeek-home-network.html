@@ -8,6 +8,7 @@
   <meta name="description" content="A guide to setting up Zeek for passive
   network monitoring on a home network using Raspberry Pi and Asuswrt-Merlin
   firmware.">
+  
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-45GX6K04VS"></script>
   <script>
@@ -19,6 +20,8 @@
 
   <link rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/modern-normalize@3.0.1/modern-normalize.min.css">
+  <link rel="stylesheet" type="text/css"
+  href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
   <link rel="stylesheet" href="zeek-home-network.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -69,7 +72,7 @@
     </ul>
 
     <h3>Network Connections</h3>
-    <img src="zeek-con-diagram.svg" alt="Network connection diagram showing the
+    <img src="../images/zeek-con-diagram.svg" alt="Network connection diagram showing the
     Zeek monitoring setup" class="diagram-float">
     <ul>
       <li> Remember to place your original router in bridge mode (this prevents a double NAT
@@ -155,7 +158,7 @@ LogRotationInterval = 7200</code></pre>
       href="https://github.com/sumanthvrao/zeek-home-network/blob/main/graphana-queries.sql">graphana-queries.sql</a>
       file to get started.
     </p>
-    <img src="grafana-dashboard-screenshot.png" alt="Grafana dashboard showing
+    <img src="../images/grafana-dashboard-screenshot.png" alt="Grafana dashboard showing
     Zeek network monitoring metrics" id="grafana-screenshot">
 
     <h3>Event Notifications</h3>

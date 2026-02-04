@@ -1,0 +1,330 @@
+body {
+  /*font-family: 'Helvetica Neue', 'Source Sans Pro', 'Open Sans',Helvetica,Arial,sans-serif;*/
+  font-family:
+    "Avenir Next", Avenir, "Helvetica Neue", "Gill Sans", "Gill Sans MT",
+    Helvetica, sans-serif;
+  font-feature-settings: "kern";
+  font-kerning: normal;
+}
+
+img {
+  margin-bottom: 15px;
+}
+
+a {
+  font-weight: 500;
+  color: black;
+}
+
+a:hover {
+  color: #e4035c;
+}
+
+b {
+  font-weight: 500;
+}
+
+.update {
+  font-size: 65%;
+}
+
+.container {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#buttons {
+  font-size: 19px;
+}
+
+.current-tag {
+  margin-left: 5px;
+  padding: 2px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  color: #000000;
+  border-radius: 7px;
+  border: 5px solid #007bff9e;
+}
+
+.project-row {
+  font-size: 15px;
+}
+
+.project-display {
+  margin-left: 5px;
+  border: none;
+  outline: none;
+  padding: 5px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  background: #007bff52;
+  border-radius: 7px;
+}
+
+.project-display:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.project-display:focus {
+  color: white;
+  cursor: pointer;
+  background: #0037ff52;
+}
+
+.page table#edu-table td {
+  padding-left: 0px;
+  padding-right: 20px;
+}
+
+.section-container {
+  box-shadow:
+    0 2px 6px 0 rgba(22, 142, 228, 0.16),
+    0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  padding: 12px 20px;
+}
+
+h4.project-title {
+  color: black;
+}
+
+#owner_name {
+  text-align: left;
+  font-size: 23px;
+}
+
+.header-link {
+  text-align: right;
+  margin-bottom: 15px;
+  color: #000000;
+}
+
+#sections {
+  text-align: right;
+  color: #000000;
+  font-size: 17px;
+}
+
+.landing-description {
+  font-size: 15px;
+}
+
+#personal-links {
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+#research-openings {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+#teaching {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+#misc {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+#education {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+#awards-honors {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+#service {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+#online {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+#photo-blurb {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.card-block {
+  font-size: 14px;
+}
+
+.card-title {
+  font-size: 15px;
+}
+
+.project-description {
+  margin-top: 11px;
+  font-size: 15px;
+}
+
+.project-links {
+  margin-top: 11px;
+  font-size: 15px;
+}
+
+body {
+  padding-top: 54px;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+.pagination {
+  margin-bottom: 30px;
+}
+
+.other_info {
+  color: #355ab7;
+}
+
+.links {
+  text-align: left;
+}
+
+#sign {
+  text-align: center;
+}
+
+#updates {
+  margin-top: 15px;
+  font-size: 14.5px;
+}
+
+#updates .list-group-item {
+  padding: 8px;
+}
+
+.blog-img {
+  width: 30%;
+}
+
+.video {
+  margin-top: 15px;
+}
+
+.courses {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+#photo-credit {
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1240px;
+  }
+
+  .risc-container {
+    max-width: 948px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  body {
+    padding-top: 56px;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #owner_name {
+    text-align: center;
+  }
+
+  #headshot {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 5px;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  #left-container {
+    margin: 20px 20px 0px 20px;
+  }
+
+  #landing-description {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  #personal-links {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  #photo-credit {
+    text-align: center;
+    font-size: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  #travels {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  #sections {
+    font-size: 17px;
+    text-align: center;
+  }
+  /*
+    .project-row {
+        margin: 0px 15px 15px 15px;
+    }*/
+
+  /*    .project-category {
+        margin: 0px 20px 0px 20px;
+    }*/
+
+  .landing-description {
+    margin: 20px 20px 0px 20px;
+  }
+
+  #personal-links {
+    margin-top: 12px;
+  }
+
+  .video {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #sections {
+    font-size: 13px;
+  }
+
+  .video {
+    display: none;
+  }
+
+  #risc-logo {
+    width: 50%;
+  }
+}
