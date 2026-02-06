@@ -65,27 +65,117 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <div class="section-container">
-            <div class="project-links">
+            <div class="project-category"><h5>Blog Posts</h5></div>
+            <div class="project-links" id="blog-list">
               <p>
-                <a href="blog/zeek-home-network.html"
+                <a
+                  href="#zeek-home-network"
+                  data-blog-id="zeek-home-network"
+                  data-blog-title="Zeek Home Network Monitoring"
+                  data-blog-path="blog/zeek-home-network.html"
                   >Zeek Home Network Monitoring</a
                 >
                 <br />
                 <span class="update">Dec 29, 2025</span>
               </p>
               <!-- <p>
-                <a href="blog/zmap.html"
-                  >(WIP) Launching ZMap Scans in parallel</a
+                <a
+                  href="#zmap"
+                  data-blog-id="zmap"
+                  data-blog-title="(WIP) Launching ZMap Scans in Parallel"
+                  data-blog-path="blog/zmap.html"
+                  >(WIP) Launching ZMap Scans in Parallel</a
                 >
                 <br />
                 <span class="update">May 17, 2025</span>
               </p> -->
             </div>
           </div>
+
+          <br />
+
+          <div class="section-container blog-window">
+            <div id="blog-content" class="blog-content">
+              <p>Select a post to load.</p>
+            </div>
+          </div>
+
           <br />
           <a href="index.html">← Back to Home</a>
         </div>
       </div>
     </div>
+
+    <script>
+      (function () {
+        const blogLinks = document.querySelectorAll(
+          "#blog-list a[data-blog-path]"
+        );
+        const blogContent = document.getElementById("blog-content");
+
+        if (!blogLinks.length || !blogContent) {
+          return;
+        }
+
+        function setActive(link) {
+          blogLinks.forEach((item) => item.classList.remove("blog-link-active"));
+          link.classList.add("blog-link-active");
+        }
+
+        async function loadBlog(path, title) {
+          blogContent.innerHTML = "<p>Loading...</p>";
+
+          try {
+            const response = await fetch(path, { cache: "no-cache" });
+            if (!response.ok) {
+              throw new Error("Failed to load blog content");
+            }
+
+            const html = await response.text();
+            const doc = new DOMParser().parseFromString(html, "text/html");
+            const article = doc.querySelector("article") || doc.body;
+
+            if (!article) {
+              throw new Error("Blog content not found");
+            }
+
+            blogContent.innerHTML = article.innerHTML;
+            if (title) {
+              document.title = title + " - Sumanth Rao";
+            }
+          } catch (error) {
+            blogContent.innerHTML =
+              "<p>Could not load this post. Please try again later.</p>";
+          }
+        }
+
+        blogLinks.forEach((link) => {
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+            const path = link.getAttribute("data-blog-path");
+            const title = link.getAttribute("data-blog-title");
+            setActive(link);
+            loadBlog(path, title);
+            window.location.hash = link.getAttribute("data-blog-id") || "";
+          });
+        });
+
+        const initialId = window.location.hash.replace("#", "");
+        const initialLink =
+          (initialId &&
+            document.querySelector(
+              '#blog-list a[data-blog-id="' + initialId + '"]'
+            )) ||
+          blogLinks[0];
+
+        if (initialLink) {
+          setActive(initialLink);
+          loadBlog(
+            initialLink.getAttribute("data-blog-path"),
+            initialLink.getAttribute("data-blog-title")
+          );
+        }
+      })();
+    </script>
   </body>
 </html>

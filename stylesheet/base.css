@@ -177,6 +177,23 @@ h4.project-title {
   font-size: 15px;
 }
 
+.blog-window {
+  background: #f7f7f7;
+}
+
+.blog-content {
+  font-size: 15px;
+}
+
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.blog-link-active {
+  color: #e4035c;
+}
+
 body {
   padding-top: 54px;
 }
