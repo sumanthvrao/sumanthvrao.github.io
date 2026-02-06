@@ -29,6 +29,7 @@
 
 
     <body>
+        <div id="top"></div>
         <div class="container fluid header-link">
             <div class="row">
                  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"
@@ -330,6 +331,7 @@
             
             <br>
 
+            <div id="industry-experience"></div>
             <div class="container fluid" id="misc">
 
                 <div class="project-category"><h5>Industry Experience</h5></div>
@@ -427,6 +429,40 @@
             <small>Website design inspired by <a href="https://diwenx.com/">this
             page</a>, code <a href="https://github.com/sumanthvrao/sumanthvrao.github.io">here</a>.</small>
         </div>
+        <a class="floating-arrow" href="#industry-experience" aria-label="Jump to industry experience">
+            ↓
+        </a>
+        <script>
+            (function () {
+                const arrow = document.querySelector(".floating-arrow");
+                if (!arrow) {
+                    return;
+                }
+
+                function updateArrow() {
+                    const nearBottom =
+                        window.innerHeight + window.scrollY >=
+                        document.body.offsetHeight - 200;
+
+                    if (nearBottom) {
+                        arrow.textContent = "↑";
+                        arrow.setAttribute("href", "#top");
+                        arrow.setAttribute("aria-label", "Back to top");
+                    } else {
+                        arrow.textContent = "↓";
+                        arrow.setAttribute("href", "#industry-experience");
+                        arrow.setAttribute(
+                            "aria-label",
+                            "Jump to industry experience"
+                        );
+                    }
+                }
+
+                window.addEventListener("scroll", updateArrow);
+                window.addEventListener("resize", updateArrow);
+                updateArrow();
+            })();
+        </script>
     </body>
 </html>
 

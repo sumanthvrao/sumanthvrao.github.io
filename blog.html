@@ -43,6 +43,7 @@
   </head>
 
   <body>
+    <div id="top"></div>
     <div class="container fluid header-link">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" id="owner_name">
@@ -175,6 +176,37 @@
             initialLink.getAttribute("data-blog-title")
           );
         }
+      })();
+    </script>
+    <a class="floating-arrow" href="#blog-content" aria-label="Jump to blog content">
+      ↓
+    </a>
+    <script>
+      (function () {
+        const arrow = document.querySelector(".floating-arrow");
+        if (!arrow) {
+          return;
+        }
+
+        function updateArrow() {
+          const nearBottom =
+            window.innerHeight + window.scrollY >=
+            document.body.offsetHeight - 200;
+
+          if (nearBottom) {
+            arrow.textContent = "↑";
+            arrow.setAttribute("href", "#top");
+            arrow.setAttribute("aria-label", "Back to top");
+          } else {
+            arrow.textContent = "↓";
+            arrow.setAttribute("href", "#blog-content");
+            arrow.setAttribute("aria-label", "Jump to blog content");
+          }
+        }
+
+        window.addEventListener("scroll", updateArrow);
+        window.addEventListener("resize", updateArrow);
+        updateArrow();
       })();
     </script>
   </body>
