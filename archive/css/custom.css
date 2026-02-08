@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "Avenir LT Pro 35 Light";
+  src: url("../fonts/e5f78b4fb90a80a32be156470cbfead1.woff2") format("woff2"),
+       url("../fonts/e5f78b4fb90a80a32be156470cbfead1.woff") format("woff"),
+       url("../fonts/e5f78b4fb90a80a32be156470cbfead1.ttf") format("truetype");
+}
+body {
+  font-family: "Avenir LT Pro 35 Light", sans-serif;
+  line-height: 1.6; /* Slightly more than original 1.5 for readability */
+}
+.link-style {
+  color: #3B82F6; /* Tailwind's blue-500 */
+}
+.link-style:hover {
+  text-decoration: underline;
+  color: #1D4ED8;
+}
+/* For consistent bolding if Avenir Light doesn't have many weights */
+strong, .font-semibold {
+    font-weight: 600; /* Avenir often has a 'Medium' or 'Roman' around this weight */
+}
+h1, h2, h3 {
+    font-weight: 600; /* Ensure headings are suitably bold */
+}
+

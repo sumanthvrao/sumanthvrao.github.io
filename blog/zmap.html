@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <title>Deep Dive into ZMap: Internet-Wide Network Scanning - Sumanth
+  Rao</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An exploration of ZMap, its architecture,
+  use cases, and ethical considerations in network scanning.">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45GX6K04VS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-45GX6K04VS');
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    @font-face {
+      font-family: "Avenir LT Pro 35 Light";
+      src: url("../fonts/e5f78b4fb90a80a32be156470cbfead1.woff2") format("woff2"),
+           url("../fonts/e5f78b4fb90a80a32be156470cbfead1.woff") format("woff"),
+           url("../fonts/e5f78b4fb90a80a32be156470cbfead1.ttf") format("truetype");
+    }
+    body {
+      font-family: "Avenir LT Pro 35 Light", sans-serif;
+      line-height: 1.5; /* Slightly tightened line height */
+      font-size: 0.875rem; /* Equivalent to Tailwind's text-sm */
+    }
+    a {
+      color: #2563EB;
+    }
+    a:hover {
+      text-decoration: underline;
+      color: #1D4ED8;
+    }
+    strong, .font-semibold {
+        font-weight: 600;
+    }
+    /* Headings outside prose will inherit body font size unless specified */
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 600;
+    }
+
+    /* Customizations for prose-sm */
+    .prose-sm h1 { /* Title of the blog post */
+        @apply mb-3 text-2xl sm:text-3xl font-bold text-gray-900;
+    }
+    .prose-sm h2 { /* Main section headings in the post */
+        @apply mt-6 mb-2 text-xl sm:text-2xl font-semibold text-gray-800 border-b border-gray-200 pb-1;
+    }
+    .prose-sm h3 { /* Sub-section headings */
+        @apply mt-5 mb-1 text-lg sm:text-xl font-semibold text-gray-800;
+    }
+    /* prose-sm already makes p, ul, ol, blockquote smaller. This ensures color
+    consistency. */
+    .prose-sm p, .prose-sm ul, .prose-sm ol, .prose-sm blockquote {
+        @apply text-gray-700;
+    }
+    .prose-sm a {
+        @apply text-blue-600 hover:text-blue-700 font-medium;
+        text-decoration: none;
+    }
+    .prose-sm a:hover {
+        @apply underline;
+    }
+    .prose-sm pre { /* Code blocks */
+        @apply bg-gray-800 text-gray-100 rounded-md p-3 text-xs overflow-x-auto my-4; /* Reduced padding and margin */
+    }
+    .prose-sm code:not(pre code) { /* Inline code. :not(pre code) to avoid double styling */
+        @apply bg-gray-200 text-red-600 px-1 py-0.5 rounded text-xs;
+    }
+    .prose-sm blockquote {
+        @apply border-l-4 border-blue-500 pl-3 italic text-gray-600 my-4; /* Reduced padding and margin */
+    }
+    .prose-sm img {
+        @apply rounded-lg shadow-md my-4; /* Reduced margin */
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-800 text-sm"> <!-- Base font size set to text-sm
+-->
+
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6"> <!-- Reduced py -->
+    <nav class="mb-6"> <!-- Reduced mb -->
+      <a href="../index.html#blog" class="hover:underline">← Back to Blog</a>
+      <span class="mx-2 text-gray-400">|</span>
+      <a href="../index.html" class="hover:underline">Home</a>
+    </nav>
+
+    <article class="prose-sm max-w-none"> <!-- Switched to prose-sm -->
+      <h1>(WIP) Launching ZMap Scans in parallel</h1>
+
+      <p class="text-xs text-gray-500 !mt-0 mb-4"> <!-- text-xs for metadata,
+      reduced mb -->
+        <time datetime="2025-05-17">May 17, 2025</time>
+        <!-- <span class="mx-1">•</span> -->
+        <!-- <span>Tags: <a href="#">Network Security</a>, <a
+        href="#">Scanning</a>, <a href="#">ZMap</a></span> -->
+      </p>
+
+      <p>
+        ZMap is a powerful open-source tool designed for Internet-wide scans. It
+        is capable of scanning the entire IPv4 address space in under 45 minutes
+        with a single machine using a gigabit network connection. The
+        architecture, design choices, and optimizations of Zmap are unique, but
+        that is not the focus of this article. Instead, I'll defer readers to the
+        original research paper for those nitty-gritty details <a href="todo"
+        target="_blank" rel="noopener noreferrer">[1]</a>. I'll mostly focus
+        on my experiences performing multiple types of internet-wide scans,
+        using a Zmap instance here at UC San Diego. My partner in scanning
+        .
+      </p>
+
+      <h2>Scanning Server Configuration</h2>
+
+      The scanning server is a XXXX, with YY RAM, and XX cores. Bandwidth?? It is particular
+      meant to be powerful to launch multiple types of scans, however to do
+      this, we have a problem. -- We wanted to overload 
+
+      Gateway?? - 
+
+      Using zmap's multiple blacklist option. 
+
+      * using 2 blacklists (-b)
+      * using 2 NICS with Zmap (2 IPs)
+      * Gateway to specify 
+
+      * Since zmap XXX port option. 
+
+      * rate, vs bandwidth. 
+
+      * Rate, line rate, max, min, overloading. 
+      * EDR, outside
+
+      <h2>Server Location</h2>>
+      * UCSD campus, on its own vlan, ....
+
+      <
+      
+      * Keep scanning outside
+      * Data backup architecture.?
+      * Highly visible. Don't store keys. 
+      * Ethics --> Reverse DNS, IP with project, etc, etc??
+
+
+      <h2> Monitoring </h2>
+      * How did we handle monitoring size going to zero?
+      * Present scan size to go to zero???
+
+      <h2>Backups</h2>>
+
+      <h2>Caution</h2>
+
+      <!-- <img src="../images/placeholder-zmap.png" alt="ZMap Architecture Diagram
+      (Conceptual)" class="mx-auto">
+
+      <h2>How ZMap Achieves its Speed</h2>
+      <p>
+        The core idea behind ZMap's speed is its stateless scanning approach.
+        Traditional scanners maintain state for each connection, which becomes a
+        bottleneck when dealing with millions of potential hosts. ZMap, on the
+        other hand, sends probes and processes responses asynchronously without
+        keeping per-connection state.
+      </p>
+      <ul>
+        <li><strong>Stateless Probing:</strong> Sends specially crafted packets
+        and listens for responses.</li>
+        <li><strong>Efficient Packet Generation:</strong> Optimized to generate
+        probe packets at line rate.</li>
+        <li><strong>Probabilistic Scanning:</strong> Uses a random permutation
+        of the address space to avoid overwhelming networks.</li>
+        <li><strong>Single Packet Probes:</strong> Typically sends a single
+        probe (e.g., SYN packet for a TCP scan) to check for a live host or open
+        port.</li>
+      </ul>
+
+      <h2>Common Use Cases</h2>
+      <p>Researchers and organizations use ZMap for a variety of purposes:</p>
+      <ol>
+        <li>Tracking the adoption of new web technologies (e.g., HTTPS,
+        HTTP/2).</li>
+        <li>Identifying vulnerable systems across the internet (e.g., systems
+        with known exploits).</li>
+        <li>Measuring internet censorship and connectivity.</li>
+        <li>Discovering misconfigured devices or services.</li>
+      </ol>
+
+      <h2>Ethical Considerations and Best Practices</h2>
+      <p>
+        While ZMap is a powerful tool for research, its use comes with
+        significant ethical responsibilities. Scanning the entire internet can
+        be perceived as hostile or abusive if not done carefully.
+      </p>
+      <blockquote>
+        "With great power comes great responsibility." It's crucial to minimize
+        the impact on scanned networks.
+      </blockquote>
+      <p>Key best practices include:</p>
+      <ul>
+        <li><strong>Rate Limiting:</strong> Even though ZMap is fast, configure
+        it to scan at a responsible rate.</li>
+        <li><strong>Exclusion Lists:</strong> Respect `robots.txt` for web
+        scanning and maintain lists of networks that have requested not to be
+        scanned.</li>
+        <li><strong>Transparency:</strong> If possible, make the purpose of your
+        scan and contact information public.</li>
+        <li><strong>Data Handling:</strong> Be mindful of the data collected and
+        how it's stored and shared, especially if it contains potentially
+        sensitive information.</li>
+      </ul>
+
+      <h2>Example: Basic ZMap Scan</h2>
+      <p>Here's how you might run a simple ZMap scan for HTTP servers on port
+      80:</p>
+      <pre><code class="language-bash">
+sudo zmap -p 80 -N 10000 -o results.csv --output-filter="success = 1 && repeat =
+0"
+      </code></pre>
+      <p>
+        This command tells ZMap to scan for port 80 (`-p 80`), send up to 10,000
+        packets per second (`-N 10000`, adjust based on your network), output
+        results to `results.csv` (`-o results.csv`), and filter for successful,
+        non-duplicate responses. Always consult the <a
+        href="https://zmap.io/documentation.html" target="_blank" rel="noopener
+        noreferrer">official ZMap documentation</a> for the latest options and
+        best practices.
+      </p>
+
+      <p>
+        In conclusion, ZMap has revolutionized the field of internet-wide
+        network measurement. Its speed and efficiency provide unprecedented
+        visibility into the state of the internet, but it must be used
+        responsibly and ethically.
+      </p> -->
+
+    </article>
+
+    <hr class="my-4 border-gray-200" /> <!-- Reduced my -->
+
+  </div>
+
+  <button id="scrollToTopBtn" class="scrollToTop fixed bottom-6 right-6
+  bg-indigo-600 text-white p-2.5 rounded-full shadow-lg hover:bg-indigo-700
+  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50
+  transition-opacity duration-300" style="display: none;"> <!-- Slightly smaller
+  scroll top button -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+    viewBox="0 0 24 24" stroke="currentColor"> <!-- Smaller icon -->
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <script>
+    $(document).ready(function () {
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+          $('.scrollToTop').fadeIn();
+        } else {
+          $('.scrollToTop').fadeOut();
+        }
+      });
+      $('.scrollToTop').click(function () {
+        $('html, body').animate({ scrollTop: 0 }, 600); // Slightly faster scroll
+        return false;
+      });
+    });
+  </script>
+
+</body>
+</html>

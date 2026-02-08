@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-45GX6K04VS"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-45GX6K04VS");
+    </script>
+
+    <title>Blog - Sumanth Rao</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro"
+    />
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="stylesheet/base.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="shortcut icon"
+      href="https://sumanthvrao.github.io/favicon.ico?"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="https://sumanthvrao.github.io/favicon.ico?"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body>
+    <div id="top"></div>
+    <div class="container fluid header-link">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" id="owner_name">
+          <div>
+            <a href="https://sumanthvrao.github.io">Sumanth Rao</a>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+          <div id="sections">
+            <a href="todo.pdf" target="_blank">CV</a>
+            - <a href="blog.html">Blog</a>
+            - <a href="gallery/index.html" target="_blank">Gallery</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="section-container">
+            <div class="project-category"><h5>Blog Posts</h5></div>
+            <div class="project-links" id="blog-list">
+              <p>
+                <a
+                  href="#zeek-home-network"
+                  data-blog-id="zeek-home-network"
+                  data-blog-title="Zeek Home Network Monitoring"
+                  data-blog-path="blog/zeek-home-network.html"
+                  >Zeek Home Network Monitoring</a
+                >
+                <br />
+                <span class="update">Dec 29, 2025</span>
+              </p>
+              <!-- <p>
+                <a
+                  href="#zmap"
+                  data-blog-id="zmap"
+                  data-blog-title="(WIP) Launching ZMap Scans in Parallel"
+                  data-blog-path="blog/zmap.html"
+                  >(WIP) Launching ZMap Scans in Parallel</a
+                >
+                <br />
+                <span class="update">May 17, 2025</span>
+              </p> -->
+            </div>
+          </div>
+
+          <br />
+
+          <div class="section-container blog-window">
+            <div id="blog-content" class="blog-content">
+              <p>Select a post to load.</p>
+            </div>
+          </div>
+
+          <br />
+          <a href="index.html">← Back to Home</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const blogLinks = document.querySelectorAll(
+          "#blog-list a[data-blog-path]"
+        );
+        const blogContent = document.getElementById("blog-content");
+
+        if (!blogLinks.length || !blogContent) {
+          return;
+        }
+
+        function setActive(link) {
+          blogLinks.forEach((item) => item.classList.remove("blog-link-active"));
+          link.classList.add("blog-link-active");
+        }
+
+        async function loadBlog(path, title) {
+          blogContent.innerHTML = "<p>Loading...</p>";
+
+          try {
+            const response = await fetch(path, { cache: "no-cache" });
+            if (!response.ok) {
+              throw new Error("Failed to load blog content");
+            }
+
+            const html = await response.text();
+            const doc = new DOMParser().parseFromString(html, "text/html");
+            const article = doc.querySelector("article") || doc.body;
+
+            if (!article) {
+              throw new Error("Blog content not found");
+            }
+
+            blogContent.innerHTML = article.innerHTML;
+            if (title) {
+              document.title = title + " - Sumanth Rao";
+            }
+          } catch (error) {
+            blogContent.innerHTML =
+              "<p>Could not load this post. Please try again later.</p>";
+          }
+        }
+
+        blogLinks.forEach((link) => {
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+            const path = link.getAttribute("data-blog-path");
+            const title = link.getAttribute("data-blog-title");
+            setActive(link);
+            loadBlog(path, title);
+            window.location.hash = link.getAttribute("data-blog-id") || "";
+          });
+        });
+
+        const initialId = window.location.hash.replace("#", "");
+        const initialLink =
+          (initialId &&
+            document.querySelector(
+              '#blog-list a[data-blog-id="' + initialId + '"]'
+            )) ||
+          blogLinks[0];
+
+        if (initialLink) {
+          setActive(initialLink);
+          loadBlog(
+            initialLink.getAttribute("data-blog-path"),
+            initialLink.getAttribute("data-blog-title")
+          );
+        }
+      })();
+    </script>
+    <a class="floating-arrow" href="#blog-content" aria-label="Jump to blog content">
+      ↓
+    </a>
+    <script>
+      (function () {
+        const arrow = document.querySelector(".floating-arrow");
+        if (!arrow) {
+          return;
+        }
+
+        function updateArrow() {
+          const nearBottom =
+            window.innerHeight + window.scrollY >=
+            document.body.offsetHeight - 200;
+
+          if (nearBottom) {
+            arrow.textContent = "↑";
+            arrow.setAttribute("href", "#top");
+            arrow.setAttribute("aria-label", "Back to top");
+          } else {
+            arrow.textContent = "↓";
+            arrow.setAttribute("href", "#blog-content");
+            arrow.setAttribute("aria-label", "Jump to blog content");
+          }
+        }
+
+        window.addEventListener("scroll", updateArrow);
+        window.addEventListener("resize", updateArrow);
+        updateArrow();
+      })();
+    </script>
+  </body>
+</html>

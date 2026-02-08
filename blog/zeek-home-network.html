@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Zeek Home Network Monitoring Setup - Sumanth Rao</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A guide to setting up Zeek for passive
+  network monitoring on a home network using Raspberry Pi and Asuswrt-Merlin
+  firmware.">
+  
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45GX6K04VS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-45GX6K04VS');
+  </script>
+
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/modern-normalize@3.0.1/modern-normalize.min.css">
+  <link rel="stylesheet" type="text/css"
+  href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <nav>
+    <a href="../index.html#blog">← Back to Blog</a>
+    <span>|</span>
+    <a href="../index.html">Home</a>
+  </nav>
+
+  <article>
+    <h1>Zeek Home Network Monitoring</h1>
+    <p><time datetime="2025-12-29">Dec 29, 2025</time></p>
+
+    <p>
+      <a href="https://github.com/zeek/zeek">Zeek</a> (formerly Bro) is a
+      powerful passive network monitoring tool that generates detailed logs of
+      network activity (HTTP, DNS, SSL, etc.) and configure rules for anomaly
+      detection. If you are a network tinkerer like me, and want to monitor your
+      own home network traffic, Zeek is a great tool to start with. In this
+      blogpost, I'll walk through how I set up Zeek to monitor my home network
+      using a Raspberry Pi and an ASUS router I had lying around.
+    </p>
+
+    <h2>Hardware Configuration</h2>
+
+    <p>
+      I use a Raspberry Pi 5 (8GB RAM) to run Zeek and other tools to monitor my
+      network traffic (e.g., I use <a href="https://pi-hole.net/">pi-hole</a> as
+      a DNS sinkhole to block tracking requests). For the crux of the setup, I
+      use the Asuswrt-Merlin firmware on the ASUS router to forward traffic to
+      the Raspberry Pi via iptables. Indeed, a cheap managed switch that can
+      does traffic mirroring (e.g., <a
+      href="https://www.amazon.com/dp/B00K4DS5KU">TP-link TL-SG108E</a>)
+      certainly helps! The only downside is that this is a Layer 3 mirroring,
+      which means it's not a packet-level full mirror (which managed switches
+      may offer), but works if the volume of traffic is not too high (ideal for
+      a small home network). Overall, this approach requires:
+    </p>
+
+    <ul>
+      <li> 1x Raspberry Pi 5 (8GB RAM)</li>
+      <li> 1x ASUS RT-AC66U router (or any other router that supports flashing
+      custom firmware)</li>
+      <li> Some ethernet cables or extra switches/wireless APs if you cant to
+      monitor the entire home network</li>
+    </ul>
+
+    <h3>Network Connections</h3>
+    <img src="../images/zeek-con-diagram.svg" alt="Network connection diagram showing the
+    Zeek monitoring setup" class="diagram-float">
+    <ul>
+      <li> Remember to place your original router in bridge mode (this prevents a double NAT
+      situation and allows the ASUS router to control NAT).</li>
+      <li> Connect the ASUS router to your modem (in bridge mode) and the
+      Raspberry Pi to the ASUS router via ethernet.</li>
+      <li> The Raspberry Pi operates in <strong>listen-only mode</strong>—it
+      passively monitors network traffic and does not route or process packets.</li>
+      <!-- <li> Debug your network connections using tools like nmap (e.g.,
+      <code>nmap -sP 192.168.50.0/24</code> to see if the Raspberry Pi is
+      reachable).</li> -->
+    </ul>
+    <div class="clear-float"></div>
+
+    <h2>ASUS Router Configuration</h2>
+    <ul>
+      <li> Install the Asuswrt-Merlin firmware on the ASUS router (Adminstration
+      → Firmware Upgrade → Upload firmware file). I used
+      <a href="https://www.asuswrt-merlin.net/download">Asuswrt-Merlin
+      downloads</a>
+      to find the correct firmware (RT-AC68U for my router). Alternatively, I
+      believe you can also use OpenWrt or DD-WRT if you prefer.
+      </li>
+      <li> Enable SSH connections to the ASUS router (found in Administration →
+      System).</li>
+      <li> Setup iptables rules to forward traffic to the Raspberry Pi IP
+      address (192.168.50.X). Reboot the router to apply the changes.
+      <pre><code>>> vi /jffs/scripts/firewall-start
+#!/bin/sh
+iptables -t mangle -A PREROUTING  -i br0 -j TEE --gateway 192.168.50.X
+iptables -t mangle -A POSTROUTING -o br0 -j TEE --gateway 192.168.50.X
+>> chmod +x /jffs/scripts/firewall-start</code></pre>
+      </li>
+      <li> Verify that the traffic is being forwarded to the Raspberry Pi by
+      running the following command. You should immediately see the traffic that
+      isn't addressed to the raspberry pi being forwarded to it.
+
+      <pre><code>sudo ip link set eth0 promisc on
+sudo tcpdump -i eth0 -n</code></pre>
+      </li>
+    </ul>
+
+    <h3>Zeek Configuration</h3>
+    <p>
+      Follow the <a href="https://docs.zeek.org/en/current/install.html">Zeek
+      installation instructions</a> to install Zeek for your Raspberry Pi (I
+      used the Debian version for arm64). After installation, I edited the
+      following configuration files:
+    </p>
+    <pre><code># /opt/zeek/etc/networks.cfg
+# Address ~ Label for the network
+192.168.0.0/16  Home network
+
+# /opt/zeek/etc/node.cfg [zeek]
+type=standalone
+host=localhost
+interface=eth0
+
+# /opt/zeek/etc/zeekctl.cfg
+# Optional: Configure email notifications for alerts
+# and increasing the log rotation interval.
+MailTo="email@domain.com"
+LogRotationInterval = 7200</code></pre>
+
+    <h3>Grafana Dashboard</h3>
+    <p>
+      To visualize the network traffic, I use Grafana installed on the Raspberry
+      Pi. Firstly, <a
+      href="https://grafana.com/tutorials/install-grafana-on-raspberry-pi/">
+      follow this guide</a> to install Grafana on a Raspberry Pi. Next, you
+      would want to bootstrap a simple way to ingest the zeek logs to a
+      database which Grafana can query. I've attached a partly vibe-coded script in
+      <a
+      href="https://github.com/sumanthvrao/zeek-home-network/blob/main/zeek-to-sqlite.py">this
+      repo</a> that converts Zeek logs to a SQLite database for easier querying.
+      You would want to place this script into a cron job to run periodically
+      (and I write the default output into
+      <code>/var/lib/grafana/data/zeek_logs.db</code>). Lastly, Grafana offers
+      some pre-built dashboards for Zeek (e.g., <a
+      href="https://github.com/hackertarget/pcap-did-what">pcap-did-what</a>),
+      which I customized to track the metrics I care about most. You can use the
+      <a
+      href="https://github.com/sumanthvrao/zeek-home-network/blob/main/graphana-queries.sql">graphana-queries.sql</a>
+      file to get started.
+    </p>
+    <img src="../images/grafana-dashboard-screenshot.png" alt="Grafana dashboard showing
+    Zeek network monitoring metrics" id="grafana-screenshot">
+
+    <h3>Event Notifications</h3>
+    <p>
+      There are a lot of things one can do with this setup now. Yacin Nadji (who
+      also uses Zeek for home network monitoring!) has a blogpost on adding
+      <a href="https://github.com/corelight/zeek-notice-telegram">Telegram
+      notifications</a> to Zeek. The full blogpost is available at:
+      <a href="https://corelight.com/blog/telegram-zeek-youre-my-main-notice">
+      Telegram Zeek: You're My Main Notice</a>, and also includes how you can
+      trigger custom actions when certain events occur.
+    </p>
+
+    <h3>What's Next?</h3>
+    <p>
+      At this point, I'm still chasing down packets and trying to understand
+      what's going on. For example, Apple's ecosystem seems to use mDNS to
+      broadcast that they exist (e.g., <code>_companion-link._tcp.local</code>,
+      <code>_airplay._tcp.local</code>). This ultimately led to me learn what
+      Apple's <a href="https://developer.apple.com/bonjour/">Bonjour</a> was.
+      Same goes for Spotify (maybe device discovery is required for their cast
+      feature?). Shockingly, my Unifi switch seems to <i>call home</i> to <a
+      href="https://ui.com">ui.com</a>
+      quite a lot! I'm yet to track down why that is. <br/><br/>
+      
+      Send me a note if you
+      think there's other interesting ideas to explore here!
+    </p>
+
+    <h2>References</h2>
+    <ul id="references">
+      <li><a href="https://docs.zeek.org/en/current/install.html">Zeek
+      Installation Guide</a> - Official Zeek documentation</li>
+      <li><a href="https://www.asuswrt-merlin.net/download">Asuswrt-Merlin
+      Downloads</a> - Custom firmware for ASUS routers</li>
+      <li><a href="https://www.amazon.com/dp/B00K4DS5KU">TP-link TL-SG108E</a> -
+      Managed switch with port mirroring</li>
+      <li><a
+      href="https://github.com/sumanthvrao/zeek-home-network/blob/main/zeek-to-sqlite.py">zeek-to-sqlite.py</a>
+      - Script to convert Zeek logs to SQLite</li>
+      <li><a
+      href="https://github.com/hackertarget/pcap-did-what">pcap-did-what</a> -
+      Grafana dashboard for Zeek</li>
+      <li><a
+      href="https://github.com/sumanthvrao/zeek-home-network/blob/main/graphana-queries.sql">graphana-queries.sql</a>
+      - Custom Grafana queries for Zeek</li>
+      <li><a
+      href="https://corelight.com/blog/telegram-zeek-youre-my-main-notice">
+      Telegram Zeek: You're My Main Notice</a> - Blogpost on adding Telegram
+      notifications to Zeek</li>
+    </ul>
+  </article>
+
+  <button id="scrollToTopBtn">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+    stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <div class="lightbox-overlay" id="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-image" id="lightbox-image" src="" alt="">
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+          $('#scrollToTopBtn').fadeIn();
+        } else {
+          $('#scrollToTopBtn').fadeOut();
+        }
+      });
+      
+      $('#scrollToTopBtn').click(function () {
+        $('html, body').animate({ scrollTop: 0 }, 600);
+        return false;
+      });
+
+      $('#grafana-screenshot').click(function() {
+        const imgSrc = $(this).attr('src');
+        $('#lightbox-image').attr('src', imgSrc);
+        $('#lightbox').addClass('active');
+        $('body').css('overflow', 'hidden');
+      });
+
+      $('#lightbox, .lightbox-close').click(function(e) {
+        if (e.target === this) {
+          $('#lightbox').removeClass('active');
+          $('body').css('overflow', '');
+        }
+      });
+
+      $(document).keydown(function(e) {
+        if (e.key === 'Escape' && $('#lightbox').hasClass('active')) {
+          $('#lightbox').removeClass('active');
+          $('body').css('overflow', '');
+        }
+      });
+
+      $('#lightbox-image').click(function(e) {
+        e.stopPropagation();
+      });
+    });
+  </script>
+
+</body>
+
+</html>
