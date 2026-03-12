@@ -53,6 +53,15 @@ b {
   font-size: 15px;
 }
 
+.project-img {
+  max-width: 80%;
+  height: auto;
+}
+
+.project-img.embargo-img {
+  max-width: 70%;
+}
+
 .project-display {
   margin-left: 5px;
   border: none;

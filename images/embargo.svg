@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#f0f0f0" rx="8"/>
+  <g transform="translate(100,85)">
+    <rect x="-30" y="-5" width="60" height="40" rx="5" fill="none" stroke="#999" stroke-width="4"/>
+    <path d="M-18,-5 V-18 a18,18 0 0,1 36,0 V-5" fill="none" stroke="#999" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="0" cy="15" r="5" fill="#999"/>
+  </g>
+  <text x="100" y="150" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#999">Under embargo</text>
+</svg>
