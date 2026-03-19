@@ -250,6 +250,10 @@ body {
 
 #sign {
   text-align: center;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
 }
 
 #updates {
