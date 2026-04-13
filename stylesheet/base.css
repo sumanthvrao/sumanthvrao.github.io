@@ -113,6 +113,20 @@ h4.project-title {
   color: #000000;
 }
 
+.header-link > .row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#left-container {
+  text-align: center;
+}
+
+#left-container .desktop-only {
+  text-align: left;
+}
+
 #sections {
   text-align: right;
   color: #000000;
