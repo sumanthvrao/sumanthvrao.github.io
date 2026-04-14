@@ -163,13 +163,13 @@ h4.project-title {
 }
 
 #awards-honors {
-  margin-top: 15px;
-  font-size: 13px;
+  margin-top: 0;
+  font-size: inherit;
 }
 
 #service {
-  margin-top: 15px;
-  font-size: 13px;
+  margin-top: 0;
+  font-size: inherit;
 }
 
 #online {
