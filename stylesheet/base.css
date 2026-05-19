@@ -200,6 +200,17 @@ h4.project-title {
   font-size: 15px;
 }
 
+.paper-award {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #a67c00;
+}
+
+.paper-award .fa {
+  margin-right: 4px;
+  color: #e6a800;
+}
+
 .blog-window {
   background: #f7f7f7;
 }
