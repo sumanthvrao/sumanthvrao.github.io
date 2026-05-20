@@ -104,7 +104,7 @@ h4.project-title {
 
 #owner_name {
   text-align: left;
-  font-size: 23px;
+  font-size: 30px;
 }
 
 .header-link {
@@ -140,6 +140,13 @@ h4.project-title {
 #personal-links {
   font-size: 13px;
   margin-top: 5px;
+  text-align: left;
+}
+
+#headshot {
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
 }
 
 #research-openings {
@@ -330,12 +337,10 @@ body {
 
 @media only screen and (max-width: 800px) {
   #owner_name {
-    text-align: center;
+    text-align: left;
   }
 
   #headshot {
-    display: block;
-    margin: 0 auto;
     margin-bottom: 5px;
   }
 
@@ -353,7 +358,7 @@ body {
   }
 
   #personal-links {
-    text-align: center;
+    text-align: left;
     margin-bottom: 5px;
   }
 
