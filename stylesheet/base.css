@@ -86,6 +86,12 @@ b {
   background: #0037ff52;
 }
 
+.project-category h5 {
+  display: inline-block;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #e4035c;
+}
+
 .page table#edu-table td {
   padding-left: 0px;
   padding-right: 20px;
@@ -147,6 +153,20 @@ h4.project-title {
   display: block;
   margin-left: 0;
   margin-right: auto;
+}
+
+#personal-links a {
+  display: inline-block;
+  border-bottom: 1px solid #e4035c;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+#personal-links a {
+  display: inline-block;
+  border-bottom: 1px solid #e4035c;
+  line-height: 1.1;
+  margin-bottom: 4px;
 }
 
 #research-openings {
@@ -260,6 +280,10 @@ h4.project-title {
   color: #e4035c;
 }
 
+.mobile-home-shell {
+  display: none;
+}
+
 body {
   padding-top: 54px;
 }
@@ -336,8 +360,31 @@ body {
 }
 
 @media only screen and (max-width: 800px) {
+  body {
+    padding-top: 24px;
+    color: #111111;
+    line-height: 1.45;
+  }
+
+  .container {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .header-link {
+    margin-bottom: 18px;
+  }
+
+  .header-link > .row {
+    display: block;
+  }
+
   #owner_name {
     text-align: left;
+    font-size: 25px;
+    line-height: 1.1;
+    margin-bottom: 8px;
   }
 
   #headshot {
@@ -348,8 +395,70 @@ body {
     display: none;
   }
 
+  .mobile-home-shell {
+    display: block;
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
+
+  .mobile-home-card {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 18px 0 16px;
+    border-top: 1px solid #dedede;
+    border-bottom: 1px solid #dedede;
+  }
+
+  .mobile-home-intro {
+    display: grid;
+    grid-template-columns: 82px 1fr;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+
+  .mobile-home-intro img {
+    width: 82px;
+    height: 82px;
+    object-fit: cover;
+    margin: 0;
+    border-radius: 50%;
+  }
+
+  .mobile-home-name {
+    font-size: 22px;
+    line-height: 1.1;
+    font-weight: 500;
+  }
+
+  .mobile-home-role,
+  .mobile-home-place {
+    font-size: 14px;
+    color: #454545;
+  }
+
+  .mobile-home-card p {
+    margin-bottom: 14px;
+    font-size: 15.5px;
+  }
+
+  .mobile-home-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .mobile-home-links a {
+    padding: 4px 0;
+    margin-right: 10px;
+    border-bottom: 1px solid #e4035c;
+    line-height: 1.1;
+  }
+
   #left-container {
-    margin: 20px 20px 0px 20px;
+    display: none;
   }
 
   #landing-description {
@@ -375,24 +484,139 @@ body {
   }
 
   #sections {
-    font-size: 17px;
+    font-size: 15px;
     text-align: center;
   }
-  /*
-    .project-row {
-        margin: 0px 15px 15px 15px;
-    }*/
 
-  /*    .project-category {
-        margin: 0px 20px 0px 20px;
-    }*/
-
-  .landing-description {
-    margin: 20px 20px 0px 20px;
+  #sections a {
+    display: inline-block;
+    padding: 4px 3px;
   }
 
-  #personal-links {
-    margin-top: 12px;
+  .landing-description {
+    margin: 0;
+    font-size: 15.5px;
+  }
+
+  .landing-description > p:first-child {
+    margin-top: 2px;
+  }
+
+  #projects {
+    margin-top: 22px;
+  }
+
+  #projects.container,
+  .landing-description .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .project-category {
+    margin-top: 22px;
+    padding-top: 6px;
+    border-top: 1px solid #dedede;
+  }
+
+  .project-category h5 {
+    margin-bottom: 12px;
+    font-size: 15px;
+    letter-spacing: 0;
+  }
+
+  .project-row {
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 0 20px;
+    font-size: 14.5px;
+  }
+
+  .project-row > [class*="col-"] {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .project-row > [class*="col-"]:first-child {
+    float: right;
+    width: 58px;
+    margin-left: 14px;
+  }
+
+  .industry-row > [class*="col-"]:first-child {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .industry-row {
+    padding-bottom: 15px;
+  }
+
+  .industry-row .project-title a {
+    display: inline-block;
+    margin-bottom: 2px;
+    font-size: 15px;
+  }
+
+  .mobile-education-section {
+    margin-top: 2px;
+  }
+
+  .mobile-education-item {
+    margin-bottom: 15px;
+    font-size: 14.5px;
+    line-height: 1.42;
+  }
+
+  .mobile-education-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .project-img,
+  .project-img.embargo-img {
+    max-width: 58px;
+    max-height: 58px;
+    object-fit: contain;
+    margin: 2px 0 8px auto;
+  }
+
+  .project-title {
+    line-height: 1.42;
+  }
+
+  .project-description,
+  .project-links,
+  .paper-award {
+    font-size: 14px;
+  }
+
+  .paper-award {
+    display: inline-block;
+    margin-top: 3px;
+  }
+
+  #misc,
+  #awards-honors,
+  #service,
+  #talks {
+    font-size: 14.5px;
+  }
+
+  #sign {
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 1.35;
+  }
+
+  .floating-arrow {
+    right: 12px;
+    bottom: 12px;
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
   }
 
   .video {
