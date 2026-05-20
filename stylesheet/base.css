@@ -512,6 +512,11 @@ body {
     padding-right: 0;
   }
 
+  body > #projects.container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   .project-category {
     margin-top: 22px;
     padding-top: 6px;
