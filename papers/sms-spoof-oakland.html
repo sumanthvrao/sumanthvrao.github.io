@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lost in Translation: Text Message Spoofing via Email - Sumanth Rao</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Paper page for Lost in Translation: Text Message Spoofing via Email, published at the IEEE Symposium on Security and Privacy in May 2026.">
+  <link rel="canonical" href="https://sumanthvrao.github.io/papers/sms-spoof-oakland.html">
+
+  <meta name="citation_title" content="Lost in Translation: Text Message Spoofing via Email">
+  <meta name="citation_author" content="Rao, Sumanth">
+  <meta name="citation_author" content="Shu, Ye">
+  <meta name="citation_author" content="Savage, Stefan">
+  <meta name="citation_author" content="Schulman, Aaron">
+  <meta name="citation_author" content="Voelker, Geoffrey M.">
+  <meta name="citation_author" content="Liu, Enze">
+  <meta name="citation_publication_date" content="2026/05">
+  <meta name="citation_conference_title" content="IEEE Symposium on Security and Privacy">
+  <meta name="citation_pdf_url" content="https://sumanthvrao.github.io/papers/rao-oakland-2026.pdf">
+  <meta name="citation_online_date" content="2026/05">
+  <meta name="citation_language" content="en">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-45GX6K04VS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-45GX6K04VS');
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../stylesheet/base.css" rel="stylesheet">
+  <link rel="shortcut icon" href="https://sumanthvrao.github.io/favicon.ico?" type="image/x-icon">
+  <link rel="icon" href="https://sumanthvrao.github.io/favicon.ico?" type="image/x-icon">
+</head>
+
+<body>
+  <div class="container fluid header-link">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" id="owner_name">
+        <div>
+          <a href="../index.html">Sumanth Rao</a>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <div id="sections">
+          <a href="../index.html">Home</a>
+          -
+          <a href="../research.html">Publications</a>
+          -
+          <a href="../blog.html">Blog</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container fluid" id="projects">
+    <article>
+      <div class="row project-row">
+        <div class="col-md-2 col-xs-4">
+          <img src="../images/lost-in-translation.PNG" class="img-fluid center-block project-img embargo-img" alt="Lost in Translation paper thumbnail">
+        </div>
+        <div class="col-md-10 col-xs-8">
+          <div class="project-title">
+            <h1>Lost in Translation: Text Message Spoofing via Email</h1>
+            <p>
+              <b>Sumanth Rao</b>, Ye Shu, Stefan Savage, Aaron Schulman,
+              Geoffrey M. Voelker, Enze Liu.
+            </p>
+            <p>
+              <em>IEEE Symposium on Security and Privacy (Oakland), San Francisco, May 2026</em>
+            </p>
+          </div>
+          <div class="project-description">
+            <a href="../papers/rao-oakland-2026.pdf">[pdf]</a>
+            -
+            <a href="../papers/oakland26-poster.pdf">[poster]</a>
+            -
+            <span class="paper-award">
+              <i class="fa fa-trophy" aria-hidden="true"></i>
+              Distinguished Paper Award
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <h2>Abstract</h2>
+      <p>
+        This paper identifies and empirically validates a class
+        of vulnerabilities in smartphone messaging systems that allows
+        attackers to easily spoof the identity of participants, even
+        injecting themselves into existing conversations. These issues
+        arise from ambiguities at two levels of the messaging stack.
+        First, that major carriers provide gateways between traditional
+        open email services and the transport services (e.g. IMS)
+        that manage the delivery of SMS/MMS messages in IP-based
+        cellular networks. Second, that the standard messaging apps
+        offered by popular smartphones support identity aliasing both
+        across protocols (e.g., iMessage, RCS, SMS/MMS) and across
+        identifier types (i.e., email addresses, phone numbers, etc.).
+        Taken together, we show that carefully crafted email messages
+        can be used to coerce carriers to issue spoofed IMS messages
+        that will then be displayed as the sender of the attacker's
+        choosing (e.g., arbitrary email address, phone number or short
+        code) — including injecting forged messages into existing
+        messaging threads. We demonstrate working versions of these
+        attacks across a variety of phones (both Android and iPhone)
+        and wireless carriers (including AT&T, Verizon, T-Mobile, and
+        Google Fi), describe how they could be used to support more
+        complex attacks and discuss the range of mitigations and
+        defenses that would offer improved protection.
+      </p>
+    </article>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <div id="sign">
+    <small>This site is inspired by <a href="https://diwenx.com/">this
+    page</a>, code <a href="https://github.com/sumanthvrao/sumanthvrao.github.io">here</a>.</small>
+  </div>
+</body>
+</html>
