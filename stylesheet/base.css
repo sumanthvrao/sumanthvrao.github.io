@@ -149,6 +149,34 @@ h4.project-title {
   text-align: left;
 }
 
+#personal-links .email-row {
+  font-size: 16.5px;
+  margin-bottom: 6px;
+}
+
+#personal-links .pgp-inline {
+  margin-left: 5px;
+  font-size: 12.5px;
+  opacity: 0.75;
+}
+
+#personal-links .pgp-inline a {
+  border-bottom: none;
+  color: #555;
+}
+
+#personal-links .pgp-inline a:hover {
+  color: #e4035c;
+}
+
+#personal-links .profile-links {
+  font-size: 15px;
+}
+
+#personal-links .profile-links a {
+  margin-right: 10px;
+}
+
 #headshot {
   display: block;
   margin-left: 0;
@@ -186,7 +214,7 @@ h4.project-title {
 
 #education {
   margin-top: 15px;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 #awards-honors {
