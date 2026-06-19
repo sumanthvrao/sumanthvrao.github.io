@@ -1,0 +1,39 @@
+Lost in Translation: Text Message Spoofing via Email
+May 21, 2026
+
+This is the short version of our Oakland 2026 paper: how an old convenience feature, email-to-text gateways, can be composed with modern phone messaging apps to make spoofed texts look surprisingly real.
+
+The starting point is almost quaint. For decades, U.S. carriers have let people send email to addresses like number@tmomail.net or number@vtext.com, and the carrier turns that email into an SMS or MMS message. That bridge is useful, but it is also a protocol translator between two systems with very different ideas about identity. Email has headers like Mail From, From, and Sender. SMS/MMS has fields that phones eventually render as "who sent this message." The security question is: which email identity does the carrier authenticate, and which one does the phone display?
+
+We found that the answer varied by gateway, and the differences mattered. Across AT&T, Verizon, T-Mobile, Google Fi, and several MVNOs, we tested how gateways mapped email into mobile messages and whether SPF, DKIM, and DMARC actually constrained the sender that reached the handset. In several cases, carefully crafted email could authenticate one identity while causing the gateway to emit another. In others, missing or malformed headers caused gateways to fall back to attacker-controlled values.
+
+The second half of the bug was on the phone
+Getting a spoofed sender through a carrier gateway is only half the story. The other half is what Apple Messages and Google Messages do when they receive sender identities that are not quite phone numbers and not quite email addresses. These apps try to make messaging feel seamless across SMS, MMS, RCS, iMessage, phone numbers, email addresses, short codes, and saved contacts. That user experience creates a lot of aliasing.
+
+On iOS, we found a parsing issue in CoreTelephony: a sender like 9876543210=?@attacker.com could be interpreted as +1 (987) 654-3210. On Android, Google Messages had a different bug: an all-numeric email-looking sender like 987@6543.210 failed the email check, got stripped of punctuation, and became the same phone number. The same idea extended to short codes, which is particularly uncomfortable given how often banks, delivery services, and two-factor systems rely on them.
+
+Once sender identity is confused, the UI does the rest. A forged message can appear as a new text from an arbitrary email address, phone number, or short code. More dangerously, it can land inside an existing conversation thread, because messaging apps merge conversations across identifiers and transports. Apple Messages is especially aggressive here: if a contact has both an email and a phone number, messages across those identities may be shown together. Google Messages keeps more separation across contact methods, but the numeric-email parsing bug let us target existing phone number threads directly.
+
+What this enabled
+The paper walks through several end-to-end attacks: spoofing one-to-one texts, injecting into existing threads, spoofing short codes, constructing fake group conversations, and abusing trusted-looking business messaging surfaces. The wild part is the threat model. The attacker does not need a fake base station, carrier access, malware on the victim's phone, or an SMS gateway account. They need the ability to send customized email to a public carrier gateway, plus enough target information to address the message.
+
+Phone number spoofing exampleSpoofed message injected into a Microsoft RCS Business Messaging threadSpoofed messages rendered inside a fake group conversation
+Verified business messages
+One of the stranger cases involved RCS Business Messaging (RBM). RBM was added by Google as a way for businesses to send richer, branded, and verified messages to users. In spirit, this is exactly the sort of feature that should make spoofing harder: the UI can show a brand, a verified identity, and a more trustworthy conversation surface than a random SMS short code.
+
+But the verified UI still depended on the sender identity that arrived at the phone. We found that spoofing the static RBM sender address for a business could make Apple Messages render a spoofed SMS/MMS as if it were part of that verified business conversation. The trusted-looking business UI remains, but the injected message arrives over SMS.
+
+Rendering fake groups
+The group spoofing attack came from a different kind of translation leak. Some MMS gateways preserved extra addresses from the email To header when converting the message into the mobile message. Those extra recipients were not necessarily validated or delivered to; they were simply carried forward into the MMS metadata that the phone used to decide how to render the conversation.
+
+That meant a single email to the victim could be made to look like a group message. By changing the spoofed sender across messages, we could render different apparent participants in the same group thread, even when those people never received anything. This is a nice example of the overall theme: a gateway leaks just enough structure from email, and the phone helpfully turns it into a very convincing messaging UI.
+
+We also spent a lot of time on the less cinematic part: packet captures, SMS/MMS PDUs, handset databases, reverse engineering, and many boring test messages to understand exactly where the identity changed. That was the useful lesson for me. The bug was not "email is spoofable" or "SMS is old." It was the composition: legacy gateways, best-effort email authentication, mobile protocol conversion, and friendly messaging UIs all making locally reasonable choices that became unsafe together.
+
+We tested only with devices and SIMs under our control, rate-limited our experiments, and disclosed the issues before publication.
+Where things stand
+We disclosed the gateway issues to the affected carriers and the parsing issues to Apple and Google. The paper includes the detailed timeline, but the short version is that carriers either patched their gateways or retired them, Google fixed the Google Messages parsing bug, Apple assigned CVE-2025-46311 for the iOS sequence parsing issue and addressed it in iOS/macOS/iPadOS 26.3, and GSMA updated carrier security guidance with mitigations for this class of attack.
+
+The bigger takeaway is not just "turn off email-to-text," though that is a pretty good start. It is that messaging systems should be much more careful about silently merging identities and transports. If a message arrives over SMS/MMS into a thread that users mentally treat as trusted or encrypted, the UI should make that change hard to miss.
+
+More details are in the full paper and poster.
