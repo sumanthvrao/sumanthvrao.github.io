@@ -261,6 +261,18 @@ h4.project-title {
   color: #a67c00;
 }
 
+.industry-logo-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.industry-logo {
+  max-height: 54px;
+  width: auto;
+  margin-bottom: 0;
+}
+
 .tabbed {
   margin-left: 1.5em;
 }
@@ -583,9 +595,14 @@ body {
   }
 
   .industry-row > [class*="col-"]:first-child {
-    float: none;
-    width: 100%;
+    float: left;
+    width: 36px;
     margin-left: 0;
+    margin-right: 12px;
+  }
+
+  .industry-logo {
+    max-height: 34px;
   }
 
   .industry-row {
