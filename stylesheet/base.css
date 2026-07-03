@@ -12,16 +12,33 @@ img {
 }
 
 a {
-  font-weight: 500;
-  color: black;
+  color: #1155cc;
+  text-decoration: underline;
 }
 
 a:hover {
   color: #e4035c;
 }
 
-b {
-  font-weight: 500;
+/* Header, nav, and sidebar links keep their own (non-blue) treatment */
+#owner_name a,
+#sections a,
+#personal-links a,
+.mobile-home-links a {
+  color: #000;
+  text-decoration: none;
+}
+
+#owner_name a:hover,
+#sections a:hover,
+#personal-links a:hover,
+.mobile-home-links a:hover {
+  color: #e4035c;
+}
+
+b,
+strong {
+  font-weight: 700;
 }
 
 .update {
@@ -143,6 +160,23 @@ h4.project-title {
   font-size: 15px;
 }
 
+/* Nudge the intro paragraphs right so they line up with the section
+   headings below (which sit ~10px in due to their nested container).
+   Increase this value to push the intro text further right. */
+.landing-description > p {
+  padding-left: 10px;
+}
+
+/* Links that should read as plain text, not blue hyperlinks */
+.plain-link {
+  color: #000;
+  text-decoration: none;
+}
+
+.plain-link:hover {
+  color: #e4035c;
+}
+
 #personal-links {
   font-size: 13px;
   margin-top: 5px;
@@ -256,7 +290,7 @@ h4.project-title {
 }
 
 .paper-award {
-  font-size: 16.5px;
+  font-size: 15px;
   font-weight: 600;
   color: #a67c00;
 }
@@ -644,7 +678,7 @@ body {
   .project-description,
   .project-links,
   .paper-award {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .paper-award {
