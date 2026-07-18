@@ -215,6 +215,7 @@ h4.project-title {
   display: block;
   margin-left: 0;
   margin-right: auto;
+  width: 180px;
 }
 
 #personal-links a {
