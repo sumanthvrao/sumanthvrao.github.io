@@ -17,12 +17,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="stylesheet/base.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="shortcut icon"
         href="https://sumanthvrao.github.io/favicon.ico?" type="image/x-icon">
         <link rel="icon" href="https://sumanthvrao.github.io/favicon.ico?"
         type="image/x-icon">
+
+        <!-- Small additions only; inherits all fonts/colors from base.css -->
+        <style>
+            .profile-links {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 0 6px;
+                margin-top: 4px;
+            }
+            .profile-links .sep {
+                opacity: 0.45;
+            }
+            .education-item {
+                margin-bottom: 10px;
+            }
+        </style>
     </head>
 
 
@@ -39,7 +55,7 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     <div id="sections">
-                        <a href="research.html">Publications</a>
+                        <a href="#publications">Publications</a>
                         -
                         <a href="blog.html">Blog</a>
                         <!-- - <a href="gallery/index.html" target="_blank">Gallery</a> -->
@@ -72,8 +88,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3"
                 id="left-container">
                     <img id="headshot" src="images/svrao.jpg" class="img-fluid"
-                    alt="Bust outside CSE building at UCSD"> 
-                
+                    alt="Bust outside CSE building at UCSD">
 
                     <div id="personal-links">
                         <div class="email-row">
@@ -84,61 +99,30 @@
                                 class="fa fa-key"></i>PGP Key)</a>
                             </span>
                         </div>
+                        <!-- (1) profile links now horizontal -->
                         <div class="profile-links">
-                            <a
-                            href="https://scholar.google.com/citations?user=BuM8tBgAAAAJ&hl=en">Google
+                            <a href="https://scholar.google.com/citations?user=BuM8tBgAAAAJ&hl=en">Google
                             Scholar</a>
-                            <br>
+                            <span class="sep">·</span>
                             <a href="https://www.linkedin.com/in/sumanthvrao" target="_blank">LinkedIn</a>
-                            <br>
+                            <span class="sep">·</span>
                             <a href="https://github.com/sumanthvrao" target="_blank">GitHub</a>
                         </div>
                     </div>
-                    <div>
 
-                        <!-- <div id="awards-honors" class="desktop-only">
-                        </div> -->
+                    <!-- (2) Education moved out of the sidebar, now near the bottom -->
 
-                        <!-- <div id="service" class="desktop-only"> -->
-                        <!-- </div> -->
-
-
-                        <div id="education" class="desktop-only">
-                            <b>Education:</b>
-                            <br>
-                            <b>Ph.D. in Computer Science</b>
-                            <!-- <br> -->
-                            (expected 2027)
-                            <br>
-                            <em>University of California, San Diego</em>
-                            <br>
-                            <br>
-                            <b>M.S. in Computer Science</b>
-                            <!-- <br> -->
-                            (2021 - 2025)
-                            <br>
-                            <em>University of California, San Diego</em>
-                            <br>
-                            <br>
-                            <b>B.S. in Computer Science</b>
-                            (2016 - 2020)
-                            <br>
-                            <em>PES University, Bangalore</em>
-                        </div>
-
-                        <div id="misc" class="desktop-only">
-                            <b>More personal:</b>
-                            <br>
-                            <a href="gallery/index.html"
-                            target="_blank">Some photos I've taken across the US 📸</a>
-                        </div>
-
+                    <div id="misc" class="desktop-only">
+                        <b>More personal:</b>
+                        <br>
+                        <a href="gallery/index.html"
+                        target="_blank">Some photos I've taken across the US 📸</a>
                     </div>
                 </div>
 
                 <div class="landing-description col-xs-12 col-sm-12 col-md-8
                 col-lg-9">
-                
+
                    <p>
                         I am a PhD student at the <a
                         href="https://cse.ucsd.edu/" class="plain-link">Department of Computer
@@ -148,7 +132,7 @@
                         href="https://cseweb.ucsd.edu/~savage/">Stefan
                         Savage</a> and <a
                         href="https://cseweb.ucsd.edu/~voelker/">Geoff
-                        Voelker</a>. 
+                        Voelker</a>.
                     </p>
 
                     <p>
@@ -160,14 +144,14 @@
                         href="https://sysnet.ucsd.edu/">Sysnet</a> and <a
                         href="https://www.sysnet.ucsd.edu/cryptosec/">CryptoSec</a>
                         research groups at UC San Diego. My hometown is
-                        Bangalore (ಬೆಂಗಳೂರು), India. 
+                        Bangalore (ಬೆಂಗಳೂರು), India.
                     </p>
-
 
             <div class="container fluid" id="projects">
 
+            <div id="publications"></div>
             <div class="project-category">
-            <h5>Recent Publications (<a href="research.html">All publications &raquo;</a>)</h5></div>
+            <h5>Publications</h5></div>
                 <div class="row project-row">
                     <div class="col-md-3 col-xs-4" style="display: flex; align-items: center; justify-content: center;"><img src="images/karr-device.jpeg"
                     class="img-fluid center-block project-img" style="max-height: 130px; width: auto;"></div>
@@ -202,7 +186,7 @@
                                 <b>Lost in Translation: Text Message Spoofing
                                 via Email</b></a>
                                 <span class="paper-award">
-                                - 
+                                -
                                 <i class="fa fa-trophy" aria-hidden="true"></i>
                                 Distinguished Paper Award
                                 </span>
@@ -238,7 +222,7 @@
                             href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2836824"
                             class="link-style"><b>Patient Care Technology
                             Disruptions Associated With the CrowdStrike
-                            Outage</b></a> 
+                            Outage</b></a>
                             <br>
                              Jeffrey L. Tully<sup>*</sup>, <b>Sumanth Rao<sup>*</sup></b>, Isabel Straw,
                              Rodney A. Gabriel, Chris Longhurst, Stefan Savage,
@@ -263,7 +247,7 @@
                         <div class="project-title">
                             <a
                             href="https://dl.acm.org/doi/10.1145/3589334.3645499"><b>Unfiltered:
-                            Measuring Cloud-based Email Filtering Bypasses</b></a> 
+                            Measuring Cloud-based Email Filtering Bypasses</b></a>
                             <br>
                             <b>Sumanth Rao</b>, Enze Liu, Grant Ho, Geoffrey M.
                             Voelker, Stefan Savage.
@@ -288,31 +272,172 @@
                     </div>
                 </div>
 
-                <p style="font-size: 0.7em; color: #888; margin-top: 8px;"><sup>*</sup>Equal contribution.</p>
+                <br>
 
-            <div class="mobile-only mobile-education-section">
-                <div class="project-category"><h5>Education</h5></div>
-                <div class="mobile-education-item">
-                    <b>Ph.D. in Computer Science</b>
-                    <br>
-                    Expected 2027
-                    <br>
-                    <em>University of California, San Diego</em>
+                <div class="row project-row">
+                    <div class="col-md-3 col-xs-4" style="display: flex; align-items: center; justify-content: center;"><img src="images/susirr.png"
+                    class="img-fluid center-block project-img" style="max-height: 120px; width: auto;"></div>
+                    <div class="col-md-9 col-xs-8">
+                        <div class="project-title">
+                            <a
+                            href="https://dl.acm.org/doi/10.1145/3618257.3624843"><b>IRRegularities
+                            in the Internet Routing Registry</b></a>
+                            <br>
+                            Ben Du, Katherine Izhikevich, <b>Sumanth Rao</b>,
+                            Gautam Akiwate, Cecilia Testart, Alex C. Snoeren,
+                            and kc claffy.
+                            <br>
+                            <em>ACM Internet Measurement Conference (IMC),
+                            Montr&eacute;al, Canada, October 2023</em>
+                        </div>
+                    </div>
                 </div>
-                <div class="mobile-education-item">
-                    <b>M.S. in Computer Science</b>
-                    <br>
-                    2021 - 2025
-                    <br>
-                    <em>University of California, San Diego</em>
+
+                <br>
+
+                <div class="row project-row">
+                    <div class="col-md-3 col-xs-4" style="display: flex; align-items: center; justify-content: center;"><img src="images/spyware.png"
+                    class="img-fluid center-block project-img" style="max-height: 120px; width: auto;"></div>
+                    <div class="col-md-9 col-xs-8">
+                        <div class="project-title">
+                            <a
+                            href="https://petsymposium.org/popets/2023/popets-2023-0013.pdf"><b>No
+                            Privacy Among Spies: Assessing the Functionality and
+                            Insecurity of Consumer Android Spyware Apps</b></a>
+                            <br>
+                            Enze Liu, <b>Sumanth Rao</b>, Sam Havron, Grant Ho,
+                            Stefan Savage, Geoffrey M. Voelker, and Damon McCoy.
+                            <br>
+                            <em>Privacy Enhancing Technologies Symposium (PETS),
+                            Lausanne, Switzerland, July 2023</em>
+                        </div>
+                        <div>
+                            <a href="papers/popets2023-spyware-poster.pdf">[poster]</a>
+                            -
+                            <a href="https://kvgo.com/ftc/PrivacyCon-March-6-2024">[PrivacyCon 2024]</a>
+                            -
+                            <b>News</b>: <a class="award"
+                            href="https://today.ucsd.edu/story/spywarestudy2023">UC San Diego News</a>,
+                            <a class="award"
+                            href="https://www.universityofcalifornia.edu/news/what-happens-when-your-phone-spying-you">UC News</a>,
+                            <a class="award"
+                            href="https://cacm.acm.org/news/272766-spyware-lurks-in-android-smartphones/fulltext">CACM News</a>,
+                            <a class="award"
+                            href="https://techxplore.com/news/2023-03-spying.html">Tech Xplore</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="mobile-education-item">
-                    <b>B.S. in Computer Science</b>
-                    <br>
-                    2016 - 2020
-                    <br>
-                    <em>PES University, Bengaluru</em>
+
+                <p style="font-size: 0.7em; color: #888; margin-top: 8px;"><sup>*</sup>Equal contribution.</p>
+            </div>
+
+            <!-- (3) Awards + Service, full width, right below publications -->
+            <div class="container fluid">
+                <div class="project-category"><h5>Awards</h5></div>
+                <div id="awards-honors">
+                    <p>
+                        - 2026. CSE Doctoral Award for Excellence in Service and
+                        Leadership, UC San Diego.
+                        <br>
+                        - 2026. <a
+                        href="https://sp2026.ieee-security.org/awards_papers.html">
+                        <span style="font-weight: 600;">Distinguished Paper Award</span></a>,
+                        IEEE Symposium on Security and Privacy (Oakland) - <a
+                        href="https://cns.ucsd.edu/cns-researchers-receive-distinguished-paper-award-at-ieee-symposium-on-security-and-privacy/">News</a>
+                        <br>
+                        - 2024. Finalists, NatSec Hackathon
+                        (Stanford DEFCON and Shield Capital)
+                        <br>
+                        - 2021-2022. Recipient of
+                        <a class="link-style"
+                        href="https://www.jntataendowment.org/">JN Tata
+                        Scholarship</a>.
+                    </p>
                 </div>
+
+                <div class="project-category"><h5>Service</h5></div>
+                <div id="service">
+                    <p>
+                        - Program Committee, <a class="link-style"
+                        href="https://raid2026.org/committees.html">Research in
+                        Attacks, Intrusions and Defenses (RAID) 2026</a>
+                        <br>
+                        - <a href="https://chezbob.ucsd.edu">CSE Chezbob Coordinator</a>,
+                        UC San Diego (2026-2027)
+                        <br>
+                        - CSE Visit Day Coordinator, UC San Diego (2026)
+                        <br>
+                        - Allyship Co-Chair, <a
+                        href="https://cse-gradwic.github.io">UCSD Graduate Women
+                        in Computing</a> (2023-2024)
+                        <br>
+                        - VP External, <a
+                        href="https://jgsc.eng.ucsd.edu/home">Jacobs Graduate
+                        Student Council (JGSC)</a>, UC
+                        San Diego (2021-2023)
+                    </p>
+                </div>
+            </div>
+
+            <div class="container fluid">
+                <div class="project-category"><h5>Talks</h5></div>
+                <div id="talks">
+                    <p>
+                        - <a href="talks/oakland26-lost-in-translation.pdf">Lost in
+                        Translation: Text Message Spoofing via Email</a>
+                        <br>
+                        <span class="tabbed">IEEE Symposium on Security and Privacy (Oakland), May 2026</span>
+                        <br>
+                        - <a href="https://www.caida.org/workshops/aims/2502/">Measuring hospital ransomware attacks</a>
+                        <br>
+                        <span class="tabbed">CAIDA AIMS-5, Feb 2025</span>
+                        <br>
+                        - <a href="https://youtu.be/irhftyMU9As?si=0KwXdsGxefo_r5T6">Unfiltered: Measuring Cloud-based Email Filtering Bypasses</a>
+                        <br>
+                        <span class="tabbed">The Web Conference, May 2024</span>
+                        <br>
+                        - <a href="https://kvgo.com/ftc/PrivacyCon-March-6-2024">Panel 6: Mobile Device Security</a>
+                        <br>
+                        <span class="tabbed">FTC PrivacyCon, March 2024</span>
+                        <br>
+                        - <a href="https://www.youtube.com/watch?v=dPUAEZVBrJg">Having a great GSoC as an Open Source Newbie!</a>
+                        <br>
+                        <span class="tabbed">Google Open Source YouTube, Nov 2022</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- (4) Open Source folded into Teaching & Mentoring -->
+            <div class="container fluid">
+                <div class="project-category"><h5>Teaching &amp; Mentoring</h5></div>
+                <p>
+                    I was a teaching assistant for the following courses at UC San Diego:
+                    <br>
+                    - Spring 2023, Intro to Computer Security
+                    <br>
+                    - Winter 2023, Graduate Operating Systems
+                    <br>
+                    - Fall 2022, Intro to Computer Security
+                    <br>
+                    - Spring 2022, Intro to Computer Security
+                </p>
+                <p>
+                    I'm a big advocate for open source and have mentored five
+                    students through Google Summer of Code (<a
+                    href="https://summerofcode.withgoogle.com/archive/2020/projects/6307196188491776/"
+                    class="link-style">2020 (1)</a>,
+                    <a
+                    href="https://summerofcode.withgoogle.com/archive/2020/projects/4790628438769664/"
+                    class="link-style">2020 (2)</a>,
+                    <a href="https://summerofcode.withgoogle.com/projects/#4667597951336448" class="link-style">2021</a>,
+                    <a
+                    href="https://summerofcode.withgoogle.com/archive/2024/projects/vzXauDJb"
+                    class="link-style">2024</a>). I was a GSoC student myself in <a
+                    href="https://summerofcode.withgoogle.com/archive/2019/projects/6423498090610688"
+                    class="link-style">2019</a> with <a
+                    href="https://zulip.com/" class="link-style">the Zulip Open
+                    Source Project</a>.
+                </p>
             </div>
 
             <div id="industry-experience"></div>
@@ -354,11 +479,11 @@
                                 E/W traffic from Zeek logs.
                             </div>
                         </div>
-    
+
                     </div>
-    
+
                     <br>
-    
+
                     <div class="row project-row industry-row">
                         <div class="col-md-2 col-xs-4 industry-logo-col">
                             <img src="images/logo-google.png" class="img-fluid industry-logo" alt="Google">
@@ -371,7 +496,7 @@
                                 <br>
                                 Mentors: Yang Shi, Bas Nowaira
                                 <br>
-                                Improved user experience when spawning new Borg clusters. 
+                                Improved user experience when spawning new Borg clusters.
                             </div>
                         </div>
                     </div>
@@ -393,123 +518,33 @@
                         </div>
                     </div>
 
-                </div>
-                <br/>
-            <div class="container fluid">
-                <div class="project-category"><h5>Awards</h5></div>
-                <div id="awards-honors">
-                    <p>
-                        - 2026. CSE Doctoral Award for Excellence in Service and
-                        Leadership, UC San Diego.
-                        <br>
-                        - 2026. <a
-                        href="https://sp2026.ieee-security.org/awards_papers.html">
-                        <span style="font-weight: 600;">Distinguished Paper Award</span></a>, IEEE Symposium on Security
-                        and Privacy (Oakland) - <a
-                        href="https://cns.ucsd.edu/cns-researchers-receive-distinguished-paper-award-at-ieee-symposium-on-security-and-privacy/">News</a>
-                        <br>
-                        - 2024. Finalists, NatSec Hackathon
-                        (Stanford DEFCON and Shield Capital)
-                        <br>
-                        - 2021-2022. Receipent of
-                        <a class="link-style"
-                        href="https://www.jntataendowment.org/">JN Tata
-                        Scholarship</a>.
-                    </p>
-                </div>
+            </div>
 
-                <div class="project-category"><h5>Services</h5></div>
-                <div id="service">
-                    <p>
-                        - Program Committee, <a class="link-style"
-                        href="https://raid2026.org/committees.html">Research in
-                        Attacks, Intrusions and Defenses (RAID) 2026</a>
-                        <br>
-                        <!-- - Academic Integrity Review Board (AIRB), UC San Diego -->
-                        <!-- (2026-2027) -->
-                        <!-- <br> -->
-                        <!-- - FTC PrivacyCon 2024,
-                        <a class="link-style" href="https://www.ftc.gov/system/files/ftc_gov/pdf/privacycon2024_bios-final.pdf">Android Security Panel</a>.
-                        <br> -->
-                        - <a href="https://chezbob.ucsd.edu">CSE Chezbob Coordinator</a>, UC San Diego (2026-2027)
-                        <br>
-                        - CSE Visit Day Coordinator, UC San Diego (2026)
-                        <br>
-                        - Allyship Co-Chair, <a
-                        href="https://cse-gradwic.github.io">UCSD Graduate Women
-                        in Computing</a> (2023-2024)
-                        <br>
-                        - VP External, <a
-                        href="https://jgsc.eng.ucsd.edu/home">Jacobs Graduate
-                        Student Council (JGSC)</a> Member, UC
-                        San Diego (2021-2023) 
-                    </p>
+            <br>
+
+            <!-- (2) Education, now at the bottom for everyone -->
+            <div class="container fluid" id="education">
+                <div class="project-category"><h5>Education</h5></div>
+                <div class="education-item">
+                    <b>Ph.D. in Computer Science</b>, expected 2027
+                    <br>
+                    <em>University of California, San Diego</em>
                 </div>
-                <div class="project-category"><h5>Talks</h5>
-                <div id="talks">
-                    <p>
-                        - <a href="talks/oakland26-lost-in-translation.pdf">Lost in
-                        Translation: Text Message Spoofing via Email</a>
-                        <br>
-                        <span class="tabbed">IEEE Symposium on Security and Privacy (Oakland), May 2026</span>
-                        <br>
-                        - <a href="https://www.caida.org/workshops/aims/2502/">Measuring hospital ransomware attacks</a>
-                        <br>
-                        <span class="tabbed">CAIDA AIMS-5, Feb 2025</span>
-                        <br>
-                        - <a href="https://youtu.be/irhftyMU9As?si=0KwXdsGxefo_r5T6">Unfiltered: Measuring Cloud-based Email Filtering Bypasses</a>
-                        <br>
-                        <span class="tabbed">The Web Conference, May 2024</span>
-                        <br>
-                        - <a href="https://kvgo.com/ftc/PrivacyCon-March-6-2024">Panel 6: Mobile Device Security</a>
-                        <br>
-                        <span class="tabbed">FTC PrivacyCon, March 2024</span>
-                        <br>
-                        - <a href="https://www.youtube.com/watch?v=dPUAEZVBrJg">Having a great GSoC as an Open Source Newbie!</a>
-                        <br>
-                        <span class="tabbed">Google Open Source YouTube, Nov 2022</span>
-                    </p>
+                <div class="education-item">
+                    <b>M.S. in Computer Science</b>, 2021 - 2025
+                    <br>
+                    <em>University of California, San Diego</em>
+                </div>
+                <div class="education-item">
+                    <b>B.S. in Computer Science</b>, 2016 - 2020
+                    <br>
+                    <em>PES University, Bengaluru</em>
                 </div>
             </div>
 
-            <!-- <div class="project-category"><h5><a href="research.html">See all
-            publications</a></h6></div>
-             -->
-            <!-- <div class="container fluid" id="misc"> -->
-            <div class="project-category"><h5>Open Source</h5></div>
-                <p>
-                    I'm a big advocate for Open Source and have been involved in
-                    Google Summer of Code (GSoC) for a few years now. I've
-                    mentored five GSoCers (<a
-                    href="https://summerofcode.withgoogle.com/archive/2020/projects/6307196188491776/"
-                    class="link-style">2020 (1)</a>,
-                    <a
-                    href="https://summerofcode.withgoogle.com/archive/2020/projects/4790628438769664/"
-                    class="link-style">2020 (2)</a>,
-                    <a href="https://summerofcode.withgoogle.com/projects/#4667597951336448" class="link-style">2021</a>,
-                    <a
-                    href="https://summerofcode.withgoogle.com/archive/2024/projects/vzXauDJb"
-                    class="link-style">2024</a>) during this time. In fact, I
-                    was myself a GSoC student in <a
-                    href="https://summerofcode.withgoogle.com/archive/2019/projects/6423498090610688"
-                    class="link-style">2019</a> with <a
-                    href="https://zulip.com/" class="link-style">the Zulip Open
-                    Source Project</a>.
-                </p>
+                </div>
             </div>
-        <!-- </div> -->
-
-                    
-                <!-- </div> -->
         </div>
-
-
-
-
-
-        <!-- <br> -->
-        <br>
-        
 
     <br>
     <br>
