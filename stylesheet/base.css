@@ -1,8 +1,8 @@
 body {
   /*font-family: 'Helvetica Neue', 'Source Sans Pro', 'Open Sans',Helvetica,Arial,sans-serif;*/
   font-family:
-    "Avenir Next", Avenir, "Helvetica Neue", "Gill Sans", "Gill Sans MT",
-    Helvetica, sans-serif;
+    "Avenir Next", Avenir, "Helvetica Neue", "Segoe UI", "Gill Sans",
+    Arial, sans-serif;
   font-feature-settings: "kern";
   font-kerning: normal;
 }
@@ -38,7 +38,7 @@ a:hover {
 
 b,
 strong {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .update {
