@@ -238,8 +238,8 @@ h4.project-title {
 }
 
 #teaching {
-  margin-top: 15px;
-  font-size: 13px;
+  margin-top: 0;
+  font-size: inherit;
 }
 
 #misc {
@@ -260,6 +260,43 @@ h4.project-title {
 #service {
   margin-top: 0;
   font-size: inherit;
+}
+
+/* Two-column layout (Awards/Service in Row 1, Talks/Teaching in Row 2) */
+.middle-two-column-section {
+  margin-top: 10px;
+}
+
+.two-column-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 801px) {
+  .two-column-row > .col-left {
+    padding-right: 25px;
+    border-right: 1px solid rgba(228, 3, 92, 0.35);
+    transition: border-color 0.25s ease;
+  }
+
+  .two-column-row > .col-right {
+    padding-left: 25px;
+  }
+
+  .two-column-row:hover > .col-left {
+    border-right-color: #e4035c;
+  }
+}
+
+@media (max-width: 800px) {
+  .two-column-row > .col-left {
+    padding-right: 0;
+    border-right: none;
+  }
+
+  .two-column-row > .col-right {
+    padding-left: 0;
+  }
 }
 
 #online {
@@ -690,7 +727,8 @@ body {
   #misc,
   #awards-honors,
   #service,
-  #talks {
+  #talks,
+  #teaching {
     font-size: 14.5px;
   }
 
