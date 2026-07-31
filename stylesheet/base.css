@@ -247,6 +247,37 @@ h4.project-title {
   font-size: 13px;
 }
 
+.sidebar-indent {
+  padding-left: 10px;
+  margin-top: 4px;
+}
+
+#page-outline {
+  margin-top: 18px;
+  font-size: 13px;
+  text-align: left;
+}
+
+#page-outline .outline-list {
+  list-style: none;
+  padding-left: 10px;
+  margin-top: 4px;
+  margin-bottom: 0;
+  line-height: 1.65;
+}
+
+#page-outline .outline-list li a {
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px dotted #ccc;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+#page-outline .outline-list li a:hover {
+  color: #e4035c;
+  border-bottom-color: #e4035c;
+}
+
 #education {
   margin-top: 15px;
   font-size: 14px;
