@@ -43,6 +43,10 @@
                 font-weight: 600;
             }
             .job-market-banner {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 8px;
                 margin: 18px 0 8px 10px;
                 padding: 11px 14px;
                 background: #f7f7f7;
@@ -53,8 +57,27 @@
                 font-size: 15px;
                 line-height: 1.45;
             }
+            .job-market-banner .cv-button {
+                flex: 0 0 auto;
+                padding: 2px 7px;
+                color: #333;
+                background: #fff;
+                border: 1px solid #bbb;
+                border-radius: 3px;
+                font-size: 14px;
+                text-decoration: none;
+            }
+            .job-market-banner .cv-button:hover,
+            .job-market-banner .cv-button:focus {
+                color: #333;
+                background: #f3f3f3;
+                border-color: #888;
+                text-decoration: none;
+            }
             @media only screen and (max-width: 800px) {
                 .job-market-banner {
+                    align-items: flex-start;
+                    flex-wrap: wrap;
                     padding: 10px 12px;
                     font-size: 14.5px;
                 }
@@ -187,7 +210,8 @@
 
                     <aside class="job-market-banner"
                     aria-label="Job market announcement">
-                    I am on the 2026-27 job market, seeking <b>postdoc and industry research positions in security</b>.
+                    <span>I am on the 2026-27 job market, seeking <b>postdoc and industry research positions in security</b>.</span>
+                    <a class="cv-button" href="/papers/resume.pdf">CV</a>
                     </aside>
 
             <div class="container fluid" id="projects">
