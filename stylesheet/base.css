@@ -292,9 +292,9 @@ h4.project-title {
 }
 
 #page-outline .outline-list li a {
-  color: #333;
+  color: #0b57d0;
   text-decoration: none;
-  border-bottom: 1px dotted #ccc;
+  border-bottom: 1px dotted #9bbcf0;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -820,4 +820,17 @@ body {
   #risc-logo {
     width: 50%;
   }
+}
+
+
+/* Finalist note shown beside a paper's award badge */
+.paper-finalist {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Full-width stacked middle sections (Awards / Invited Talks / Service) */
+.stacked-section {
+  margin-top: 8px;
 }
