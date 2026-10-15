@@ -6,6 +6,8 @@
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-45GX6K04VS"></script>
         <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
         <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -29,25 +31,91 @@
                 display: flex;
                 flex-wrap: wrap;
                 align-items: center;
-                gap: 0 6px;
-                margin-top: 4px;
+                gap: 0 14px;
+                margin-top: 6px;
             }
-            .profile-links .sep {
-                opacity: 0.45;
+            #personal-links .profile-links a {
+                margin-right: 0;
+                color: #555;
+                font-size: 21px;
+                line-height: 1;
+                text-decoration: none;
+                border-bottom: none;
+                transition: color 0.15s;
+            }
+            #personal-links .profile-links a:hover,
+            #personal-links .profile-links a:focus {
+                color: #e4035c;
             }
             .education-item {
                 margin-bottom: 10px;
+            }
+            .sidebar-education {
+                text-align: left;
+                margin: 16px 0 18px;
+                padding-top: 14px;
+                border-top: 1px solid #eee;
+            }
+            .sidebar-education .education-item {
+                font-size: 13px;
+                line-height: 1.3;
+                margin-bottom: 8px;
+            }
+            .sidebar-education .education-item:last-child {
+                margin-bottom: 0;
+            }
+            .sidebar-education .education-item em {
+                color: #555;
+            }
+            /* (1) Horizontal grey "there's more below" tabs beside Publications */
+            .section-nav-head {
+                display: flex;
+                align-items: baseline;
+                flex-wrap: wrap;
+                gap: 6px 40px;
+                margin-bottom: 22px;
+            }
+            .section-tabs {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: baseline;
+                gap: 6px 24px;
+                font-size: 18px;
+                line-height: 1.6;
+            }
+            .section-tabs a {
+                color: #888;
+                text-decoration: underline;
+                text-underline-offset: 3px;
+                text-decoration-thickness: 1px;
+                text-decoration-color: rgba(228, 3, 92, 0.45);
+            }
+            .section-tabs a:hover,
+            .section-tabs a:focus {
+                color: #e4035c;
+                text-decoration-color: #e4035c;
+            }
+            .section-tabs .sep {
+                color: #bbb;
+                opacity: 0.6;
             }
             .paper-award {
                 font-size: 16px;
                 font-weight: 600;
             }
+            .service-sub {
+                display: inline-block;
+                margin-left: 18px;
+            }
             .job-market-banner {
                 display: flex;
                 align-items: center;
-                justify-content: flex-start;
-                gap: 8px;
-                margin: 18px 0 8px 10px;
+                justify-content: center;
+                gap: 12px;
+                width: fit-content;
+                max-width: 100%;
+                box-sizing: border-box;
+                margin: 18px auto 8px;
                 padding: 11px 14px;
                 background: #f7f7f7;
                 border: 1px solid #dedede;
@@ -57,21 +125,27 @@
                 font-size: 15px;
                 line-height: 1.45;
             }
-            .job-market-banner .cv-button {
+            .job-market-banner .cv-links {
+                display: flex;
                 flex: 0 0 auto;
-                padding: 2px 7px;
+                gap: 6px;
+            }
+            .job-market-banner .cv-button {
+                padding: 2px 9px;
                 color: #333;
                 background: #fff;
-                border: 1px solid #bbb;
-                border-radius: 3px;
-                font-size: 14px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 13.5px;
+                letter-spacing: 0.02em;
                 text-decoration: none;
+                transition: border-color 0.15s, color 0.15s;
             }
             .job-market-banner .cv-button:hover,
             .job-market-banner .cv-button:focus {
-                color: #333;
-                background: #f3f3f3;
-                border-color: #888;
+                color: #e4035c;
+                background: #fff;
+                border-color: #e4035c;
                 text-decoration: none;
             }
             @media only screen and (max-width: 800px) {
@@ -143,33 +217,39 @@
                             href="mailto:svrao@ucsd.edu">svrao@ucsd.edu</a>
                             <span class="pgp-inline">
                                 <a href="keys/pubpgp.txt" target="_blank">(<i
-                                class="fa fa-key"></i>PGP Key)</a>
+                                class="fa fa-key"></i>PGP)</a>
                             </span>
                         </div>
                         <!-- (1) profile links now horizontal -->
                         <div class="profile-links">
-                            <a href="https://scholar.google.com/citations?user=BuM8tBgAAAAJ&hl=en">Google
-                            Scholar</a>
-                            <span class="sep">·</span>
-                            <a href="https://www.linkedin.com/in/sumanthvrao" target="_blank">LinkedIn</a>
-                            <span class="sep">·</span>
-                            <a href="https://github.com/sumanthvrao" target="_blank">GitHub</a>
+                            <a href="https://scholar.google.com/citations?user=BuM8tBgAAAAJ&hl=en"
+                            title="Google Scholar" aria-label="Google Scholar"><i
+                            class="ai ai-google-scholar" aria-hidden="true"></i></a>
+                            <a href="https://www.linkedin.com/in/sumanthvrao" target="_blank"
+                            title="LinkedIn" aria-label="LinkedIn"><i
+                            class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                            <a href="https://github.com/sumanthvrao" target="_blank"
+                            title="GitHub" aria-label="GitHub"><i
+                            class="fa fa-github" aria-hidden="true"></i></a>
                         </div>
                     </div>
 
-                    <!-- (2) Education moved out of the sidebar, now near the bottom -->
-
-                    <div id="page-outline" class="desktop-only">
-                        <b>Outline:</b>
-                        <ul class="outline-list">
-                            <li>&#8627; <a href="#publications">Publications</a></li>
-                            <li>&#8627; <a href="#industry-experience">Industry Experience</a></li>
-                            <li>&#8627; <a href="#awards-honors">Awards</a></li>
-                            <li>&#8627; <a href="#talks">Invited Talks</a></li>
-                            <li>&#8627; <a href="#service">Professional Service</a></li>
-                            <li>&#8627; <a href="#teaching-mentoring">Teaching &amp; Mentoring</a></li>
-                            <li>&#8627; <a href="#education">Education</a></li>
-                        </ul>
+                    <!-- (2) Education in the sidebar so visitors see it right away -->
+                    <div id="education" class="sidebar-education">
+                        <div class="education-item">
+                            <b>Ph.D. in Computer Science</b>,
+                            <br>
+                            2021 - 2027 (expected)
+                            <br>
+                            <em>University of California, San Diego</em>
+                        </div>
+                        <div class="education-item">
+                            <b>B.S. in Computer Science</b>,
+                            <br>
+                            2016 - 2020
+                            <br>
+                            <em>PES University, Bengaluru</em>
+                        </div>
                     </div>
 
                     <div id="misc" class="desktop-only">
@@ -197,11 +277,18 @@
                     </p>
 
                     <p>
-                        I study real-world cybersecurity problems through
-                        empirical measurement. My work has looked at
-                        ransomware affecting hospitals, large-scale email abuse,
-                        automotive security, and other threats to critical
-                        infrastructure. I'm a member of the <a
+                        I study cybersecurity problems through
+                        large-scale empirical measurement. My work spans
+                        threats to the systems we rely on every day: the
+                        security of email systems
+                        (<a href="papers/rao-oakland-2026.pdf">Oakland'26</a>,
+                        <a href="https://dl.acm.org/doi/10.1145/3589334.3645499">WWW'24</a>),
+                        aftermarket automotive remote-control systems
+                        (<a href="https://bleauto.sysnet.ucsd.edu">USENIX Security'26</a>),
+                        and the impact of large-scale IT outages on hospital
+                        patient care
+                        (<a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2836824">JAMA'25</a>).
+                        I'm a member of the <a
                         href="https://sysnet.ucsd.edu/">Sysnet</a> and <a
                         href="https://www.sysnet.ucsd.edu/cryptosec/">CryptoSec</a>
                         research groups at UC San Diego. My hometown is
@@ -211,14 +298,29 @@
                     <aside class="job-market-banner"
                     aria-label="Job market announcement">
                     <span>I am on the 2026-27 job market, seeking <b>postdoc and industry research positions in security</b>.</span>
-                    <a class="cv-button" href="/papers/resume.pdf">Resume</a>
+                    <span class="cv-links">
+                        <a class="cv-button" href="/papers/sumanthrao_cv.pdf">CV</a>
+                        <a class="cv-button" href="/papers/sumanthrao_resume.pdf">Resume</a>
+                    </span>
                     </aside>
 
             <div class="container fluid" id="projects">
 
             <div id="publications"></div>
-            <div class="project-category">
-            <h5>Publications</h5></div>
+            <div class="project-category section-nav-head">
+                <h5>Publications</h5>
+                <nav class="section-tabs" aria-label="Jump to the rest of the page">
+                    <a href="#industry-experience">Industry</a>
+                    <span class="sep">&middot;</span>
+                    <a href="#awards-honors">Awards</a>
+                    <span class="sep">&middot;</span>
+                    <a href="#talks">Talks</a>
+                    <span class="sep">&middot;</span>
+                    <a href="#service">Service</a>
+                    <span class="sep">&middot;</span>
+                    <a href="#teaching-mentoring">Teaching</a>
+                </nav>
+            </div>
                 <div class="row project-row">
                     <div class="col-md-3 col-xs-4" style="display: flex; align-items: center; justify-content: center;"><img src="images/apple-interleaving.jpeg"
                     class="img-fluid center-block project-img" style="max-height: 130px; width: auto;"></div>
@@ -232,7 +334,6 @@
                                 <i class="fa fa-trophy" aria-hidden="true"></i>Distinguished Paper Award
                                 <i class="fa fa-trophy" aria-hidden="true"></i>
                                 Finalist, CSAW Applied Research Competition
-                                2026
                                 </span>
                                 
                             <br>
@@ -541,14 +642,16 @@
                         - Guest lecture, CSE 227 (Graduate Computer Security),
                         <span>UC San Diego, Oct 13, 2026</span>
                         <br>
-                        - <a href="https://www.caida.org/workshops/aims/2502/">Measuring hospital ransomware attacks</a>
+                        - Measuring hospital ransomware attacks
                         <span>, CAIDA AIMS-5, Feb 2025</span>
                         <br>
-                        - <a href="https://kvgo.com/ftc/PrivacyCon-March-6-2024">Panel 6: Mobile Device Security</a>
+                        - Panel 6: Mobile Device Security
                         <span>, FTC PrivacyCon, March 2024</span>
+                        <a href="https://kvgo.com/ftc/PrivacyCon-March-6-2024">[talk]</a>
                         <br>
-                        - <a href="https://www.youtube.com/watch?v=dPUAEZVBrJg">Having a great GSoC as an Open Source Newbie!</a>
+                        - Having a great GSoC as an Open Source Newbie!
                         <span>, Google Open Source YouTube, Nov 2022</span>
+                        <a href="https://www.youtube.com/watch?v=dPUAEZVBrJg">[talk]</a>
                     </p>
                 </div>
             </div>
@@ -558,12 +661,14 @@
                 <div class="project-category"><h5>Professional Service</h5></div>
                 <div id="service">
                     <p>
-                        -  <strong>Program Committee:</strong>
-                        SIGMETRICS 2027,
-                        IEEE Euro S&amp;P 2027,
-                         <a class="link-style"
-                         href="https://raid2026.org/committees.html">RAID
-                         2026</a>
+                        - <strong>Program Committee:</strong>
+                        <br>
+                        <span class="service-sub">&#8627; SIGMETRICS 2027</span>
+                        <br>
+                        <span class="service-sub">&#8627; IEEE Euro S&amp;P 2027</span>
+                        <br>
+                        <span class="service-sub">&#8627; <a class="link-style"
+                        href="https://raid2026.org/committees.html">RAID 2026</a></span>
                         <br>
                         - <a href="https://chezbob.ucsd.edu">CSE Chezbob Bobfather</a>,
                         UC San Diego (2025-2027)
@@ -609,26 +714,6 @@
                         href="https://zulip.com/" class="link-style">the Zulip Open
                         Source Project</a>.
                     </p>
-                </div>
-            </div>
-
-            <!-- (2) Education, now at the bottom for everyone -->
-            <div class="container fluid" id="education">
-                <div class="project-category"><h5>Education</h5></div>
-                <div class="education-item">
-                    <b>Ph.D. in Computer Science</b>, 2021 - 2027 (expected)
-                    <br>
-                    <em>University of California, San Diego</em>
-                </div>
-                <div class="education-item">
-                    <b>M.S. in Computer Science</b>, 2021 - 2025
-                    <br>
-                    <em>University of California, San Diego</em>
-                </div>
-                <div class="education-item">
-                    <b>B.S. in Computer Science</b>, 2016 - 2020
-                    <br>
-                    <em>PES University, Bengaluru</em>
                 </div>
             </div>
 
