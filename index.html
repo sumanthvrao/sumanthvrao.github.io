@@ -38,6 +38,38 @@
             .education-item {
                 margin-bottom: 10px;
             }
+            /* (1) Horizontal grey "there's more below" tabs beside Publications */
+            .section-nav-head {
+                display: flex;
+                align-items: baseline;
+                flex-wrap: wrap;
+                gap: 6px 40px;
+                margin-bottom: 22px;
+            }
+            .section-tabs {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: baseline;
+                gap: 6px 24px;
+                font-size: 18px;
+                line-height: 1.6;
+            }
+            .section-tabs a {
+                color: #888;
+                text-decoration: underline;
+                text-underline-offset: 3px;
+                text-decoration-thickness: 1px;
+                text-decoration-color: rgba(228, 3, 92, 0.45);
+            }
+            .section-tabs a:hover,
+            .section-tabs a:focus {
+                color: #e4035c;
+                text-decoration-color: #e4035c;
+            }
+            .section-tabs .sep {
+                color: #bbb;
+                opacity: 0.6;
+            }
             .paper-award {
                 font-size: 16px;
                 font-weight: 600;
@@ -159,19 +191,6 @@
 
                     <!-- (2) Education moved out of the sidebar, now near the bottom -->
 
-                    <div id="page-outline" class="desktop-only">
-                        <b>Outline:</b>
-                        <ul class="outline-list">
-                            <li>&#8627; <a href="#publications">Publications</a></li>
-                            <li>&#8627; <a href="#industry-experience">Industry Experience</a></li>
-                            <li>&#8627; <a href="#awards-honors">Awards</a></li>
-                            <li>&#8627; <a href="#talks">Invited Talks</a></li>
-                            <li>&#8627; <a href="#service">Professional Service</a></li>
-                            <li>&#8627; <a href="#teaching-mentoring">Teaching &amp; Mentoring</a></li>
-                            <li>&#8627; <a href="#education">Education</a></li>
-                        </ul>
-                    </div>
-
                     <div id="misc" class="desktop-only">
                         <b>More personal:</b>
                         <div class="sidebar-indent">
@@ -197,11 +216,18 @@
                     </p>
 
                     <p>
-                        I study real-world cybersecurity problems through
-                        empirical measurement. My work has looked at
-                        ransomware affecting hospitals, large-scale email abuse,
-                        automotive security, and other threats to critical
-                        infrastructure. I'm a member of the <a
+                        I study cybersecurity problems through
+                        large-scale empirical measurement. My work spans
+                        threats to the systems we rely on every day: the
+                        security of email systems
+                        (<a href="papers/rao-oakland-2026.pdf">Oakland'26</a>,
+                        <a href="https://dl.acm.org/doi/10.1145/3589334.3645499">WWW'24</a>),
+                        aftermarket automotive remote-control systems
+                        (<a href="https://bleauto.sysnet.ucsd.edu">USENIX Security'26</a>),
+                        and the impact of large-scale IT outages on hospital
+                        patient care
+                        (<a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2836824">JAMA'25</a>).
+                        I'm a member of the <a
                         href="https://sysnet.ucsd.edu/">Sysnet</a> and <a
                         href="https://www.sysnet.ucsd.edu/cryptosec/">CryptoSec</a>
                         research groups at UC San Diego. My hometown is
@@ -217,8 +243,22 @@
             <div class="container fluid" id="projects">
 
             <div id="publications"></div>
-            <div class="project-category">
-            <h5>Publications</h5></div>
+            <div class="project-category section-nav-head">
+                <h5>Publications</h5>
+                <nav class="section-tabs" aria-label="Jump to the rest of the page">
+                    <a href="#industry-experience">Industry</a>
+                    <span class="sep">&middot;</span>
+                    <a href="#awards-honors">Awards</a>
+                    <span class="sep">&middot;</span>
+                    <a href="#talks">Talks</a>
+                    <span class="sep">&middot;</span>
+                    <a href="#service">Service</a>
+                    <span class="sep">&middot;</span>
+                    <a href="#teaching-mentoring">Teaching</a>
+                    <span class="sep">&middot;</span>
+                    <a href="#education">Education</a>
+                </nav>
+            </div>
                 <div class="row project-row">
                     <div class="col-md-3 col-xs-4" style="display: flex; align-items: center; justify-content: center;"><img src="images/apple-interleaving.jpeg"
                     class="img-fluid center-block project-img" style="max-height: 130px; width: auto;"></div>
