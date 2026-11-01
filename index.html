@@ -25,8 +25,30 @@
         <link rel="icon" href="https://sumanthvrao.github.io/favicon.ico?"
         type="image/x-icon">
 
-        <!-- Small additions only; inherits all fonts/colors from base.css -->
+        <!-- Small additions only; inherits all fonts from base.css.
+             Minimal variant: plain black links, no boxes, borders,
+             shadows or accent colors. -->
         <style>
+            /* Plain black links that turn red on hover */
+            a,
+            #personal-links .pgp-inline a {
+                color: #000;
+                text-decoration: none;
+            }
+            a:hover,
+            a:focus {
+                color: #e4035c;
+                text-decoration: none;
+            }
+            /* Muted blue for links in the CV sections (the only <section>s
+               on the page); kept low-specificity so a:hover still wins */
+            section a {
+                color: #2f5d8a;
+            }
+            #left-container {
+                --headshot-border-width: 0;
+                --headshot-shadow: none;
+            }
             .profile-links {
                 display: flex;
                 flex-wrap: wrap;
@@ -36,16 +58,10 @@
             }
             #personal-links .profile-links a {
                 margin-right: 0;
-                color: #555;
                 font-size: 21px;
                 line-height: 1;
-                text-decoration: none;
                 border-bottom: none;
                 transition: color 0.15s;
-            }
-            #personal-links .profile-links a:hover,
-            #personal-links .profile-links a:focus {
-                color: #e4035c;
             }
             .education-item {
                 margin-bottom: 10px;
@@ -53,8 +69,6 @@
             .sidebar-education {
                 text-align: left;
                 margin: 16px 0 18px;
-                padding-top: 14px;
-                border-top: 1px solid #eee;
             }
             .sidebar-education .education-item {
                 font-size: 13px;
@@ -67,45 +81,8 @@
             .sidebar-education .education-item em {
                 color: #555;
             }
-            /* (1) Horizontal grey "there's more below" tabs beside Publications */
-            .section-nav-head {
-                display: flex;
-                align-items: baseline;
-                flex-wrap: wrap;
-                gap: 6px 40px;
-                margin-bottom: 22px;
-            }
-            .section-tabs {
-                display: flex;
-                flex-wrap: wrap;
-                align-items: baseline;
-                gap: 6px 24px;
-                font-size: 18px;
-                line-height: 1.6;
-            }
-            .section-tabs a {
-                color: #888;
-                text-decoration: underline;
-                text-underline-offset: 3px;
-                text-decoration-thickness: 1px;
-                text-decoration-color: rgba(228, 3, 92, 0.45);
-            }
-            .section-tabs a:hover,
-            .section-tabs a:focus {
-                color: #e4035c;
-                text-decoration-color: #e4035c;
-            }
-            .section-tabs .sep {
-                color: #bbb;
-                opacity: 0.6;
-            }
-            .paper-award {
-                font-size: 16px;
-                font-weight: 600;
-            }
-            .service-sub {
-                display: inline-block;
-                margin-left: 18px;
+            .landing-description > p {
+                padding-left: 0;
             }
             .job-market-banner {
                 display: flex;
@@ -148,6 +125,53 @@
                 border-color: #e4035c;
                 text-decoration: none;
             }
+            .project-category {
+                margin-top: 20px;
+                padding-top: 0;
+                border-top: none;
+            }
+            .project-category h5 {
+                margin-bottom: 6px;
+            }
+            /* Compact, single-column publication entries */
+            .pub {
+                margin-bottom: 12px;
+                line-height: 1.4;
+            }
+            .pub-authors,
+            .pub-venue,
+            .pub-links {
+                font-size: 13.5px;
+            }
+            .pub .paper-award {
+                margin-left: 6px;
+                font-size: 13.5px;
+            }
+            .paper-award a {
+                color: inherit;
+            }
+            .paper-award a:hover,
+            .paper-award a:focus {
+                color: #e4035c;
+            }
+            .pub-note {
+                margin: 0;
+                font-size: 12.5px;
+                color: #555;
+            }
+            .cv-list {
+                list-style: none;
+                padding-left: 0;
+                margin-bottom: 0;
+                line-height: 1.4;
+            }
+            .cv-list li {
+                margin-bottom: 4px;
+            }
+            #sign {
+                margin-top: 24px;
+                margin-bottom: 12px;
+            }
             @media only screen and (max-width: 800px) {
                 .job-market-banner {
                     align-items: flex-start;
@@ -155,8 +179,16 @@
                     padding: 10px 12px;
                     font-size: 14.5px;
                 }
-                .paper-award {
-                    font-size: 13px;
+                .mobile-home-card {
+                    padding: 0;
+                    border-top: none;
+                    border-bottom: none;
+                }
+                .mobile-home-links a {
+                    margin-right: 0;
+                }
+                .pub .paper-award {
+                    margin-left: 0;
                 }
             }
         </style>
@@ -164,22 +196,26 @@
 
 
     <body>
-        <div id="top"></div>
         <div class="container fluid header-link">
             <div class="row">
                  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"
                  id="owner_name">
                     <div>
-                        <a href="https://sumanthvrao.github.io">Sumanth Rao</a>
+                        <a href="index.html">Sumanth Rao</a>
                     </div>
                  </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     <div id="sections">
                         <a href="#publications">Publications</a>
-                        -
+                        |
+                        <a href="#talks">Talks</a>
+                        |
+                        <a href="#service">Service</a>
+                        |
+                        <a href="#teaching-mentoring">Teaching</a>
+                        |
                         <a href="blog.html">Blog</a>
-                        <!-- - <a href="gallery/index.html" target="_blank">Gallery</a> -->
                     </div>
                 </div>
             </div>
@@ -197,8 +233,11 @@
                 </div>
                 <div class="mobile-home-links">
                     <a href="mailto:svrao@ucsd.edu">Email</a>
+                    |
                     <a href="https://scholar.google.com/citations?user=BuM8tBgAAAAJ&hl=en">Scholar</a>
+                    |
                     <a href="https://www.linkedin.com/in/sumanthvrao" target="_blank">LinkedIn</a>
+                    |
                     <a href="https://github.com/sumanthvrao" target="_blank">GitHub</a>
                 </div>
             </div>
@@ -216,11 +255,10 @@
                             Email: <a
                             href="mailto:svrao@ucsd.edu">svrao@ucsd.edu</a>
                             <span class="pgp-inline">
-                                <a href="keys/pubpgp.txt" target="_blank">(<i
-                                class="fa fa-key"></i>PGP)</a>
+                                | <a href="keys/pubpgp.txt" target="_blank"><i
+                                class="fa fa-key"></i> PGP</a>
                             </span>
                         </div>
-                        <!-- (1) profile links now horizontal -->
                         <div class="profile-links">
                             <a href="https://scholar.google.com/citations?user=BuM8tBgAAAAJ&hl=en"
                             title="Google Scholar" aria-label="Google Scholar"><i
@@ -234,7 +272,6 @@
                         </div>
                     </div>
 
-                    <!-- (2) Education in the sidebar so visitors see it right away -->
                     <div id="education" class="sidebar-education">
                         <div class="education-item">
                             <b>Ph.D. in Computer Science</b>,
@@ -266,7 +303,7 @@
                 <div class="landing-description col-xs-12 col-sm-12 col-md-8
                 col-lg-9">
 
-                   <p>
+                    <p>
                         I am a PhD student in the <a
                         href="https://cse.ucsd.edu/" class="plain-link">CSE Department</a> at <a
                         href="https://www.ucsd.edu/" class="plain-link">UC San Diego</a>. I'm fortunate to be advised by <a
@@ -304,462 +341,228 @@
                     </span>
                     </aside>
 
-            <div class="container fluid" id="projects">
+                    <!-- Publications -->
+                    <section id="publications">
+                        <div class="project-category"><h5>Publications</h5></div>
 
-            <div id="publications"></div>
-            <div class="project-category section-nav-head">
-                <h5>Publications</h5>
-                <nav class="section-tabs" aria-label="Jump to the rest of the page">
-                    <a href="#industry-experience">Industry</a>
-                    <span class="sep">&middot;</span>
-                    <a href="#awards-honors">Awards</a>
-                    <span class="sep">&middot;</span>
-                    <a href="#talks">Talks</a>
-                    <span class="sep">&middot;</span>
-                    <a href="#service">Service</a>
-                    <span class="sep">&middot;</span>
-                    <a href="#teaching-mentoring">Teaching</a>
-                </nav>
-            </div>
-                <div class="row project-row">
-                    <div class="col-md-3 col-xs-4" style="display: flex; align-items: center; justify-content: center;"><img src="images/apple-interleaving.jpeg"
-                    class="img-fluid center-block project-img" style="max-height: 130px; width: auto;"></div>
-                    <div class="col-md-9 col-xs-8">
-                        <div class="project-title">
-                            <a href="papers/rao-oakland-2026.pdf">
-                                <b>Lost in Translation: Text Message Spoofing
-                                via Email</b></a>
-                                <span class="paper-award">
-                                <br>
-                                <i class="fa fa-trophy" aria-hidden="true"></i>Distinguished Paper Award
-                                <i class="fa fa-trophy" aria-hidden="true"></i>
-                                Finalist, CSAW Applied Research Competition
-                                </span>
-                                
-                            <br>
-                            <b>Sumanth Rao</b>, Ye Shu, Stefan Savage, Aaron
-                            Schulman, Geoffrey M. Voelker, Enze Liu.
-                            <br>
-                            <em>IEEE Symposium on Security and Privacy
-                            (Oakland), San Francisco, May 2026</em>
+                        <div class="pub">
+                            <a href="papers/rao-oakland-2026.pdf"><b>Lost in
+                            Translation: Text Message Spoofing via Email</b></a>
+                            <span class="paper-award">
+                                <i class="fa fa-trophy" aria-hidden="true"></i><a
+                                href="https://sp2026.ieee-security.org/awards_papers.html">Distinguished
+                                Paper Award</a>;
+                                <i class="fa fa-trophy" aria-hidden="true"></i>Finalist,
+                                CSAW Applied Research Competition
+                            </span>
+                            <div class="pub-authors">
+                                <b>Sumanth Rao</b>, Ye Shu, Stefan Savage, Aaron
+                                Schulman, Geoffrey M. Voelker, Enze Liu.
+                            </div>
+                            <div class="pub-venue">
+                                <em>IEEE Symposium on Security and Privacy
+                                (Oakland), San Francisco, May 2026</em>
+                            </div>
+                            <div class="pub-links">
+                                <a href="talks/oakland26-lost-in-translation.pdf">slides</a>
+                                |
+                                <a href="papers/oakland26-poster.pdf">poster</a>
+                                |
+                                <a href="https://support.apple.com/en-us/125884">CVE-2025-46311</a>
+                                |
+                                News:
+                                <a href="https://techxplore.com/news/2026-06-verizon-apple-hidden-texting-flaw.html">TechXplore</a>,
+                                <a href="https://today.ucsd.edu/story/from-verizon-to-apple-a-hidden-texting-flaw-has-finally-been-patched">UCSD
+                                News</a>
+                            </div>
                         </div>
-                        <div>
-                            <a href="papers/oakland26-poster.pdf">[poster]</a>
-                            -
-                            <a href="talks/oakland26-lost-in-translation.pdf">[slides]</a>
-                            -
-                            <a class="award" href="https://support.apple.com/en-us/125884">CVE-2025-46311</a>
-                            -
-                            <b>News</b>:
-                            <a class="award" href="https://techxplore.com/news/2026-06-verizon-apple-hidden-texting-flaw.html">TechXplore</a>,
-                            <a class="award"
-                            href="https://today.ucsd.edu/story/from-verizon-to-apple-a-hidden-texting-flaw-has-finally-been-patched">UCSD
-                            News</a>
+
+                        <div class="pub">
+                            <a href="https://bleauto.sysnet.ucsd.edu"><b>BLE
+                            Theft Auto: Evaluating the Security of Aftermarket
+                            BLE-based Automotive Remote Control Systems</b></a>
+                            <div class="pub-authors">
+                                Jerry Yu<sup>*</sup>, Yibo Wei<sup>*</sup>,
+                                <b>Sumanth Rao</b>, Mohak Vaswani, Jefferson Chien,
+                                Christian Dameff, Nishant Bhaskar, Aaron
+                                Schulman.
+                            </div>
+                            <div class="pub-venue">
+                                <em>USENIX Security, Baltimore, MD, August 2026</em>
+                            </div>
+                            <div class="pub-links">
+                                <a href="https://defcon.org/html/defcon-34/dc-34-speakers.html#content_66664">DEFCON 34</a>
+                                |
+                                <a href="https://www.cisa.gov/news-events/ics-advisories/icsa-26-216-01">CVE-2026-18411</a>
+                                |
+                                News:
+                                <a href="https://www.wired.com/story/a-device-hidden-in-cars-across-the-us-leaves-them-vulnerable-to-hacking-and-paralysis-patch-it-now/">Wired</a>,
+                                <a href="https://www.youtube.com/watch?v=FwA3CuJxbk4">Wired video</a>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <br>
-
-                <div class="row project-row">
-                    <div class="col-md-3 col-xs-4" style="display: flex; align-items: center; justify-content: center;"><img src="images/karr-device.jpeg"
-                    class="img-fluid center-block project-img" style="max-height: 130px; width: auto;"></div>
-                    <div class="col-md-9 col-xs-8">
-                        <div class="project-title">
-                            <a href="https://bleauto.sysnet.ucsd.edu"><b>BLE Theft Auto: Evaluating the Security of Aftermarket BLE-based Automotive Remote Control Systems</b></a>
-                            <br>
-                            Jerry Yu<sup>*</sup>, Yibo Wei<sup>*</sup>,
-                            <b>Sumanth Rao</b>, Mohak Vaswani, Jefferson Chien,
-                            Christian Dameff, Nishant Bhaskar, Aaron
-                            Schulman.
-                            <br>
-                            <em>USENIX Security, Baltimore, MD, August 2026</em>
+                        <div class="pub">
+                            <a href="https://kizhikevich.github.io/assets/papers/ripe_paper.pdf"><b>Rooting
+                            Out Incorrect RIPE Atlas Probe Geolocations</b></a>
+                            <div class="pub-authors">
+                                Katherine Izhikevich, Ben Du, Manda Tran,
+                                <b>Sumanth Rao</b>, Alisha Ukani, Ray Bellis,
+                                Liz Izhikevich.
+                            </div>
+                            <div class="pub-venue">
+                                <em>ACM Internet Measurement Conference (IMC),
+                                Karlsruhe, Germany, October 2026</em>
+                            </div>
                         </div>
-                        <div>
-                            <a class="award" href="https://www.cisa.gov/news-events/ics-advisories/icsa-26-216-01">CVE-2026-18411</a>
-                            -
-                            <b>News</b>: Wired
-                            <a class="award" href="https://www.wired.com/story/a-device-hidden-in-cars-across-the-us-leaves-them-vulnerable-to-hacking-and-paralysis-patch-it-now/">[story]</a>,
-                            <a class="award" href="https://www.youtube.com/watch?v=FwA3CuJxbk4">[video]</a>
-                            (watch me hack my own car!)
-                            -
-                            <a href="https://defcon.org/html/defcon-34/dc-34-speakers.html#content_66664">DEFCON 34</a>
+
+                        <div class="pub">
+                            <a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2836824"><b>Patient
+                            Care Technology Disruptions Associated With the
+                            CrowdStrike Outage</b></a>
+                            <div class="pub-authors">
+                                Jeffrey L. Tully<sup>*</sup>, <b>Sumanth Rao<sup>*</sup></b>,
+                                Isabel Straw, Rodney A. Gabriel, Chris Longhurst,
+                                Stefan Savage, Geoffrey M. Voelker, Christian J.
+                                Dameff.
+                            </div>
+                            <div class="pub-venue">
+                                <em>JAMA Network Open, July 2025</em>
+                            </div>
+                            <div class="pub-links">
+                                News:
+                                <a href="https://www.wired.com/story/at-least-750-us-hospitals-faced-disruptions-during-last-years-crowdstrike-outage-study-finds/">Wired</a>,
+                                <a href="https://www.forbes.com/sites/davidchou/2025/07/21/a-year-after-the-outage-for-healthcare-cios/">Forbes</a>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <br>
-
-                <div class="row project-row">
-                    <div class="col-md-3 col-xs-4" style="display: flex; align-items: center; justify-content: center;"><img src="images/ripe.png"
-                    class="img-fluid center-block project-img" style="max-height: 120px; width: auto;"></div>
-                    <div class="col-md-9 col-xs-8">
-                        <div class="project-title">
-                            <a href="https://kizhikevich.github.io/assets/papers/ripe_paper.pdf"><b>Rooting Out Incorrect RIPE Atlas Probe Geolocations</b></a>
-                            <br>
-                            Katherine Izhikevich, Ben Du, Manda Tran,
-                            <b>Sumanth Rao</b>, Alisha Ukani, Ray Bellis,
-                            Liz Izhikevich.
-                            <br>
-                            <em>ACM Internet Measurement Conference (IMC), Karlsruhe, Germany, October 2026</em>
-                        </div>
-                    </div>
-                </div>
-
-                <br>
-
-                <div class="row project-row">
-                    <div class="col-md-3 col-xs-4" style="display: flex; align-items: center; justify-content: center;"><img src="images/crowdstrike.webp"
-                    class="img-fluid center-block project-img" style="max-height: 120px; width: auto;"></div>
-                    <div class="col-md-9 col-xs-8">
-                        <div class="project-title">
-                            <a
-                            href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2836824"
-                            class="link-style"><b>Patient Care Technology
-                            Disruptions Associated With the CrowdStrike
-                            Outage</b></a>
-                            <br>
-                             Jeffrey L. Tully<sup>*</sup>, <b>Sumanth Rao<sup>*</sup></b>, Isabel Straw,
-                             Rodney A. Gabriel, Chris Longhurst, Stefan Savage,
-                             Geoffrey M. Voelker,  Christian J. Dameff.
-                            <br>
-                            <em>JAMA Network Open, July 2025</em>
-                        </div>
-                        <div>
-                            <b>News</b>: <a class="award"
-                            href="https://www.wired.com/story/at-least-750-us-hospitals-faced-disruptions-during-last-years-crowdstrike-outage-study-finds/">Wired</a>, <a class="award"
-                            href="https://www.forbes.com/sites/davidchou/2025/07/21/a-year-after-the-outage-for-healthcare-cios/">Forbes</a>
-                        </div>
-                    </div>
-                </div>
-
-                <br>
-
-                <div class="row project-row">
-                    <div class="col-md-3 col-xs-4" style="display: flex; align-items: center; justify-content: center;"><img src="images/unfiltered.png"
-                    class="img-fluid center-block project-img" style="max-height: 120px; width: auto;"></div>
-                    <div class="col-md-9 col-xs-8">
-                        <div class="project-title">
-                            <a
-                            href="https://dl.acm.org/doi/10.1145/3589334.3645499"><b>Unfiltered:
+                        <div class="pub">
+                            <a href="https://dl.acm.org/doi/10.1145/3589334.3645499"><b>Unfiltered:
                             Measuring Cloud-based Email Filtering Bypasses</b></a>
-                            <br>
-                            <b>Sumanth Rao</b>, Enze Liu, Grant Ho, Geoffrey M.
-                            Voelker, Stefan Savage.
-                            <br>
-                            <em>ACM Web Conference (WWW), Singapore, May 2024</em>
+                            <div class="pub-authors">
+                                <b>Sumanth Rao</b>, Enze Liu, Grant Ho, Geoffrey M.
+                                Voelker, Stefan Savage.
+                            </div>
+                            <div class="pub-venue">
+                                <em>ACM Web Conference (WWW), Singapore, May 2024</em>
+                            </div>
+                            <div class="pub-links">
+                                <a href="https://youtu.be/irhftyMU9As?si=0KwXdsGxefo_r5T6">talk</a>
+                                |
+                                <a href="papers/www2024-poster.pdf">poster</a>
+                                |
+                                News:
+                                <a href="https://www.darkreading.com/cloud-security/cloud-email-filtering-bypass-attack">DarkReading</a>,
+                                <a href="https://technews.acm.org/archives.cfm?fo=2024-04-apr/apr-01-2024.html">ACM
+                                TechNews</a>,
+                                <a href="https://tldrsec.com/p/tldr-sec-224">TL;DR
+                                Sec</a>
+                            </div>
                         </div>
-                        <div>
-                            <a
-                            href="https://youtu.be/irhftyMU9As?si=0KwXdsGxefo_r5T6">[talk]</a>
-                            -
-                            <a
-                            href="papers/www2024-poster.pdf">[poster]</a>
-                            -
-                            <b>News</b>: <a class="award"
-                            href="https://www.darkreading.com/cloud-security/cloud-email-filtering-bypass-attack">
-                            DarkReading</a>, <a class="award"
-                            href="https://technews.acm.org/archives.cfm?fo=2024-04-apr/apr-01-2024.html">ACM
-                            TechNews</a>, <a class="award"
-                            href="https://tldrsec.com/p/tldr-sec-224">TL;DR
-                            Sec</a>
-                        </div>
-                    </div>
-                </div>
 
-                <br>
-
-                <div class="row project-row">
-                    <div class="col-md-3 col-xs-4" style="display: flex; align-items: center; justify-content: center;"><img src="images/susirr.png"
-                    class="img-fluid center-block project-img" style="max-height: 120px; width: auto;"></div>
-                    <div class="col-md-9 col-xs-8">
-                        <div class="project-title">
-                            <a
-                            href="https://dl.acm.org/doi/10.1145/3618257.3624843"><b>IRRegularities
+                        <div class="pub">
+                            <a href="https://dl.acm.org/doi/10.1145/3618257.3624843"><b>IRRegularities
                             in the Internet Routing Registry</b></a>
-                            <br>
-                            Ben Du, Katherine Izhikevich, <b>Sumanth Rao</b>,
-                            Gautam Akiwate, Cecilia Testart, Alex C. Snoeren,
-                            and kc claffy.
-                            <br>
-                            <em>ACM Internet Measurement Conference (IMC),
-                            Montr&eacute;al, Canada, October 2023</em>
+                            <div class="pub-authors">
+                                Ben Du, Katherine Izhikevich, <b>Sumanth Rao</b>,
+                                Gautam Akiwate, Cecilia Testart, Alex C. Snoeren,
+                                and kc claffy.
+                            </div>
+                            <div class="pub-venue">
+                                <em>ACM Internet Measurement Conference (IMC),
+                                Montr&eacute;al, Canada, October 2023</em>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <br>
-
-                <div class="row project-row">
-                    <div class="col-md-3 col-xs-4" style="display: flex; align-items: center; justify-content: center;"><img src="images/spyware.png"
-                    class="img-fluid center-block project-img" style="max-height: 120px; width: auto;"></div>
-                    <div class="col-md-9 col-xs-8">
-                        <div class="project-title">
-                            <a
-                            href="https://petsymposium.org/popets/2023/popets-2023-0013.pdf"><b>No
+                        <div class="pub">
+                            <a href="https://petsymposium.org/popets/2023/popets-2023-0013.pdf"><b>No
                             Privacy Among Spies: Assessing the Functionality and
                             Insecurity of Consumer Android Spyware Apps</b></a>
-                            <br>
-                            Enze Liu, <b>Sumanth Rao</b>, Sam Havron, Grant Ho,
-                            Stefan Savage, Geoffrey M. Voelker, and Damon McCoy.
-                            <br>
-                            <em>Privacy Enhancing Technologies Symposium (PETS),
-                            Lausanne, Switzerland, July 2023</em>
-                        </div>
-                        <div>
-                            <a href="papers/popets2023-spyware-poster.pdf">[poster]</a>
-                            -
-                            <a href="https://kvgo.com/ftc/PrivacyCon-March-6-2024">[PrivacyCon 2024]</a>
-                            -
-                            <b>News</b>: <a class="award"
-                            href="https://today.ucsd.edu/story/spywarestudy2023">UC San Diego News</a>,
-                            <a class="award"
-                            href="https://www.universityofcalifornia.edu/news/what-happens-when-your-phone-spying-you">UC News</a>,
-                            <a class="award"
-                            href="https://cacm.acm.org/news/272766-spyware-lurks-in-android-smartphones/fulltext">CACM News</a>,
-                            <a class="award"
-                            href="https://techxplore.com/news/2023-03-spying.html">Tech Xplore</a>
-                        </div>
-                    </div>
-                </div>
-
-                <p style="font-size: 0.85em; color: #888; margin-top: 8px;"><sup>*</sup>Equal contribution.</p>
-            </div>
-
-            <!-- Industry Experience -->
-            <div id="industry-experience"></div>
-            <div class="container fluid stacked-section" id="misc">
-
-                <div class="project-category"><h5>Industry Experience</h5></div>
-
-                    <div class="row project-row industry-row">
-                        <div class="col-md-2 col-xs-4 industry-logo-col">
-                            <img src="images/logo-google.png" class="img-fluid industry-logo" alt="Google">
-                        </div>
-                        <div class="col-md-8 col-xs-8">
-                            <div class="project-title"> <a
-                            href="https://www.google.com/">Gmail Delivery Security Team, Google</a>
-                                <br>
-                                <em>Student Researcher (Jun 2026 - Sep 2026)</em>
-                                <br>
-                                Mentors: Weihaw Chaung
+                            <div class="pub-authors">
+                                Enze Liu, <b>Sumanth Rao</b>, Sam Havron, Grant Ho,
+                                Stefan Savage, Geoffrey M. Voelker, and Damon McCoy.
                             </div>
-                        </div>
-                    </div>
-
-                    <br>
-
-                    <div class="row project-row industry-row">
-                        <div class="col-md-2 col-xs-4 industry-logo-col">
-                            <img src="images/logo-corelight.jpg" class="img-fluid industry-logo" alt="Corelight">
-                        </div>
-                        <div class="col-md-8 col-xs-8">
-                            <div  class="project-title"> <a
-                            href="https://www.corelight.com/">Corelight Labs,
-                            San Francisco</a>
-                                <br>
-                                <em>Research Intern (Jun 2025 - Sep 2025)</em>
-                                <br>
-                                Mentors: Yacin Nadji, Vern Paxson
-                                <br>
-                                Fingerprinted malicious domain controllers in
-                                E/W traffic from Zeek logs.
+                            <div class="pub-venue">
+                                <em>Privacy Enhancing Technologies Symposium (PETS),
+                                Lausanne, Switzerland, July 2023</em>
+                            </div>
+                            <div class="pub-links">
+                                <a href="https://kvgo.com/ftc/PrivacyCon-March-6-2024">PrivacyCon 2024</a>
+                                |
+                                <a href="papers/popets2023-spyware-poster.pdf">poster</a>
+                                |
+                                News:
+                                <a href="https://today.ucsd.edu/story/spywarestudy2023">UC San Diego News</a>,
+                                <a href="https://www.universityofcalifornia.edu/news/what-happens-when-your-phone-spying-you">UC News</a>,
+                                <a href="https://cacm.acm.org/news/272766-spyware-lurks-in-android-smartphones/fulltext">CACM News</a>,
+                                <a href="https://techxplore.com/news/2023-03-spying.html">Tech Xplore</a>
                             </div>
                         </div>
 
-                    </div>
+                        <p class="pub-note"><sup>*</sup>Equal contribution.</p>
+                    </section>
 
-                    <br>
+                    <!-- Invited Talks -->
+                    <section id="talks">
+                        <div class="project-category"><h5>Invited Talks</h5></div>
+                        <ul class="cv-list">
+                            <li>Guest lecture, CSE 227 (Graduate Computer
+                            Security), UC San Diego, Oct 13, 2026</li>
+                            <li>Measuring hospital ransomware attacks, CAIDA
+                            AIMS-5, Feb 2025</li>
+                            <li>Panel 6: Mobile Device Security, FTC PrivacyCon,
+                            March 2024
+                            | <a href="https://kvgo.com/ftc/PrivacyCon-March-6-2024">talk</a></li>
+                            <li>Having a great GSoC as an Open Source Newbie!,
+                            Google Open Source YouTube, Nov 2022
+                            | <a href="https://www.youtube.com/watch?v=dPUAEZVBrJg">talk</a></li>
+                        </ul>
+                    </section>
 
-                    <div class="row project-row industry-row">
-                        <div class="col-md-2 col-xs-4 industry-logo-col">
-                            <img src="images/logo-google.png" class="img-fluid industry-logo" alt="Google">
-                        </div>
-                        <div class="col-md-8 col-xs-8">
-                            <div  class="project-title"> <a
-                            href="https://www.google.com">Virtual Cluster, Google Cloud Platforms, Google</a>
-                                <br>
-                                <em>Software Engineering Intern (Jun 2022 - Sep 2022)</em>
-                                <br>
-                                Mentors: Yang Shi, Bas Nowaira
-                                <br>
-                                Improved user experience when spawning new Borg clusters.
-                            </div>
-                        </div>
-                    </div>
-                    <br>
+                    <!-- Professional Service -->
+                    <section id="service">
+                        <div class="project-category"><h5>Professional Service</h5></div>
+                        <ul class="cv-list">
+                            <li>Program Committee: SIGMETRICS 2027, IEEE Euro
+                            S&amp;P 2027, <a href="https://raid2026.org/committees.html">RAID
+                            2026</a></li>
+                            <li><a href="https://chezbob.ucsd.edu">CSE Chezbob
+                            Bobfather</a>, UC San Diego (2025-2027)</li>
+                            <li>CSE Visit Day Coordinator, UC San Diego (2026)</li>
+                            <li>Allyship Co-Chair, <a
+                            href="https://cse-gradwic.github.io">UCSD GradWic</a>
+                            (2023-2024)</li>
+                            <li>VP External, <a
+                            href="https://jgsc.eng.ucsd.edu/home">JGSC</a>, UC San
+                            Diego (2021-2023)</li>
+                        </ul>
+                    </section>
 
-                    <div class="row project-row industry-row">
-                        <div class="col-md-2 col-xs-4 industry-logo-col">
-                            <img src="images/logo-citrix.png" class="img-fluid industry-logo" alt="Citrix">
-                        </div>
-                        <div class="col-md-8 col-xs-8">
-                            <div class="project-title"> <a
-                            href="https://www.citrix.com/">Citrix Licensing team, Citrix</a>
-                                <br>
-                                <em>Software Engineer (Aug 2020 - Aug 2021)</em>
-                                <br>
-                                Designed a Docker-based automation
-                                framework deployed via a hybrid cloud model.
-                            </div>
-                        </div>
-                    </div>
-
-            </div>
-
-            <!-- Awards -->
-            <div class="container fluid stacked-section">
-                <div class="project-category"><h5>Awards</h5></div>
-                <div id="awards-honors">
-                    <p>
-                        - 2026. CSE Doctoral Award for Excellence in Service and
-                        Leadership, UC San Diego.
-                        <br>
-                        - 2026. <a
-                        href="https://sp2026.ieee-security.org/awards_papers.html">
-                        <span style="font-weight: 600;">Distinguished Paper Award</span></a>,
-                        IEEE Symposium on Security and Privacy (Oakland)
-                        <br>
-                        - 2026. Finalist, CSAW Applied Research Competition
-                        <br>
-                        - 2024. Finalist, NatSec Hackathon
-                        (Stanford DEFCON and Shield Capital)
-                        <br>
-                        - 2021-2022. Recipient of
-                        <a class="link-style"
-                        href="https://www.jntataendowment.org/">JN Tata
-                        Scholarship</a>
-                        <br>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Invited Talks -->
-            <div class="container fluid stacked-section">
-                <div class="project-category"><h5>Invited Talks</h5></div>
-                <div id="talks">
-                    <p>
-                        - Guest lecture, CSE 227 (Graduate Computer Security),
-                        <span>UC San Diego, Oct 13, 2026</span>
-                        <br>
-                        - Measuring hospital ransomware attacks
-                        <span>, CAIDA AIMS-5, Feb 2025</span>
-                        <br>
-                        - Panel 6: Mobile Device Security
-                        <span>, FTC PrivacyCon, March 2024</span>
-                        <a href="https://kvgo.com/ftc/PrivacyCon-March-6-2024">[talk]</a>
-                        <br>
-                        - Having a great GSoC as an Open Source Newbie!
-                        <span>, Google Open Source YouTube, Nov 2022</span>
-                        <a href="https://www.youtube.com/watch?v=dPUAEZVBrJg">[talk]</a>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Professional Service -->
-            <div class="container fluid stacked-section">
-                <div class="project-category"><h5>Professional Service</h5></div>
-                <div id="service">
-                    <p>
-                        - <strong>Program Committee:</strong>
-                        <br>
-                        <span class="service-sub">&#8627; SIGMETRICS 2027</span>
-                        <br>
-                        <span class="service-sub">&#8627; IEEE Euro S&amp;P 2027</span>
-                        <br>
-                        <span class="service-sub">&#8627; <a class="link-style"
-                        href="https://raid2026.org/committees.html">RAID 2026</a></span>
-                        <br>
-                        - <a href="https://chezbob.ucsd.edu">CSE Chezbob Bobfather</a>,
-                        UC San Diego (2025-2027)
-                        <br>
-                        - CSE Visit Day Coordinator, UC San Diego (2026)
-                        <br>
-                        - Allyship Co-Chair, <a
-                        href="https://cse-gradwic.github.io">UCSD GradWic</a> (2023-2024)
-                        <br>
-                        - VP External, <a
-                        href="https://jgsc.eng.ucsd.edu/home">JGSC</a>, UC
-                        San Diego (2021-2023)
-                    </p>
-                </div>
-            </div>
-
-            <!-- Teaching & Mentoring -->
-            <div class="container fluid stacked-section">
-                <div class="project-category"><h5>Teaching &amp; Mentoring</h5></div>
-                <div id="teaching-mentoring">
-                    <p>
-                        I was a teaching assistant for the following courses at UC San Diego:
-                        
-                        Spring 2023, Intro to Computer Security, 
-                        Winter 2023, Graduate Operating Systems,
-                        Fall 2022, Intro to Computer Security,
-                        Spring 2022, Intro to Computer Security
-                    </p>
-                    <p>
-                        I'm a big advocate for open source and have mentored five
-                        students through Google Summer of Code (<a
-                        href="https://summerofcode.withgoogle.com/archive/2020/projects/6307196188491776/"
-                        class="link-style">2020 (1)</a>,
-                        <a
-                        href="https://summerofcode.withgoogle.com/archive/2020/projects/4790628438769664/"
-                        class="link-style">2020 (2)</a>,
-                        <a href="https://summerofcode.withgoogle.com/projects/#4667597951336448" class="link-style">2021</a>,
-                        <a
-                        href="https://summerofcode.withgoogle.com/archive/2024/projects/vzXauDJb"
-                        class="link-style">2024</a>). I was a GSoC student myself in <a
-                        href="https://summerofcode.withgoogle.com/archive/2019/projects/6423498090610688"
-                        class="link-style">2019</a> with <a
-                        href="https://zulip.com/" class="link-style">the Zulip Open
-                        Source Project</a>.
-                    </p>
-                </div>
-            </div>
+                    <!-- Teaching & Mentoring -->
+                    <section id="teaching-mentoring">
+                        <div class="project-category"><h5>Teaching &amp; Mentoring</h5></div>
+                        <ul class="cv-list">
+                            <li>Teaching Assistant: Intro to Computer Security
+                            (Sp'23, Fa'22, Sp'22); Graduate Operating Systems
+                            (Wi'23)</li>
+                            <li>Google Summer of Code mentor, five students:
+                            <a href="https://summerofcode.withgoogle.com/archive/2020/projects/6307196188491776/">2020 (1)</a>
+                            | <a href="https://summerofcode.withgoogle.com/archive/2020/projects/4790628438769664/">2020 (2)</a>
+                            | <a href="https://summerofcode.withgoogle.com/projects/#4667597951336448">2021</a>
+                            | <a href="https://summerofcode.withgoogle.com/archive/2024/projects/vzXauDJb">2024</a></li>
+                            <li>Google Summer of Code student with the <a
+                            href="https://zulip.com/">Zulip Open Source
+                            Project</a>, <a
+                            href="https://summerofcode.withgoogle.com/archive/2019/projects/6423498090610688">2019</a></li>
+                        </ul>
+                    </section>
 
                 </div>
             </div>
         </div>
-
-    <br>
 
         <div id="sign">
             <small>Website design inspired by <a href="https://diwenx.com/">this
             page</a>, code <a href="https://github.com/sumanthvrao/sumanthvrao.github.io">here</a>.</small>
         </div>
-        <a class="floating-arrow" href="#industry-experience" aria-label="Jump to industry experience">
-            ↓
-        </a>
-        <script>
-            (function () {
-                const arrow = document.querySelector(".floating-arrow");
-                if (!arrow) {
-                    return;
-                }
-
-                function updateArrow() {
-                    const nearBottom =
-                        window.innerHeight + window.scrollY >=
-                        document.body.offsetHeight - 200;
-
-                    if (nearBottom) {
-                        arrow.textContent = "↑";
-                        arrow.setAttribute("href", "#top");
-                        arrow.setAttribute("aria-label", "Back to top");
-                    } else {
-                        arrow.textContent = "↓";
-                        arrow.setAttribute("href", "#industry-experience");
-                        arrow.setAttribute(
-                            "aria-label",
-                            "Jump to industry experience"
-                        );
-                    }
-                }
-
-                window.addEventListener("scroll", updateArrow);
-                window.addEventListener("resize", updateArrow);
-                updateArrow();
-            })();
-        </script>
     </body>
 </html>

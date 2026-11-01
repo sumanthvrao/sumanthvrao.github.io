@@ -33,6 +33,83 @@
       href="https://sumanthvrao.github.io/favicon.ico?"
       type="image/x-icon"
     />
+
+    <!-- Minimal styling to match the main page -->
+    <style>
+      /* Muted blue links, red on hover, no underline */
+      a,
+      .blog-link-active {
+        color: #2f5d8a;
+        text-decoration: none;
+      }
+      a:hover,
+      a:focus {
+        color: #e4035c;
+        text-decoration: none;
+      }
+      .blog-page {
+        max-width: 860px;
+      }
+      .section-container {
+        padding: 0;
+        box-shadow: none;
+      }
+      .blog-window {
+        background: none;
+      }
+      .project-category {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+      }
+      .project-category h5 {
+        margin-bottom: 6px;
+      }
+      #blog-list {
+        margin-top: 0;
+      }
+      #blog-list p {
+        margin-bottom: 8px;
+        line-height: 1.4;
+      }
+      #blog-list .update,
+      .blog-content time {
+        font-size: 13.5px;
+        color: #555;
+      }
+      .blog-content {
+        margin-top: 24px;
+        line-height: 1.5;
+      }
+      .blog-content h1 {
+        margin-bottom: 2px;
+        font-size: 24px;
+        font-weight: 600;
+      }
+      .blog-content h2 {
+        margin-top: 22px;
+        margin-bottom: 6px;
+        font-size: 20px;
+      }
+      .blog-content h3 {
+        margin-top: 16px;
+        margin-bottom: 4px;
+        font-size: 16px;
+        font-weight: 600;
+      }
+      .blog-content code {
+        color: #333;
+      }
+      .blog-content pre {
+        padding: 10px 12px;
+        font-size: 13px;
+        background: #f7f7f7;
+      }
+      .back-link {
+        display: inline-block;
+        margin: 24px 0 12px;
+      }
+    </style>
   </head>
 
   <body>
@@ -41,16 +118,21 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" id="owner_name">
           <div>
-            <a href="https://sumanthvrao.github.io">Sumanth Rao</a>
+            <a href="index.html">Sumanth Rao</a>
           </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
           <div id="sections">
-            <a href="index.html">Home</a>
-            -
-            <a href="research.html">Publications</a>
-            <!-- <a href="gallery/index.html">Gallery</a> -->
+            <a href="index.html#publications">Publications</a>
+            |
+            <a href="index.html#talks">Talks</a>
+            |
+            <a href="index.html#service">Service</a>
+            |
+            <a href="index.html#teaching-mentoring">Teaching</a>
+            |
+            <a href="blog.html">Blog</a>
           </div>
         </div>
       </div>
@@ -58,7 +140,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 blog-page">
           <div class="section-container">
             <div class="project-category"><h5>Blog Posts</h5></div>
             <div class="project-links" id="blog-list">
@@ -87,16 +169,13 @@
             </div>
           </div>
 
-          <br />
-
           <div class="section-container blog-window">
             <div id="blog-content" class="blog-content">
               <p>Select a post to load.</p>
             </div>
           </div>
 
-          <br />
-          <a href="index.html">← Back to Home</a>
+          <a class="back-link" href="index.html">← Back to Home</a>
         </div>
       </div>
     </div>
@@ -170,37 +249,6 @@
             initialLink.getAttribute("data-blog-title")
           );
         }
-      })();
-    </script>
-    <a class="floating-arrow" href="#blog-content" aria-label="Jump to blog content">
-      ↓
-    </a>
-    <script>
-      (function () {
-        const arrow = document.querySelector(".floating-arrow");
-        if (!arrow) {
-          return;
-        }
-
-        function updateArrow() {
-          const nearBottom =
-            window.innerHeight + window.scrollY >=
-            document.body.offsetHeight - 200;
-
-          if (nearBottom) {
-            arrow.textContent = "↑";
-            arrow.setAttribute("href", "#top");
-            arrow.setAttribute("aria-label", "Back to top");
-          } else {
-            arrow.textContent = "↓";
-            arrow.setAttribute("href", "#blog-content");
-            arrow.setAttribute("aria-label", "Jump to blog content");
-          }
-        }
-
-        window.addEventListener("scroll", updateArrow);
-        window.addEventListener("resize", updateArrow);
-        updateArrow();
       })();
     </script>
   </body>
