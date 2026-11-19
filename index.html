@@ -169,6 +169,17 @@
             .cv-list li {
                 margin-bottom: 4px;
             }
+            /* ↳ markers (matches the sidebar), wrapped lines indented */
+            .cv-list.bulleted li {
+                position: relative;
+                padding-left: 18px;
+            }
+            .cv-list.bulleted li::before {
+                content: "\21B3";
+                position: absolute;
+                left: 0;
+                color: #999;
+            }
             #sign {
                 margin-top: 24px;
                 margin-bottom: 12px;
@@ -506,9 +517,14 @@
                     <!-- Invited Talks -->
                     <section id="talks">
                         <div class="project-category"><h5>Invited Talks</h5></div>
-                        <ul class="cv-list">
-                            <li>Guest lecture, CSE 227 (Graduate Computer
-                            Security), UC San Diego, Oct 13, 2026</li>
+                        <ul class="cv-list bulleted">
+                            <li>Invited guest lecture Q&amp;A, <a
+                            href="https://ramakrishnansr.com/teaching/cse253-fall26">CSE
+                            253</a>, UC Santa Cruz (host: Ramakrishnan Sundara
+                            Raman), Fall 2026</li>
+                            <li>Adaptive agentic worms and defenses, guest
+                            lecture, CSE 227 (Graduate Computer Security), UC
+                            San Diego, Oct 13, 2026</li>
                             <li>Measuring hospital ransomware attacks, CAIDA
                             AIMS-5, Feb 2025</li>
                             <li>Panel 6: Mobile Device Security, FTC PrivacyCon,
@@ -523,7 +539,7 @@
                     <!-- Professional Service -->
                     <section id="service">
                         <div class="project-category"><h5>Professional Service</h5></div>
-                        <ul class="cv-list">
+                        <ul class="cv-list bulleted">
                             <li><b>Program Committee:</b> SIGMETRICS 2027, IEEE Euro
                             S&amp;P 2027, <a href="https://raid2026.org/committees.html">RAID
                             2026</a></li>
@@ -547,7 +563,7 @@
                     <!-- Teaching & Mentoring -->
                     <section id="teaching-mentoring">
                         <div class="project-category"><h5>Teaching &amp; Mentoring</h5></div>
-                        <ul class="cv-list">
+                        <ul class="cv-list bulleted">
                             <li>Teaching Assistant: Intro to Computer Security
                             (Sp'23, Fa'22, Sp'22); Graduate Operating Systems
                             (Wi'23)</li>
